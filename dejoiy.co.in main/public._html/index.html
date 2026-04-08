@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DEJOIY — Powering the Future of Digital Commerce</title>
+  <meta
+    name="description"
+    content="DEJOIY corporate headquarters website introducing the DEJOIY ecosystem, platforms, business services, and technology vision."
+  />
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@600;700&family=Poppins:wght@500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            inter: ['Inter', 'sans-serif'],
+            poppins: ['Poppins', 'sans-serif'],
+            montserrat: ['Montserrat', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <header class="fixed top-0 left-0 right-0 z-50 nav-blur">
+    <div class="container-premium">
+      <div class="flex items-center justify-between py-4">
+  <a href="index.html" class="brand">
+  <div class="logo-d">
+    <img src="assets/images/logo/dejoiy-logo.png" alt="DEJOIY">
+  </div>
+
+  <div class="brand-text">
+    <div class="brand-name">DEJOIY</div>
+    <div class="brand-sub">Corporate HQ</div>
+  </div>
+</a>
+
+        <nav class="hidden lg:flex items-center gap-8">
+          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="about.html">About</a>
+          <a class="nav-link" href="services.html">Services</a>
+          <a class="nav-link" href="team.html">Team</a>
+          <a class="nav-link" href="contact.html">Contact</a>
+        </nav>
+
+        <div class="hidden lg:flex items-center gap-3">
+          <a class="btn-secondary" href="https://www.dejoiy.com" target="_blank" rel="noopener noreferrer">
+            Visit Marketplace
+          </a>
+          <a class="btn-primary" href="https://business.dejoiy.com" target="_blank" rel="noopener noreferrer">
+            Business Portal
+          </a>
+        </div>
+
+        <button
+          id="menuToggle"
+          class="lg:hidden inline-flex items-center justify-center w-11 h-11 rounded-xl border border-white/10 bg-white/5 text-white"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+
+      <div id="mobileMenu" class="mobile-menu lg:hidden">
+        <div class="pb-4 flex flex-col gap-3">
+          <a class="nav-link py-2" href="index.html">Home</a>
+          <a class="nav-link py-2" href="about.html">About</a>
+          <a class="nav-link py-2" href="services.html">Services</a>
+          <a class="nav-link py-2" href="team.html">Team</a>
+          <a class="nav-link py-2" href="contact.html">Contact</a>
+          <div class="flex flex-col gap-3 pt-3">
+            <a class="btn-secondary w-full" href="https://www.dejoiy.com" target="_blank" rel="noopener noreferrer">
+              Visit Marketplace
+            </a>
+            <a class="btn-primary w-full" href="https://business.dejoiy.com" target="_blank" rel="noopener noreferrer">
+              Business Portal
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="relative min-h-screen flex items-center overflow-hidden">
+      <div class="floating-orb orb-blue w-72 h-72 top-28 left-[-4rem]"></div>
+      <div class="floating-orb orb-magenta w-80 h-80 top-44 right-[-5rem]" style="animation-delay: 1.5s;"></div>
+      <div class="floating-orb orb-cyan w-64 h-64 bottom-16 left-1/3" style="animation-delay: 3s;"></div>
+
+      <div class="container-premium pt-32 pb-20">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+          <div class="reveal">
+            <div class="badge mb-6">
+              <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+              DEJOIY Ecosystem • Corporate Headquarters
+            </div>
+
+            <h1 class="section-title max-w-3xl">
+              Powering the Future of
+              <span class="gradient-text">Digital Commerce</span>
+            </h1>
+
+            <p class="section-subtitle mt-6 max-w-2xl">
+              DEJOIY is building an interconnected digital ecosystem across commerce, business infrastructure,
+              technology services, and operational excellence — designed to scale modern enterprises, empower
+              partners, and create intelligent growth platforms for the future.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4 mt-10">
+              <a href="#ecosystem" class="btn-primary">Explore Ecosystem</a>
+              <a href="https://www.dejoiy.com" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+                Visit Marketplace
+              </a>
+              <a href="https://business.dejoiy.com" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+                Business Portal
+              </a>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-6 mt-14">
+              <div>
+                <div class="stat-number gradient-text">4+</div>
+                <div class="text-sm text-slate-400 mt-2">Core ecosystem pillars</div>
+              </div>
+              <div>
+                <div class="stat-number gradient-text">24/7</div>
+                <div class="text-sm text-slate-400 mt-2">Digital business enablement</div>
+              </div>
+              <div>
+                <div class="stat-number gradient-text">∞</div>
+                <div class="text-sm text-slate-400 mt-2">Scalability mindset</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="reveal">
+            <div class="relative">
+              <div class="absolute -inset-6 rounded-[40px] bg-gradient-to-br from-blue-500/15 via-fuchsia-500/10 to-cyan-400/10 blur-2xl"></div>
+              <div class="d-frame d-frame-lg relative">
+                <img src="assets/images/hero/hero-visual.jpg" alt="DEJOIY digital ecosystem visual" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-padding relative">
+      <div class="container-premium">
+        <div class="max-w-3xl reveal">
+          <div class="badge mb-5">About DEJOIY</div>
+          <h2 class="section-title">A modern technology company built around an ecosystem mindset.</h2>
+          <p class="section-subtitle">
+            DEJOIY exists to create a connected digital infrastructure that powers commerce, business growth,
+            partner enablement, and scalable operational systems. We are focused on long-term platform value,
+            strong user experience, and intelligent digital transformation.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-6 mt-14">
+          <div class="premium-card glass glow-border p-7 reveal">
+            <div class="icon-chip mb-5">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-cyan-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" d="M3 10l9-7 9 7v10a1 1 0 01-1 1h-6v-6H10v6H4a1 1 0 01-1-1V10z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Mission</h3>
+            <p class="text-slate-400 leading-7">
+              To build reliable digital platforms that simplify commerce, empower business users, and create
+              efficient pathways for scalable growth.
+            </p>
+          </div>
+
+          <div class="premium-card glass glow-border p-7 reveal">
+            <div class="icon-chip mb-5">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-fuchsia-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Vision</h3>
+            <p class="text-slate-400 leading-7">
+              To become a category-defining technology ecosystem connecting customers, vendors, businesses,
+              and digital operations under one powerful brand.
+            </p>
+          </div>
+
+          <div class="premium-card glass glow-border p-7 reveal">
+            <div class="icon-chip mb-5">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" d="M17 20h5V4H2v16h5m10 0v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6m10 0H7" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Structure</h3>
+            <p class="text-slate-400 leading-7">
+              DEJOIY corporate headquarters anchors the broader ecosystem and directs users to the platforms
+              built for commerce and business services.
+            </p>
+          </div>
+
+          <div class="premium-card glass glow-border p-7 reveal">
+            <div class="icon-chip mb-5">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-amber-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" d="M12 8c-1.657 0-3 1.343-3 3 0 3 3 5 3 5s3-2 3-5c0-1.657-1.343-3-3-3zm0 0V3m0 13v5m8-8h-5M9 13H4m13.657-5.657l-3.536 3.536M9.879 14.121l-3.536 3.536m11.314 0-3.536-3.536M9.879 9.879 6.343 6.343" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Experience</h3>
+            <p class="text-slate-400 leading-7">
+              Every part of the brand is designed with clarity, trust, performance, and a premium product-led
+              sensibility.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ecosystem" class="section-padding">
+      <div class="container-premium">
+        <div class="max-w-3xl reveal">
+          <div class="badge mb-5">DEJOIY Ecosystem</div>
+          <h2 class="section-title">An integrated platform architecture for modern commerce and business.</h2>
+          <p class="section-subtitle">
+            DEJOIY brings together customer-facing platforms, business systems, vendor enablement, and digital
+            services into one evolving ecosystem.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-6 mt-14">
+          <div class="premium-card glass glow-border p-6 reveal">
+            <div class="d-frame d-frame-sm mb-6">
+              <img src="assets/images/ecosystem/marketplace.jpg" alt="Marketplace platform" />
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Marketplace</h3>
+            <p class="text-slate-400 leading-7 mb-6">
+              A commerce destination designed to connect buyers with product discovery, trust, convenience, and speed.
+            </p>
+            <a href="https://www.dejoiy.com" target="_blank" rel="noopener noreferrer" class="btn-primary w-full">
+              Visit Marketplace
+            </a>
+          </div>
+
+          <div class="premium-card glass glow-border p-6 reveal">
+            <div class="d-frame d-frame-sm mb-6">
+              <img src="assets/images/ecosystem/tech-platform.jpg" alt="Technology platform" />
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Technology Platform</h3>
+            <p class="text-slate-400 leading-7 mb-6">
+              Shared infrastructure, operational intelligence, and product systems that support future-ready scale.
+            </p>
+            <a href="services.html" class="btn-secondary w-full">Explore Services</a>
+          </div>
+
+          <div class="premium-card glass glow-border p-6 reveal">
+            <div class="d-frame d-frame-sm mb-6">
+              <img src="assets/images/ecosystem/business-services.jpg" alt="Business services" />
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Business Services</h3>
+            <p class="text-slate-400 leading-7 mb-6">
+              Structured solutions for enterprise workflows, business growth, and operational support through DEJOIY.
+            </p>
+            <a href="https://business.dejoiy.com" target="_blank" rel="noopener noreferrer" class="btn-primary w-full">
+              Business Portal
+            </a>
+          </div>
+
+          <div class="premium-card glass glow-border p-6 reveal">
+            <div class="d-frame d-frame-sm mb-6">
+              <img src="assets/images/ecosystem/vendor-network.jpg" alt="Vendor network" />
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Vendor Network</h3>
+            <p class="text-slate-400 leading-7 mb-6">
+              A growing partner ecosystem focused on supply reliability, reach, operational alignment, and mutual growth.
+            </p>
+            <a href="contact.html" class="btn-secondary w-full">Connect With DEJOIY</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section-padding relative">
+      <div class="container-premium">
+        <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 reveal">
+          <div class="max-w-3xl">
+            <div class="badge mb-5">Marketplace Preview</div>
+            <h2 class="section-title">A premium commerce experience anchored by trust and discoverability.</h2>
+            <p class="section-subtitle">
+              The DEJOIY marketplace is one of the key public-facing pillars of the ecosystem. This preview highlights
+              the elevated product presentation and modern experience users can expect.
+            </p>
+          </div>
+          <div>
+            <a href="https://www.dejoiy.com" target="_blank" rel="noopener noreferrer" class="btn-primary">
+              Visit Marketplace
+            </a>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-6 mt-14">
+          <div class="premium-card glass glow-border p-5 reveal">
+            <div class="d-frame d-frame-sm mb-5">
+              <img src="assets/images/products/product-1.jpg" alt="Featured product 1" class="banner-img" />
+            </div>
+            <h3 class="text-lg font-semibold">Smart Lifestyle Product</h3>
+            <p class="text-slate-400 mt-2 leading-7">
+              Premium product presentation with visual clarity, elegant spacing, and commerce-focused storytelling.
+            </p>
+          </div>
+
+          <div class="premium-card glass glow-border p-5 reveal">
+            <div class="d-frame d-frame-sm mb-5">
+              <img src="assets/images/products/product-2.jpg" alt="Featured product 2" class="banner-img" />
+            </div>
+            <h3 class="text-lg font-semibold">Technology Essential</h3>
+            <p class="text-slate-400 mt-2 leading-7">
+              A refined retail card system built to feel aspirational, modern, and conversion-oriented.
+            </p>
+          </div>
+
+          <div class="premium-card glass glow-border p-5 reveal">
+            <div class="d-frame d-frame-sm mb-5">
+              <img src="assets/images/products/product-3.jpg" alt="Featured product 3" class="banner-img" />
+            </div>
+            <h3 class="text-lg font-semibold">Premium Consumer Offering</h3>
+            <p class="text-slate-400 mt-2 leading-7">
+              DEJOIY marketplace layouts support discovery, trust-building, and high-end digital product perception.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-padding">
+      <div class="container-premium">
+        <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
+          <div class="reveal">
+            <div class="badge mb-5">Founder & Leadership</div>
+            <h2 class="section-title">Built by people who believe ecosystems create enduring value.</h2>
+            <p class="section-subtitle">
+              DEJOIY is guided by a product-minded leadership philosophy — one that values brand trust, platform
+              quality, strategic scalability, and business clarity. The leadership section is designed to be
+              easily updated as the organization grows.
+            </p>
+
+            <div class="grid sm:grid-cols-2 gap-5 mt-10">
+              <div class="glass rounded-3xl p-6 glow-border">
+                <div class="text-3xl font-bold gradient-text">Platform-first</div>
+                <p class="text-slate-400 mt-3 leading-7">
+                  We think in systems, not isolated products — creating connected value across multiple touchpoints.
+                </p>
+              </div>
+
+              <div class="glass rounded-3xl p-6 glow-border">
+                <div class="text-3xl font-bold gradient-text">Design-led</div>
+                <p class="text-slate-400 mt-3 leading-7">
+                  We believe premium UX, sharp communication, and trust-driven design are strategic advantages.
+                </p>
+              </div>
+            </div>
+
+            <div class="mt-8">
+              <a href="team.html" class="btn-secondary">Meet the Team</a>
+            </div>
+          </div>
+
+          <div class="reveal">
+            <button
+              type="button"
+              class="team-swap relative block w-full text-left"
+              data-swap-image
+              data-state="primary"
+              data-primary="assets/images/team/founder.jpg"
+              data-alternate="assets/images/team/founder-spirit.jpg"
+              data-primary-alt="Founder of DEJOIY"
+              data-alternate-alt="Founder spirit animal illustration"
+              aria-label="Toggle founder image"
+            >
+              <div class="d-frame d-frame-lg">
+                <img src="assets/images/team/founder.jpg" alt="Founder of DEJOIY" />
+              </div>
+              <span class="swap-hint">Click to reveal spirit animal</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-padding">
+      <div class="container-premium">
+        <div class="glass glow-border rounded-[32px] p-8 md:p-12 reveal">
+          <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
+            <div>
+              <div class="badge mb-5">Connect with DEJOIY</div>
+              <h2 class="section-title">Let’s build the next chapter of digital growth together.</h2>
+              <p class="section-subtitle">
+                Whether you are exploring strategic partnerships, ecosystem alignment, business enablement,
+                or technology collaboration, DEJOIY is open to meaningful conversations.
+              </p>
+            </div>
+
+            <div class="flex flex-col sm:flex-row lg:justify-end gap-4">
+              <a href="contact.html" class="btn-primary">Contact DEJOIY</a>
+              <a href="https://business.dejoiy.com" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+                Open Business Portal
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+<footer class="pt-20 pb-10 relative">
+  <div class="container-premium">
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 footer-grid">
+
+      <!-- Column 1 -->
+      <div>
+        <a href="index.html" class="brand mb-5">
+          <div class="logo-d">
+            <img src="assets/images/logo/dejoiy-logo.png" alt="DEJOIY">
+          </div>
+
+          <div class="brand-text">
+            <div class="brand-name">DEJOIY</div>
+            <div class="brand-sub">Corporate HQ</div>
+          </div>
+        </a>
+
+        <p class="text-slate-400 leading-7 mt-4">
+          DEJOIY is the corporate headquarters brand for a growing digital ecosystem spanning commerce,
+          business infrastructure, partner enablement, and technology-led growth.
+        </p>
+      </div>
+
+      <!-- Column 2 -->
+      <div>
+        <h3 class="text-white font-semibold mb-5">Navigation</h3>
+        <div class="flex flex-col gap-3">
+          <a href="/">Home</a>
+          <a href="/about">About</a>
+          <a href="/services">Services</a>
+          <a href="/team">Team</a>
+          <a href="/contact">Contact</a>
+        </div>
+      </div>
+
+      <!-- Column 3 -->
+      <div>
+        <h3 class="text-white font-semibold mb-5">Platforms</h3>
+        <div class="flex flex-col gap-3">
+          <a href="https://www.dejoiy.com" target="_blank">Marketplace</a>
+          <a href="https://business.dejoiy.com" target="_blank">Business Portal</a>
+        </div>
+      </div>
+
+      <!-- Column 4 -->
+      <div>
+        <h3 class="text-white font-semibold mb-5">Social</h3>
+        <div class="flex items-center gap-3">
+          <a href="#" class="social-icon">in</a>
+          <a href="#" class="social-icon">ig</a>
+          <a href="#" class="social-icon">x</a>
+        </div>
+      </div>
+
+    </div>
+
+    <hr class="hr-premium my-10" />
+
+   <div class="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between text-sm text-slate-500">
+
+  <div>
+    © 2026 DEJOIY India Private Limited. All rights reserved. 
+    DEJOIY®, the DEJOIY ecosystem, and related platforms are proprietary 
+    brands and digital properties of DEJOIY India Private Limited.
+  </div>
+
+  <div class="flex flex-wrap gap-4">
+    <a href="https://www.dejoiy.co.in" class="hover:text-white transition">dejoiy.co.in</a>
+    <a href="https://www.dejoiy.com" class="hover:text-white transition">dejoiy.com</a>
+    <a href="https://business.dejoiy.com" class="hover:text-white transition">business.dejoiy.com</a>
+  </div>
+
+</div>
+
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
