@@ -2,305 +2,218 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact DEJOIY — Corporate Enquiries</title>
-  <meta
-    name="description"
-    content="Contact DEJOIY for partnerships, corporate enquiries, ecosystem collaboration, and business opportunities."
-  />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — DEJOIY Global Headquarters</title>
+  <meta name="description" content="Connect with DEJOIY for partnerships, enterprise solutions, technology collaboration, and business enquiries." />
   <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@600;700&family=Poppins:wght@500;600;700;800&display=swap"
-    rel="stylesheet"
-  />
-
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            inter: ['Inter', 'sans-serif'],
-            poppins: ['Poppins', 'sans-serif'],
-            montserrat: ['Montserrat', 'sans-serif']
-          }
-        }
-      }
-    };
-  </script>
-
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body>
-  <header class="fixed top-0 left-0 right-0 z-50 nav-blur">
-    <div class="container-premium">
-      <div class="flex items-center justify-between py-4">
-       <a href="index.html" class="flex items-center gap-3">
 
-  <img src="assets/images/logo/dejoiy-logo.png"
-       alt="DEJOIY Logo"
-       class="h-10 w-auto">
-
-  <div>
-    <div class="text-white font-semibold tracking-wide text-lg">DEJOIY</div>
-    <div class="text-xs text-slate-400 -mt-1">Corporate HQ</div>
-  </div>
-        <nav class="hidden lg:flex items-center gap-8">
-          <a class="nav-link" href="index.html">Home</a>
-          <a class="nav-link" href="about.html">About</a>
-          <a class="nav-link" href="services.html">Services</a>
-          <a class="nav-link" href="team.html">Team</a>
-          <a class="nav-link text-white" href="contact.html">Contact</a>
-        </nav>
-
-        <div class="hidden lg:flex items-center gap-3">
-          <a class="btn-secondary" href="https://www.dejoiy.com" target="_blank" rel="noopener noreferrer">
-            Visit Marketplace
-          </a>
-          <a class="btn-primary" href="https://business.dejoiy.com" target="_blank" rel="noopener noreferrer">
-            Business Portal
-          </a>
-        </div>
-
-        <button
-          id="menuToggle"
-          class="lg:hidden inline-flex items-center justify-center w-11 h-11 rounded-xl border border-white/10 bg-white/5 text-white"
-          aria-label="Toggle menu"
-          aria-expanded="false"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
+<header class="nav-wrap" id="mainNav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-icon"><img src="assets/images/logo/dejoiy-logo.png" alt="DEJOIY" /></div>
+        <div><div class="nav-logo-text">DEJOIY</div><div class="nav-logo-sub">Global HQ</div></div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="contact.html" style="color:white">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="https://www.dejoiy.com" target="_blank" rel="noopener" class="btn-ghost" style="padding:0.65rem 1.25rem;font-size:0.85rem">Marketplace</a>
+        <a href="https://business.dejoiy.com" target="_blank" rel="noopener" class="btn-primary" style="padding:0.65rem 1.25rem;font-size:0.85rem">Business Portal</a>
       </div>
-
-      <div id="mobileMenu" class="mobile-menu lg:hidden">
-        <div class="pb-4 flex flex-col gap-3">
-          <a class="nav-link py-2" href="index.html">Home</a>
-          <a class="nav-link py-2" href="about.html">About</a>
-          <a class="nav-link py-2" href="services.html">Services</a>
-          <a class="nav-link py-2" href="team.html">Team</a>
-          <a class="nav-link py-2 text-white" href="contact.html">Contact</a>
-          <div class="flex flex-col gap-3 pt-3">
-            <a class="btn-secondary w-full" href="https://www.dejoiy.com" target="_blank" rel="noopener noreferrer">
-              Visit Marketplace
-            </a>
-            <a class="btn-primary w-full" href="https://business.dejoiy.com" target="_blank" rel="noopener noreferrer">
-              Business Portal
-            </a>
-          </div>
-        </div>
-      </div>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-  </header>
+  </div>
+</header>
 
-  <main>
-    <section class="page-hero relative overflow-hidden">
-      <div class="floating-orb orb-blue w-72 h-72 top-28 left-[-4rem]"></div>
-      <div class="floating-orb orb-magenta w-72 h-72 top-40 right-[-4rem]"></div>
+<div class="mobile-menu" id="mobileMenu">
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="team.html">Team</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <div class="mobile-ctas">
+    <a href="https://www.dejoiy.com" target="_blank" rel="noopener" class="btn-ghost" style="text-align:center">Visit Marketplace</a>
+    <a href="https://business.dejoiy.com" target="_blank" rel="noopener" class="btn-primary" style="text-align:center">Business Portal</a>
+  </div>
+</div>
 
-      <div class="container-premium">
-        <div class="max-w-4xl reveal">
-          <div class="badge mb-6">Contact DEJOIY</div>
-          <h1 class="section-title">
-            Let’s start a conversation about
-            <span class="gradient-text">partnerships, business, and ecosystem growth.</span>
-          </h1>
-          <p class="section-subtitle mt-6">
-            Reach out to DEJOIY for corporate enquiries, strategic partnerships, business discussions,
-            vendor opportunities, or platform-related conversations.
-          </p>
-        </div>
-      </div>
-    </section>
+<!-- PAGE HERO -->
+<section class="page-hero-section">
+  <div class="orb orb-purple" style="width:400px;height:400px;top:0;right:0;opacity:0.1"></div>
+  <div class="container" style="position:relative;z-index:1">
+    <div class="badge" style="margin-bottom:1.25rem"><span class="badge-dot"></span>Get In Touch</div>
+    <h1 class="display-title" style="font-size:clamp(2.5rem,6vw,5.5rem);max-width:700px">
+      Let's Build<br /><span class="gradient-text">Something</span><br />Extraordinary.
+    </h1>
+    <p class="section-body" style="margin-top:1.25rem">
+      Whether you're exploring strategic partnerships, enterprise technology, or ecosystem collaboration — we're open to conversations that create lasting value.
+    </p>
+  </div>
+</section>
 
-    <section class="section-padding">
-      <div class="container-premium">
-        <div class="grid lg:grid-cols-[0.9fr_1.1fr] gap-10 items-start">
-          <div class="reveal">
-            <div class="glass glow-border rounded-[32px] p-8">
-              <div class="badge mb-5">Corporate Contact</div>
-              <h2 class="text-3xl md:text-4xl font-semibold font-poppins leading-tight">
-                A premium contact experience for meaningful enquiries.
-              </h2>
+<!-- CONTACT GRID -->
+<section class="section">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start" class="contact-grid">
 
-              <div class="space-y-6 mt-10 text-slate-400">
-                <div>
-                  <div class="text-sm uppercase tracking-[0.2em] text-slate-500 mb-2">Website</div>
-                  <div class="text-white text-lg">www.dejoiy.co.in</div>
-                </div>
+      <!-- Form -->
+      <div class="reveal">
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius-xl);padding:2.5rem">
+          <h2 class="section-headline" style="font-size:1.75rem;margin-bottom:0.5rem">Send a message</h2>
+          <p style="font-size:0.9rem;color:var(--text-dim);margin-bottom:2rem">We respond to enterprise enquiries within 24 hours.</p>
 
-                <div>
-                  <div class="text-sm uppercase tracking-[0.2em] text-slate-500 mb-2">Marketplace</div>
-                  <a href="https://www.dejoiy.com" target="_blank" rel="noopener noreferrer" class="text-white text-lg hover:text-cyan-300 transition">
-                    www.dejoiy.com
-                  </a>
-                </div>
-
-                <div>
-                  <div class="text-sm uppercase tracking-[0.2em] text-slate-500 mb-2">Business Portal</div>
-                  <a href="https://business.dejoiy.com" target="_blank" rel="noopener noreferrer" class="text-white text-lg hover:text-fuchsia-300 transition">
-                    business.dejoiy.com
-                  </a>
-                </div>
-
-                <div>
-                  <div class="text-sm uppercase tracking-[0.2em] text-slate-500 mb-2">Purpose</div>
-                  <div class="leading-7">
-                    Corporate overview, strategic communication, ecosystem introduction, and business direction.
-                  </div>
-                </div>
+          <form style="display:flex;flex-direction:column;gap:1.25rem" onsubmit="return false">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+              <div>
+                <label style="display:block;font-size:0.82rem;font-weight:600;color:var(--text-secondary);margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:0.08em">First Name</label>
+                <input type="text" class="input-field" placeholder="John" />
+              </div>
+              <div>
+                <label style="display:block;font-size:0.82rem;font-weight:600;color:var(--text-secondary);margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:0.08em">Last Name</label>
+                <input type="text" class="input-field" placeholder="Smith" />
               </div>
             </div>
-          </div>
 
-<div class="reveal">
-  <div class="glass glow-border rounded-[32px] p-8 md:p-10">
-
-    <div class="badge mb-5">Send an Enquiry</div>
-
-    <p class="text-slate-400 text-sm mb-6">
-      Fill out the form below and our team will get back to you shortly.
-    </p>
-
-    <iframe
-      src="https://tally.so/embed/Y5Yg5d?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
-      width="100%"
-      height="650"
-      frameborder="0"
-      marginheight="0"
-      marginwidth="0"
-      title="Contact DEJOIY"
-      style="border:none;">
-    </iframe>
-
-  </div>
-</div>
-                  <a href="https://business.dejoiy.com" target="_blank" rel="noopener noreferrer" class="btn-secondary">
-                    Open Business Portal
-                  </a>
-                </div>
-
-                <p class="text-sm text-slate-500 leading-6">
-                  Note: this is a static GitHub-hosted website. To make the form functional, connect it to a service
-                  such as Formspree, Getform, Basin, or a custom backend endpoint.
-                </p>
-              </form>
+            <div>
+              <label style="display:block;font-size:0.82rem;font-weight:600;color:var(--text-secondary);margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:0.08em">Work Email</label>
+              <input type="email" class="input-field" placeholder="john@company.com" />
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <section class="section-padding">
-      <div class="container-premium">
-        <div class="grid md:grid-cols-3 gap-6">
-          <div class="premium-card glass glow-border p-7 reveal">
-            <div class="text-4xl font-bold gradient-text mb-4">01</div>
-            <h3 class="text-xl font-semibold mb-3">Partnership Enquiries</h3>
-            <p class="text-slate-400 leading-7">
-              Reach out if you are exploring strategic alignment, vendor partnerships, or ecosystem collaboration.
-            </p>
-          </div>
+            <div>
+              <label style="display:block;font-size:0.82rem;font-weight:600;color:var(--text-secondary);margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:0.08em">Company</label>
+              <input type="text" class="input-field" placeholder="Your organization name" />
+            </div>
 
-          <div class="premium-card glass glow-border p-7 reveal">
-            <div class="text-4xl font-bold gradient-text mb-4">02</div>
-            <h3 class="text-xl font-semibold mb-3">Business Discussions</h3>
-            <p class="text-slate-400 leading-7">
-              Connect with DEJOIY to discuss growth structures, platform coordination, and business opportunities.
-            </p>
-          </div>
+            <div>
+              <label style="display:block;font-size:0.82rem;font-weight:600;color:var(--text-secondary);margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:0.08em">Enquiry Type</label>
+              <select class="input-field" style="cursor:pointer">
+                <option value="" style="background:#020408">Select enquiry type</option>
+                <option style="background:#020408">Strategic Partnership</option>
+                <option style="background:#020408">Enterprise Technology</option>
+                <option style="background:#020408">Marketplace / Commerce</option>
+                <option style="background:#020408">Developer / API Access</option>
+                <option style="background:#020408">Investor Relations</option>
+                <option style="background:#020408">General Enquiry</option>
+              </select>
+            </div>
 
-          <div class="premium-card glass glow-border p-7 reveal">
-            <div class="text-4xl font-bold gradient-text mb-4">03</div>
-            <h3 class="text-xl font-semibold mb-3">Corporate Communication</h3>
-            <p class="text-slate-400 leading-7">
-              Use this channel for corporate introductions, serious enquiries, and ecosystem-related communication.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+            <div>
+              <label style="display:block;font-size:0.82rem;font-weight:600;color:var(--text-secondary);margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:0.08em">Message</label>
+              <textarea class="input-field" rows="5" placeholder="Tell us about your goals and how DEJOIY can help..." style="resize:vertical;font-family:inherit"></textarea>
+            </div>
 
-<footer class="pt-20 pb-10 relative">
-  <div class="container-premium">
+            <button type="submit" class="btn-primary" style="width:100%;justify-content:center;padding:1.1rem">
+              Send Message
+              <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M13 7l5 5-5 5M6 12h12"/></svg>
+            </button>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 footer-grid">
-
-      <!-- Column 1 -->
-      <div>
-        <a href="index.html" class="brand mb-5">
-          <div class="logo-d">
-            <img src="assets/images/logo/dejoiy-logo.png" alt="DEJOIY">
-          </div>
-
-          <div class="brand-text">
-            <div class="brand-name">DEJOIY</div>
-            <div class="brand-sub">Corporate HQ</div>
-          </div>
-        </a>
-
-        <p class="text-slate-400 leading-7 mt-4">
-          DEJOIY is the corporate headquarters brand for a growing digital ecosystem spanning commerce,
-          business infrastructure, partner enablement, and technology-led growth.
-        </p>
-      </div>
-
-      <!-- Column 2 -->
-      <div>
-        <h3 class="text-white font-semibold mb-5">Navigation</h3>
-        <div class="flex flex-col gap-3">
-          <a href="/">Home</a>
-          <a href="/about">About</a>
-          <a href="/services">Services</a>
-          <a href="/team">Team</a>
-          <a href="/contact">Contact</a>
+            <p style="font-size:0.78rem;color:var(--text-dim);text-align:center">By submitting, you agree to our Privacy Policy. We never share your data.</p>
+          </form>
         </div>
       </div>
 
-      <!-- Column 3 -->
-      <div>
-        <h3 class="text-white font-semibold mb-5">Platforms</h3>
-        <div class="flex flex-col gap-3">
-          <a href="https://www.dejoiy.com" target="_blank">Marketplace</a>
-          <a href="https://business.dejoiy.com" target="_blank">Business Portal</a>
+      <!-- Info -->
+      <div class="reveal reveal-delay-2" style="display:flex;flex-direction:column;gap:1.5rem">
+        <div class="empire-card" style="padding:2rem">
+          <div style="font-size:1.5rem;margin-bottom:1rem">🌐</div>
+          <div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-dim);margin-bottom:0.5rem">Global Headquarters</div>
+          <div style="font-size:1rem;font-weight:600;color:white;margin-bottom:0.25rem">DEJOIY India Private Limited</div>
+          <div style="font-size:0.9rem;color:var(--text-secondary)">India — Serving enterprises globally</div>
+        </div>
+
+        <div class="empire-card" style="padding:2rem">
+          <div style="font-size:1.5rem;margin-bottom:1rem">⚡</div>
+          <div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-dim);margin-bottom:0.5rem">Response Time</div>
+          <div style="font-size:1rem;font-weight:600;color:white;margin-bottom:0.25rem">Within 24 Hours</div>
+          <div style="font-size:0.9rem;color:var(--text-secondary)">Enterprise enquiries are prioritized and routed to the right team.</div>
+        </div>
+
+        <div class="empire-card" style="padding:2rem">
+          <div style="font-size:1.5rem;margin-bottom:1rem">🔗</div>
+          <div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-dim);margin-bottom:0.5rem">Direct Platforms</div>
+          <div style="display:flex;flex-direction:column;gap:0.75rem;margin-top:0.75rem">
+            <a href="https://www.dejoiy.com" target="_blank" rel="noopener" class="empire-card-link">Visit Marketplace <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M13 7l5 5-5 5M6 12h12"/></svg></a>
+            <a href="https://business.dejoiy.com" target="_blank" rel="noopener" class="empire-card-link">Open Business Portal <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M13 7l5 5-5 5M6 12h12"/></svg></a>
+          </div>
+        </div>
+
+        <div class="empire-card" style="padding:2rem">
+          <div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-dim);margin-bottom:1rem">Follow DEJOIY</div>
+          <div class="social-row" style="margin:0">
+            <a href="#" class="social-btn" title="LinkedIn">in</a>
+            <a href="#" class="social-btn" title="Instagram">ig</a>
+            <a href="#" class="social-btn" title="X">𝕏</a>
+            <a href="#" class="social-btn" title="YouTube">▶</a>
+          </div>
         </div>
       </div>
-
-      <!-- Column 4 -->
-      <div>
-        <h3 class="text-white font-semibold mb-5">Social</h3>
-        <div class="flex items-center gap-3">
-          <a href="#" class="social-icon">in</a>
-          <a href="#" class="social-icon">ig</a>
-          <a href="#" class="social-icon">x</a>
-        </div>
-      </div>
-
     </div>
-
-    <hr class="hr-premium my-10" />
-
-   <div class="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between text-sm text-slate-500">
-
-  <div>
-    © 2026 DEJOIY India Private Limited. All rights reserved. 
-    DEJOIY®, the DEJOIY ecosystem, and related platforms are proprietary 
-    brands and digital properties of DEJOIY India Private Limited.
   </div>
+</section>
 
-  <div class="flex flex-wrap gap-4">
-    <a href="https://www.dejoiy.co.in" class="hover:text-white transition">dejoiy.co.in</a>
-    <a href="https://www.dejoiy.com" class="hover:text-white transition">dejoiy.com</a>
-    <a href="https://business.dejoiy.com" class="hover:text-white transition">business.dejoiy.com</a>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" class="nav-logo" style="display:inline-flex;margin-bottom:1rem">
+          <div class="nav-logo-icon"><img src="assets/images/logo/dejoiy-logo.png" alt="DEJOIY" /></div>
+          <div><div class="nav-logo-text">DEJOIY</div><div class="nav-logo-sub">Global HQ</div></div>
+        </a>
+        <p class="footer-brand-desc">The corporate headquarters of a global technology ecosystem spanning commerce, AI, and enterprise software.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Company</div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="services.html">Services</a>
+          <a href="team.html">Leadership</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Platforms</div>
+        <div class="footer-links">
+          <a href="https://www.dejoiy.com" target="_blank" rel="noopener">Marketplace</a>
+          <a href="https://business.dejoiy.com" target="_blank" rel="noopener">Business Portal</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Legal</div>
+        <div class="footer-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Security</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-divider"></div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-text">© 2026 DEJOIY India Private Limited. All rights reserved.</div>
+      <div class="footer-domains">
+        <a href="https://www.dejoiy.co.in">dejoiy.co.in</a>
+        <a href="https://www.dejoiy.com" target="_blank">dejoiy.com</a>
+      </div>
+    </div>
   </div>
+</footer>
 
-</div>
-  <script src="assets/js/main.js"></script>
+<style>@media(max-width:768px){.contact-grid{grid-template-columns:1fr!important}}</style>
+<script src="assets/js/main.js"></script>
 </body>
-</
 </html>

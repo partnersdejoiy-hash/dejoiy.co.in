@@ -2,483 +2,242 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Team — DEJOIY Leadership & People</title>
-  <meta
-    name="description"
-    content="Meet the DEJOIY leadership and team behind the ecosystem. Explore the founder, core team members, and DEJOIY's people-first culture."
-  />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leadership — DEJOIY Global Headquarters</title>
+  <meta name="description" content="Meet the leadership team behind DEJOIY — visionary builders shaping the future of enterprise technology and digital commerce." />
   <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@600;700&family=Poppins:wght@500;600;700;800&display=swap"
-    rel="stylesheet"
-  />
-
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            inter: ['Inter', 'sans-serif'],
-            poppins: ['Poppins', 'sans-serif'],
-            montserrat: ['Montserrat', 'sans-serif']
-          }
-        }
-      }
-    };
-  </script>
-
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body>
-  <header class="fixed top-0 left-0 right-0 z-50 nav-blur">
-    <div class="container-premium">
-      <div class="flex items-center justify-between py-4">
-        <a href="index.html" class="flex items-center gap-3">
 
-  <img src="assets/images/logo/dejoiy-logo.png"
-       alt="DEJOIY Logo"
-       class="h-10 w-auto">
-
-  <div>
-    <div class="text-white font-semibold tracking-wide text-lg">DEJOIY</div>
-    <div class="text-xs text-slate-400 -mt-1">Corporate HQ</div>
+<header class="nav-wrap" id="mainNav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-icon"><img src="assets/images/logo/dejoiy-logo.png" alt="DEJOIY" /></div>
+        <div><div class="nav-logo-text">DEJOIY</div><div class="nav-logo-sub">Global HQ</div></div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="team.html" style="color:white">Team</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="https://www.dejoiy.com" target="_blank" rel="noopener" class="btn-ghost" style="padding:0.65rem 1.25rem;font-size:0.85rem">Marketplace</a>
+        <a href="https://business.dejoiy.com" target="_blank" rel="noopener" class="btn-primary" style="padding:0.65rem 1.25rem;font-size:0.85rem">Business Portal</a>
+      </div>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
+</header>
 
-        <nav class="hidden lg:flex items-center gap-8">
-          <a class="nav-link" href="index.html">Home</a>
-          <a class="nav-link" href="about.html">About</a>
-          <a class="nav-link" href="services.html">Services</a>
-          <a class="nav-link text-white" href="team.html">Team</a>
-          <a class="nav-link" href="contact.html">Contact</a>
-        </nav>
+<div class="mobile-menu" id="mobileMenu">
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="team.html">Team</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <div class="mobile-ctas">
+    <a href="https://www.dejoiy.com" target="_blank" rel="noopener" class="btn-ghost" style="text-align:center">Visit Marketplace</a>
+    <a href="https://business.dejoiy.com" target="_blank" rel="noopener" class="btn-primary" style="text-align:center">Business Portal</a>
+  </div>
+</div>
 
-        <div class="hidden lg:flex items-center gap-3">
-          <a class="btn-secondary" href="https://www.dejoiy.com" target="_blank" rel="noopener noreferrer">
-            Visit Marketplace
-          </a>
-          <a class="btn-primary" href="https://business.dejoiy.com" target="_blank" rel="noopener noreferrer">
-            Business Portal
-          </a>
+<!-- PAGE HERO -->
+<section class="page-hero-section">
+  <div class="orb orb-cyan" style="width:400px;height:400px;top:0;left:-100px;opacity:0.08"></div>
+  <div class="container" style="position:relative;z-index:1">
+    <div class="badge" style="margin-bottom:1.25rem"><span class="badge-dot"></span>The Builders</div>
+    <h1 class="display-title" style="font-size:clamp(2.5rem,6vw,5.5rem);max-width:700px">
+      Leadership that<br /><span class="gradient-text">thinks</span> in<br />ecosystems.
+    </h1>
+    <p class="section-body" style="margin-top:1.25rem">
+      DEJOIY is guided by a product-minded leadership philosophy — one that values brand trust, platform quality, strategic scalability, and business clarity.
+    </p>
+  </div>
+</section>
+
+<!-- FOUNDER -->
+<section class="section">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1.2fr;gap:4rem;align-items:center" class="founder-grid">
+      <div class="reveal">
+        <div class="badge" style="margin-bottom:1.25rem"><span class="badge-dot"></span>Founder &amp; CEO</div>
+        <h2 class="section-headline" style="margin-bottom:1rem">Built by people who believe ecosystems create enduring value.</h2>
+        <p class="section-body" style="margin-bottom:1.5rem">
+          The DEJOIY founder brings a platform-first philosophy — designing systems, not isolated products, to create connected value across multiple touchpoints. Every decision is made with long-term brand equity in mind.
+        </p>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem">
+          <div class="empire-card" style="padding:1.5rem">
+            <div style="font-size:1.4rem;font-weight:800;font-family:'Syne',sans-serif;line-height:1" class="gradient-text">Platform-first</div>
+            <p style="font-size:0.85rem;color:var(--text-secondary);margin-top:0.5rem;line-height:1.65">We think in systems — creating connected value across all touchpoints.</p>
+          </div>
+          <div class="empire-card" style="padding:1.5rem">
+            <div style="font-size:1.4rem;font-weight:800;font-family:'Syne',sans-serif;line-height:1" class="gradient-text">Design-led</div>
+            <p style="font-size:0.85rem;color:var(--text-secondary);margin-top:0.5rem;line-height:1.65">Premium UX and trust-driven design are strategic advantages, not features.</p>
+          </div>
         </div>
 
+        <a href="contact.html" class="btn-primary">Connect With Us <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="margin-left:4px"><path d="M13 7l5 5-5 5M6 12h12"/></svg></a>
+      </div>
+
+      <div class="reveal reveal-delay-2">
         <button
-          id="menuToggle"
-          class="lg:hidden inline-flex items-center justify-center w-11 h-11 rounded-xl border border-white/10 bg-white/5 text-white"
-          aria-label="Toggle menu"
-          aria-expanded="false"
+          type="button"
+          style="display:block;width:100%;text-align:left;cursor:pointer;background:none;border:none;position:relative"
+          data-swap-image
+          data-state="primary"
+          data-primary="assets/images/team/founder.jpg"
+          data-alternate="assets/images/team/founder-spirit.jpg"
+          data-primary-alt="Founder of DEJOIY"
+          data-alternate-alt="Founder spirit animal"
+          aria-label="Toggle founder image"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
+          <div style="position:relative;border-radius:var(--radius-xl);overflow:hidden;border:1px solid rgba(99,102,241,0.2);background:var(--bg-dark);box-shadow:0 30px 80px rgba(0,0,0,0.5),0 0 60px rgba(99,102,241,0.1)">
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 30% 0%,rgba(99,102,241,0.15),transparent 60%);pointer-events:none;z-index:1"></div>
+            <img src="assets/images/team/founder.jpg" alt="Founder of DEJOIY" style="width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center;display:block;transition:opacity 0.3s ease" />
+          </div>
+          <div style="position:absolute;bottom:1.25rem;right:1.25rem;background:rgba(2,4,8,0.85);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.1);border-radius:999px;padding:0.4rem 0.8rem;font-size:0.75rem;color:var(--text-secondary)">
+            Click to reveal
+          </div>
         </button>
       </div>
+    </div>
+  </div>
+</section>
 
-      <div id="mobileMenu" class="mobile-menu lg:hidden">
-        <div class="pb-4 flex flex-col gap-3">
-          <a class="nav-link py-2" href="index.html">Home</a>
-          <a class="nav-link py-2" href="about.html">About</a>
-          <a class="nav-link py-2" href="services.html">Services</a>
-          <a class="nav-link py-2 text-white" href="team.html">Team</a>
-          <a class="nav-link py-2" href="contact.html">Contact</a>
-          <div class="flex flex-col gap-3 pt-3">
-            <a class="btn-secondary w-full" href="https://www.dejoiy.com" target="_blank" rel="noopener noreferrer">
-              Visit Marketplace
-            </a>
-            <a class="btn-primary w-full" href="https://business.dejoiy.com" target="_blank" rel="noopener noreferrer">
-              Business Portal
-            </a>
-          </div>
+<!-- TEAM VALUES -->
+<section class="section" style="background:rgba(255,255,255,0.01)">
+  <div class="container">
+    <div class="section-header center reveal">
+      <div class="badge" style="margin-bottom:1.25rem"><span class="badge-dot"></span>Our Culture</div>
+      <h2 class="section-headline" style="max-width:600px;margin-inline:auto">The principles we build by.</h2>
+      <p class="section-body" style="margin:1rem auto 0">These aren't values on a wall — they are the operating principles of how we work, build, and grow.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem" class="values-grid">
+      <div class="empire-card glow-border reveal" style="padding:2.25rem">
+        <div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,rgba(37,99,235,0.25),rgba(6,182,212,0.15));display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;font-size:1.25rem">🎯</div>
+        <div style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem">Clarity of Purpose</div>
+        <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.7">Every initiative must connect clearly to the mission. We don't build features — we build capabilities that create lasting value.</p>
+      </div>
+
+      <div class="empire-card glow-border reveal reveal-delay-1" style="padding:2.25rem">
+        <div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,rgba(124,58,237,0.25),rgba(217,70,239,0.15));display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;font-size:1.25rem">⚡</div>
+        <div style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem">Speed with Precision</div>
+        <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.7">We move fast — but we move with intention. Speed without precision is chaos. We ship decisively and iterate intelligently.</p>
+      </div>
+
+      <div class="empire-card glow-border reveal reveal-delay-2" style="padding:2.25rem">
+        <div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,rgba(6,182,212,0.25),rgba(99,102,241,0.15));display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;font-size:1.25rem">🌐</div>
+        <div style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem">Think Global</div>
+        <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.7">Every product decision is made with global applicability in mind. Local depth. Global reach. Universal quality.</p>
+      </div>
+
+      <div class="empire-card glow-border reveal reveal-delay-3" style="padding:2.25rem">
+        <div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,rgba(245,193,93,0.2),rgba(239,68,68,0.1));display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;font-size:1.25rem">🏆</div>
+        <div style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem">Excellence as Default</div>
+        <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.7">Mediocrity is not an option. Every pixel, API response, and customer interaction is held to the highest standard we can achieve.</p>
+      </div>
+
+      <div class="empire-card glow-border reveal reveal-delay-4" style="padding:2.25rem">
+        <div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,rgba(20,184,166,0.2),rgba(6,182,212,0.15));display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;font-size:1.25rem">🔗</div>
+        <div style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem">Ecosystem Thinking</div>
+        <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.7">No platform operates in isolation. We design every product to integrate with, complement, and strengthen every other part of the DEJOIY ecosystem.</p>
+      </div>
+
+      <div class="empire-card glow-border reveal reveal-delay-5" style="padding:2.25rem">
+        <div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,rgba(99,102,241,0.25),rgba(124,58,237,0.15));display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;font-size:1.25rem">🛡️</div>
+        <div style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem">Trust by Design</div>
+        <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.7">Security, compliance, and transparency are not afterthoughts. Trust is the foundation every DEJOIY product is built upon.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOIN CTA -->
+<section class="section-sm">
+  <div class="container">
+    <div class="cta-card reveal">
+      <div class="cta-card-inner">
+        <div class="badge" style="margin-bottom:1.5rem"><span class="badge-dot"></span>Join the Empire</div>
+        <h2 class="section-headline" style="max-width:600px;margin:0 auto 1rem">Ready to build the future with DEJOIY?</h2>
+        <p class="section-body" style="margin:0 auto 2.5rem;text-align:center">We're always looking for exceptional builders, thinkers, and operators who want to work on technology that matters at a global scale.</p>
+        <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+          <a href="contact.html" class="btn-primary">Get In Touch <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="margin-left:4px"><path d="M13 7l5 5-5 5M6 12h12"/></svg></a>
+          <a href="index.html" class="btn-ghost">Explore the Ecosystem</a>
         </div>
       </div>
     </div>
-  </header>
-
-  <main>
-    <section class="page-hero relative overflow-hidden">
-      <div class="floating-orb orb-blue w-72 h-72 top-28 left-[-4rem]"></div>
-      <div class="floating-orb orb-cyan w-72 h-72 top-40 right-[-4rem]"></div>
-
-      <div class="container-premium">
-        <div class="max-w-4xl reveal">
-          <div class="badge mb-6">Leadership & Team</div>
-          <h1 class="section-title">
-            The people behind the
-            <span class="gradient-text">DEJOIY ecosystem.</span>
-          </h1>
-          <p class="section-subtitle mt-6">
-            DEJOIY is built by ambitious people who care about systems, design quality, strategic growth,
-            and the discipline required to turn vision into scalable execution.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-padding">
-      <div class="container-premium">
-<div class="grid lg:grid-cols-2 gap-12 items-center">
-              <div class="reveal">
-            <button
-              type="button"
-              class="team-swap relative block w-full text-left"
-              data-swap-image
-              data-state="primary"
-              data-primary="assets/images/team/founder.jpg"
-              data-alternate="assets/images/team/founder-spirit.jpg"
-              data-primary-alt="Founder of DEJOIY"
-              data-alternate-alt="Founder spirit animal illustration"
-              aria-label="Toggle founder image"
-            >
-              <div class="d-frame d-frame-lg founder-frame">
-                <img src="assets/images/team/founder.jpg" alt="Founder of DEJOIY" />
-              </div>
-              <span class="swap-hint">Click to swap image</span>
-            </button>
-          </div>
-
-          <div class="reveal">
-            <div class="badge mb-5">Founder</div>
-            <h2 class="section-title">Leadership with imagination, structure, and conviction.</h2>
-            <p class="section-subtitle">
-              The founder’s role in DEJOIY is centered on long-term ecosystem building — combining strategic
-              vision, brand thinking, platform clarity, and a deep focus on execution quality.
-            </p>
-
-            <div class="glass glow-border rounded-[28px] p-7 mt-8">
-            <h3 class="text-2xl font-semibold">Jyoti Sharma</h3>
-            <p class="text-slate-400 mt-2">Founder & Director — DEJOIY</p>
-
-            <p class="text-slate-400 mt-5 leading-8">
-            Mrs. Jyoti Sharma is the Founder and Chief Executive Officer of DEJOIY,
-            leading the company with a clear vision of creating a trusted platform for ecommerce
-            and business outsourcing solutions.
-            </p>
-
-            <p class="text-slate-400 mt-4 leading-8">
-            She established DEJOIY with the aim of building a company that focuses on long-term growth,
-            customer satisfaction, and reliable business solutions. Her leadership style emphasizes
-            discipline, organization, and strategic development.
-            </p>
-
-           <p class="text-slate-400 mt-4 leading-8">
-           Mrs. Jyoti Sharma represents the spirit of wisdom, balance, and vision symbolized by
-           the Swan and Owl — reflecting elegance in decision-making, calm leadership,
-           strategic thinking, and deep foresight.
-           </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-padding">
-<div class="container-premium">
-
-<div class="max-w-3xl reveal">
-<div class="badge mb-5">Core Team</div>
-<h2 class="section-title">A premium team presentation with interactive dual-image storytelling.</h2>
-<p class="section-subtitle">
-Each team card supports a clean presentation while keeping the system easy to update.
-</p>
-</div>
-
-<!-- TEAM GRID -->
-<div class="grid md:grid-cols-2 xl:grid-cols-3 gap-6 mt-14">
-
-<!-- ANIL -->
-<div class="premium-card glass glow-border p-5 reveal">
-
-<button
-type="button"
-class="team-swap relative block w-full text-left"
-data-swap-image
-data-state="primary"
-data-primary="assets/images/team/member-1.jpg"
-data-alternate="assets/images/team/member-1-spirit.jpg"
-data-primary-alt="Anil Kumar Sharma"
-data-alternate-alt="Spirit animal"
-aria-label="Toggle team member image"
->
-
-<div class="d-frame d-frame-md mb-5">
-<img src="assets/images/team/member-1.jpg" alt="Anil Kumar Sharma">
-</div>
-
-<span class="swap-hint">Click to swap</span>
-
-</button>
-
-<h3 class="text-xl font-semibold">Anil Kumar Sharma</h3>
-
-<p class="text-slate-400 mt-2">Managing Director & Co-Founder</p>
-
-<p class="text-slate-400 mt-4 leading-7 text-sm">
-Mr. Anil Kumar Sharma is the Co-Founder of DEJOIY, contributing to the company's vision,
-development, and long-term strategic direction. He plays an important role in building
-DEJOIY as a scalable platform integrating ecommerce and outsourcing services.
-</p>
-
-</div>
+  </div>
 </section>
 
-<div class="grid md:grid-cols-2 xl:grid-cols-3 gap-6 mt-14">
-
-<!-- DEEPAK -->
-<div class="premium-card glass glow-border p-5 reveal">
-<div class="d-frame d-frame-md mb-5">
-<img src="assets/images/team/member-2.jpg" class="w-full h-full object-cover">
-</div>
-<h3 class="text-xl font-semibold">Deepak Sharma</h3>
-<p class="text-slate-400 mt-2">Chief Technology & Operations Lead</p>
-<p class="text-slate-400 mt-4 leading-7 text-sm">
-Deepak oversees the technical infrastructure and operational
-execution of DEJOIY, ensuring the platform runs efficiently while
-supporting innovation and scalable system development.
-</p>
-</div>
-
-<!-- KOMAL -->
-<div class="premium-card glass glow-border p-5 reveal">
-<div class="d-frame d-frame-md mb-5">
-<img src="assets/images/team/member-3.jpg" class="w-full h-full object-cover">
-</div>
-<h3 class="text-xl font-semibold">Komal Sharma</h3>
-<p class="text-slate-400 mt-2">Brand & Communications Coordinator</p>
-<p class="text-slate-400 mt-4 leading-7 text-sm">
-Komal supports brand messaging and communications for DEJOIY,
-helping maintain a consistent brand voice across digital platforms,
-community interactions, and outreach initiatives.
-</p>
-</div>
-
-<!-- DHARMENDRA -->
-<div class="premium-card glass glow-border p-5 reveal">
-<div class="d-frame d-frame-md mb-5">
-<img src="assets/images/team/member-4.jpg" class="w-full h-full object-cover">
-</div>
-<h3 class="text-xl font-semibold">Dharmendra Sharma</h3>
-<p class="text-slate-400 mt-2">Strategic Advisor</p>
-<p class="text-slate-400 mt-4 leading-7 text-sm">
-Dharmendra contributes strategic insights and guidance,
-supporting long-term planning and decision-making as DEJOIY
-continues to grow its digital ecosystem.
-</p>
-</div>
-
-<!-- DEEPANSHU -->
-<div class="premium-card glass glow-border p-5 reveal">
-<div class="d-frame d-frame-md mb-5">
-<img src="assets/images/team/member-5.jpg" class="w-full h-full object-cover">
-</div>
-<h3 class="text-xl font-semibold">Deepanshu Chander Yaduvanshi</h3>
-<p class="text-slate-400 mt-2">Web Developer & Digital Infrastructure Engineer</p>
-<p class="text-slate-400 mt-4 leading-7 text-sm">
-Deepanshu contributes to building and maintaining DEJOIY's web
-infrastructure, supporting development, system stability, and
-technical implementation across the platform.
-</p>
-</div>
-
-<!-- ADNAN -->
-<div class="premium-card glass glow-border p-5 reveal">
-<div class="d-frame d-frame-md mb-5">
-<img src="assets/images/team/member-6.jpg" class="w-full h-full object-cover">
-</div>
-<h3 class="text-xl font-semibold">Syed Adnan Ali</h3>
-<p class="text-slate-400 mt-2">Business Manager</p>
-<p class="text-slate-400 mt-4 leading-7 text-sm">
-Syed Adnan Ali manages regional business development and partnerships,
-helping expand DEJOIY’s presence while building strong local
-relationships and operational support.
-</p>
-</div>
-
-<!-- KHUSHI -->
-<div class="premium-card glass glow-border p-5 reveal">
-<div class="d-frame d-frame-md mb-5">
-<img src="assets/images/team/member-7.jpg" class="w-full h-full object-cover">
-</div>
-<h3 class="text-xl font-semibold">Khushi Sharma</h3>
-<p class="text-slate-400 mt-2">Operations Support</p>
-<p class="text-slate-400 mt-4 leading-7 text-sm">
-Khushi assists with operational tasks and internal coordination,
-supporting daily activities that help maintain smooth workflows
-within the DEJOIY ecosystem.
-</p>
-</div>
-
-<!-- HARJOI -->
-<div class="premium-card glass glow-border p-5 reveal">
-<div class="d-frame d-frame-md mb-5">
-<img src="assets/images/team/member-8.jpg" alt="Harjoi Bajaj" class="w-full h-full object-cover">
-</div>
-<h3 class="text-xl font-semibold">Harjoi Bajaj</h3>
-<p class="text-slate-400 mt-2">Brand Ambassador</p>
-<p class="text-slate-400 mt-4 leading-7 text-sm">
-Harjoi represents the public face of DEJOIY, supporting brand
-visibility and engagement through influencer collaborations,
-content creation, and digital outreach initiatives.
-</p>
-</div>
-
-</div>
-
-</section>
-    
-    <div class="glass glow-border rounded-[28px] p-7 mt-12">
-<h3 class="text-2xl font-semibold mb-4">Founders' Vision</h3>
-
-<p class="text-slate-400 leading-8">
-Together, the founders represent a unique combination of qualities:
-</p>
-
-<ul class="text-slate-400 mt-4 space-y-2">
-<li>• Eagle → Vision</li>
-<li>• Tiger → Strength</li>
-<li>• Swan → Balance</li>
-<li>• Owl → Wisdom</li>
-</ul>
-
-<p class="text-slate-400 mt-5 leading-8">
-These symbolic traits define the leadership philosophy of DEJOIY,
-guiding the company toward innovation, stability, and sustainable growth.
-</p>
-</div>
-
-    <section class="section-padding">
-      <div class="container-premium">
-        <div class="grid lg:grid-cols-3 gap-6">
-          <div class="premium-card glass glow-border p-7 reveal">
-            <div class="text-4xl font-bold gradient-text mb-4">01</div>
-            <h3 class="text-xl font-semibold mb-3">People With Range</h3>
-            <p class="text-slate-400 leading-7">
-              The DEJOIY team combines strategic thinking, product sense, creative discipline, and operational focus.
-            </p>
-          </div>
-
-          <div class="premium-card glass glow-border p-7 reveal">
-            <div class="text-4xl font-bold gradient-text mb-4">02</div>
-            <h3 class="text-xl font-semibold mb-3">System Builders</h3>
-            <p class="text-slate-400 leading-7">
-              We focus on structures that can scale — not just outputs that look good for a moment.
-            </p>
-          </div>
-
-          <div class="premium-card glass glow-border p-7 reveal">
-            <div class="text-4xl font-bold gradient-text mb-4">03</div>
-            <h3 class="text-xl font-semibold mb-3">Brand Custodians</h3>
-            <p class="text-slate-400 leading-7">
-              Every person contributes to the clarity, trust, and long-term strength of the DEJOIY identity.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-padding">
-      <div class="container-premium">
-        <div class="glass glow-border rounded-[32px] p-8 md:p-12 reveal">
-          <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
-            <div>
-              <div class="badge mb-5">Work With DEJOIY</div>
-              <h2 class="section-title">Interested in collaboration, partnerships, or strategic conversations?</h2>
-              <p class="section-subtitle">
-                We are always open to thoughtful conversations around business enablement, ecosystem growth,
-                and meaningful long-term partnerships.
-              </p>
-            </div>
-
-            <div class="flex flex-col sm:flex-row lg:justify-end gap-4">
-              <a href="contact.html" class="btn-primary">Contact Us</a>
-              <a href="https://business.dejoiy.com" target="_blank" rel="noopener noreferrer" class="btn-secondary">
-                Business Portal
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-<footer class="pt-20 pb-10 relative">
-  <div class="container-premium">
-
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 footer-grid">
-
-      <!-- Column 1 -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
       <div>
-        <a href="index.html" class="brand mb-5">
-          <div class="logo-d">
-            <img src="assets/images/logo/dejoiy-logo.png" alt="DEJOIY">
-          </div>
-
-          <div class="brand-text">
-            <div class="brand-name">DEJOIY</div>
-            <div class="brand-sub">Corporate HQ</div>
-          </div>
+        <a href="index.html" class="nav-logo" style="display:inline-flex;margin-bottom:1rem">
+          <div class="nav-logo-icon"><img src="assets/images/logo/dejoiy-logo.png" alt="DEJOIY" /></div>
+          <div><div class="nav-logo-text">DEJOIY</div><div class="nav-logo-sub">Global HQ</div></div>
         </a>
-
-        <p class="text-slate-400 leading-7 mt-4">
-          DEJOIY is the corporate headquarters brand for a growing digital ecosystem spanning commerce,
-          business infrastructure, partner enablement, and technology-led growth.
-        </p>
+        <p class="footer-brand-desc">The corporate headquarters of a global technology ecosystem spanning commerce, AI, and enterprise software.</p>
       </div>
-
-      <!-- Column 2 -->
       <div>
-        <h3 class="text-white font-semibold mb-5">Navigation</h3>
-        <div class="flex flex-col gap-3">
-          <a href="/">Home</a>
-          <a href="/about">About</a>
-          <a href="/services">Services</a>
-          <a href="/team">Team</a>
-          <a href="/contact">Contact</a>
+        <div class="footer-col-title">Company</div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="services.html">Services</a>
+          <a href="team.html">Leadership</a>
+          <a href="contact.html">Contact</a>
         </div>
       </div>
-
-      <!-- Column 3 -->
       <div>
-        <h3 class="text-white font-semibold mb-5">Platforms</h3>
-        <div class="flex flex-col gap-3">
-          <a href="https://www.dejoiy.com" target="_blank">Marketplace</a>
-          <a href="https://business.dejoiy.com" target="_blank">Business Portal</a>
+        <div class="footer-col-title">Platforms</div>
+        <div class="footer-links">
+          <a href="https://www.dejoiy.com" target="_blank" rel="noopener">Marketplace</a>
+          <a href="https://business.dejoiy.com" target="_blank" rel="noopener">Business Portal</a>
         </div>
       </div>
-
-      <!-- Column 4 -->
       <div>
-        <h3 class="text-white font-semibold mb-5">Social</h3>
-        <div class="flex items-center gap-3">
-          <a href="#" class="social-icon">in</a>
-          <a href="#" class="social-icon">ig</a>
-          <a href="#" class="social-icon">x</a>
+        <div class="footer-col-title">Legal</div>
+        <div class="footer-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Security</a>
         </div>
       </div>
-
     </div>
-
-    <hr class="hr-premium my-10" />
-
-   <div class="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between text-sm text-slate-500">
-
-  <div>
-    © 2026 DEJOIY India Private Limited. All rights reserved. 
-    DEJOIY®, the DEJOIY ecosystem, and related platforms are proprietary 
-    brands and digital properties of DEJOIY India Private Limited.
+    <div class="footer-divider"></div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-text">© 2026 DEJOIY India Private Limited. All rights reserved.</div>
+      <div class="footer-domains">
+        <a href="https://www.dejoiy.co.in">dejoiy.co.in</a>
+        <a href="https://www.dejoiy.com" target="_blank">dejoiy.com</a>
+      </div>
+    </div>
   </div>
+</footer>
 
-  <div class="flex flex-wrap gap-4">
-    <a href="https://www.dejoiy.co.in" class="hover:text-white transition">dejoiy.co.in</a>
-    <a href="https://www.dejoiy.com" class="hover:text-white transition">dejoiy.com</a>
-    <a href="https://business.dejoiy.com" class="hover:text-white transition">business.dejoiy.com</a>
-  </div>
-
-</div>
-
-  <script src="assets/js/main.js"></script>
+<style>
+@media(max-width:768px){
+  .founder-grid{grid-template-columns:1fr!important}
+  .values-grid{grid-template-columns:1fr!important}
+}
+@media(max-width:1024px){
+  .values-grid{grid-template-columns:1fr 1fr!important}
+}
+</style>
+<script src="assets/js/main.js"></script>
 </body>
 </html>
