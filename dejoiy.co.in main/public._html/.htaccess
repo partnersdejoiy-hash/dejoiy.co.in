@@ -1,0 +1,10 @@
+RewriteEngine On
+
+# Redirect .html to clean URL
+RewriteCond %{THE_REQUEST} \s/([^.]+)\.html
+RewriteRule ^ /%1 [R=301,L]
+
+# Internally map clean URL to .html file
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^([^\.]+)$ $1.html [L]
