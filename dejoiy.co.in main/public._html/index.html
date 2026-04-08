@@ -118,8 +118,8 @@
         <div class="hero-stat-label">Enterprise Clients</div>
       </div>
       <div>
-        <div class="hero-stat-num gradient-text" data-counter data-target="50" data-suffix="+">50+</div>
-        <div class="hero-stat-label">Countries</div>
+        <div class="hero-stat-num gradient-text" data-counter data-target="5" data-suffix="">5</div>
+        <div class="hero-stat-label">Countries Served</div>
       </div>
     </div>
   </div>
@@ -190,8 +190,8 @@
         <div class="stat-bar-label">SLA Uptime</div>
       </div>
       <div class="reveal reveal-delay-2">
-        <div class="stat-bar-num gradient-text" data-counter data-target="50" data-suffix="+">50+</div>
-        <div class="stat-bar-label">Countries Active</div>
+        <div class="stat-bar-num gradient-text" data-counter data-target="5" data-suffix="">5</div>
+        <div class="stat-bar-label">Countries Served</div>
       </div>
       <div class="reveal reveal-delay-3">
         <div class="stat-bar-num gradient-text" data-counter data-target="24" data-suffix="/7">24/7</div>
@@ -414,7 +414,7 @@
     <div class="section-header center reveal">
       <div class="badge" style="margin-bottom:1.25rem"><span class="badge-dot"></span>Global Reach</div>
       <h2 class="section-headline">Delivering joy across every continent.</h2>
-      <p class="section-body" style="margin:1rem auto 0">From Mumbai to New York — DEJOIY BPO and marketplace operations span 50+ countries with localized excellence.</p>
+      <p class="section-body" style="margin:1rem auto 0">Currently serving clients across 5 countries — India, UAE, UK, USA, and Singapore — with more markets opening soon.</p>
     </div>
 
     <div class="world-map-container reveal" style="margin-top:2.5rem">
@@ -449,19 +449,36 @@
       <div class="map-node" style="left:76%;top:64%;animation-delay:2.8s"></div>
       <div class="map-node" style="left:46%;top:60%;animation-delay:3.2s"></div>
 
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem;border-top:1px solid rgba(255,255,255,0.05);padding-top:2rem;text-align:center">
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;margin-top:2rem;border-top:1px solid rgba(255,255,255,0.05);padding-top:2rem;text-align:center" class="serviceable-grid">
         <div>
-          <div style="font-size:1.2rem;font-weight:800;font-family:'Syne',sans-serif" class="gradient-text">Americas</div>
-          <div style="font-size:0.78rem;color:var(--text-dim);margin-top:0.2rem">New York · Toronto · São Paulo</div>
+          <div style="font-size:1.5rem;margin-bottom:0.4rem">🇮🇳</div>
+          <div style="font-size:0.95rem;font-weight:800;font-family:'Syne',sans-serif;color:white">India</div>
+          <div style="font-size:0.72rem;color:var(--cyan-bright);margin-top:0.2rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em">HQ · Active</div>
         </div>
         <div>
-          <div style="font-size:1.2rem;font-weight:800;font-family:'Syne',sans-serif" class="gradient-text">EMEA</div>
-          <div style="font-size:0.78rem;color:var(--text-dim);margin-top:0.2rem">London · Frankfurt · Dubai</div>
+          <div style="font-size:1.5rem;margin-bottom:0.4rem">🇦🇪</div>
+          <div style="font-size:0.95rem;font-weight:800;font-family:'Syne',sans-serif;color:white">UAE</div>
+          <div style="font-size:0.72rem;color:var(--cyan-bright);margin-top:0.2rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em">Active</div>
         </div>
         <div>
-          <div style="font-size:1.2rem;font-weight:800;font-family:'Syne',sans-serif" class="gradient-text">APAC</div>
-          <div style="font-size:0.78rem;color:var(--text-dim);margin-top:0.2rem">Mumbai · Singapore · Tokyo</div>
+          <div style="font-size:1.5rem;margin-bottom:0.4rem">🇬🇧</div>
+          <div style="font-size:0.95rem;font-weight:800;font-family:'Syne',sans-serif;color:white">UK</div>
+          <div style="font-size:0.72rem;color:var(--cyan-bright);margin-top:0.2rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em">Active</div>
         </div>
+        <div>
+          <div style="font-size:1.5rem;margin-bottom:0.4rem">🇺🇸</div>
+          <div style="font-size:0.95rem;font-weight:800;font-family:'Syne',sans-serif;color:white">USA</div>
+          <div style="font-size:0.72rem;color:var(--cyan-bright);margin-top:0.2rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em">Active</div>
+        </div>
+        <div>
+          <div style="font-size:1.5rem;margin-bottom:0.4rem">🇸🇬</div>
+          <div style="font-size:0.95rem;font-weight:800;font-family:'Syne',sans-serif;color:white">Singapore</div>
+          <div style="font-size:0.72rem;color:var(--cyan-bright);margin-top:0.2rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em">Active</div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:1.25rem">
+        <span style="font-size:0.8rem;color:var(--text-dim)">More countries opening soon — </span>
+        <a href="contact.html" style="font-size:0.8rem;color:var(--cyan-bright);font-weight:600">Request your country →</a>
       </div>
     </div>
   </div>
@@ -554,6 +571,10 @@
   .market-top-grid{grid-template-columns:1fr!important}
   .product-grid{grid-template-columns:1fr!important}
   .bpo-stat-grid{grid-template-columns:1fr!important}
+  .serviceable-grid{grid-template-columns:repeat(3,1fr)!important;gap:0.75rem!important}
+}
+@media(max-width:480px){
+  .serviceable-grid{grid-template-columns:repeat(2,1fr)!important}
 }
 @media(max-width:1100px){
   .market-top-grid{grid-template-columns:1fr!important}
