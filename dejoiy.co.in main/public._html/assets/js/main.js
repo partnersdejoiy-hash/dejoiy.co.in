@@ -5,6 +5,8 @@
 ;(function () {
   'use strict';
 
+  initPageTransitions();
+
   document.addEventListener('DOMContentLoaded', function () {
     initNav();
     initScrollReveal();
@@ -317,6 +319,192 @@
       camera.updateProjectionMatrix();
       renderer.setSize(w, h);
     });
+  }
+
+  /* ══════════════════════════
+     PAGE TRANSITIONS — RIDICULOUS EDITION
+  ══════════════════════════ */
+  function initPageTransitions() {
+    var ov = document.createElement('div');
+    ov.id = 'px-overlay';
+    ov.innerHTML = '<canvas id="px-canvas"></canvas><div id="px-d">D</div><div id="px-flash"></div>';
+    document.body.appendChild(ov);
+
+    var styleEl = document.createElement('style');
+    styleEl.textContent = [
+      '#px-overlay{position:fixed;inset:0;z-index:99999;pointer-events:none;overflow:hidden}',
+      '#px-canvas{position:absolute;inset:0;width:100%;height:100%}',
+      '#px-d{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(0) rotate(-180deg);',
+      'font-family:"Syne",sans-serif;font-weight:800;font-size:55vw;line-height:0.9;',
+      'background:linear-gradient(135deg,#60a5fa,#a78bfa,#22d3ee);',
+      '-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;',
+      'opacity:0;will-change:transform,opacity;user-select:none}',
+      '#px-flash{position:absolute;inset:0;background:linear-gradient(135deg,#020408 0%,#2563eb 40%,#7c3aed 70%,#06b6d4 100%);opacity:0}'
+    ].join('');
+    document.head.appendChild(styleEl);
+
+    var pxCanvas = document.getElementById('px-canvas');
+    var ctx = pxCanvas.getContext('2d');
+    var pxD = document.getElementById('px-d');
+    var pxFlash = document.getElementById('px-flash');
+    var W, H;
+
+    function resize() { W = pxCanvas.width = window.innerWidth; H = pxCanvas.height = window.innerHeight; }
+    resize();
+    window.addEventListener('resize', resize);
+
+    /* ---- ENTRY: Warp rings collapse in, page revealed ---- */
+    function playEntry() {
+      var startTime = null;
+      var dur = 1000;
+      var raf;
+
+      function tick(ts) {
+        if (!startTime) startTime = ts;
+        var p = Math.min((ts - startTime) / dur, 1);
+        var ease = 1 - Math.pow(1 - p, 3);
+
+        ctx.clearRect(0, 0, W, H);
+
+        var bgAlpha = Math.max(0, 1 - p * 1.4);
+        if (bgAlpha > 0) {
+          ctx.fillStyle = 'rgba(2,4,8,' + bgAlpha + ')';
+          ctx.fillRect(0, 0, W, H);
+        }
+
+        var maxR = Math.sqrt(W * W + H * H) * 0.7;
+        var colors = ['#2563eb', '#7c3aed', '#06b6d4', '#6366f1', '#a78bfa', '#22d3ee'];
+        for (var i = 0; i < 7; i++) {
+          var frac = (i / 7);
+          var r = maxR * (1 - ease) * (1 - frac * 0.3);
+          var alpha = Math.max(0, (1 - p) * 0.9 - frac * 0.1);
+          ctx.beginPath();
+          ctx.arc(W / 2, H / 2, r, 0, Math.PI * 2);
+          ctx.strokeStyle = colors[i % colors.length];
+          ctx.globalAlpha = alpha;
+          ctx.lineWidth = 3;
+          ctx.stroke();
+          ctx.globalAlpha = 1;
+        }
+
+        if (p < 1) { raf = requestAnimationFrame(tick); }
+        else { ctx.clearRect(0, 0, W, H); cancelAnimationFrame(raf); }
+      }
+      requestAnimationFrame(tick);
+    }
+
+    /* ---- EXIT: Vortex explosion + giant D + flash → navigate ---- */
+    function playExit(href) {
+      var startTime = null;
+      var dur = 900;
+      var angle = 0;
+      var done = false;
+      var raf;
+
+      pxD.style.transition = 'none';
+      pxD.style.opacity = '0';
+      pxD.style.transform = 'translate(-50%,-50%) scale(0) rotate(-180deg)';
+      pxFlash.style.opacity = '0';
+
+      function tick(ts) {
+        if (!startTime) startTime = ts;
+        var p = Math.min((ts - startTime) / dur, 1);
+        angle += 0.07;
+
+        ctx.clearRect(0, 0, W, H);
+
+        /* Darkening BG */
+        ctx.fillStyle = 'rgba(2,4,8,' + Math.min(p * 2, 1) + ')';
+        ctx.fillRect(0, 0, W, H);
+
+        /* Vortex spiral arms */
+        var maxR = Math.sqrt(W * W + H * H);
+        var armColors = [
+          'rgba(96,165,250,', 'rgba(167,139,250,',
+          'rgba(34,211,238,', 'rgba(99,102,241,',
+          'rgba(139,92,246,', 'rgba(6,182,212,'
+        ];
+        for (var arm = 0; arm < 6; arm++) {
+          var baseAngle = (arm / 6) * Math.PI * 2 + angle;
+          for (var j = 0; j < 70; j++) {
+            var t = j / 70;
+            var sr = t * maxR * Math.min(p * 1.2, 1) * 0.85;
+            var sa = baseAngle + t * Math.PI * 5;
+            var px = W / 2 + Math.cos(sa) * sr;
+            var py = H / 2 + Math.sin(sa) * sr;
+            var pa = (1 - t) * 0.5 * Math.min(p * 2, 1);
+            ctx.beginPath();
+            ctx.arc(px, py, (1 - t) * 4.5 * p, 0, Math.PI * 2);
+            ctx.fillStyle = armColors[arm % armColors.length] + pa + ')';
+            ctx.fill();
+          }
+        }
+
+        /* Contracting energy rings */
+        for (var ri = 0; ri < 6; ri++) {
+          var rr = maxR * (1 - p * 0.9) * ((6 - ri) / 6) * 0.8;
+          if (rr < 0) rr = 0;
+          var ra = Math.min(p * 3, 1) * (ri / 6) * 0.9;
+          ctx.beginPath();
+          ctx.arc(W / 2, H / 2, rr, 0, Math.PI * 2);
+          ctx.strokeStyle = 'rgba(124,58,237,' + ra + ')';
+          ctx.lineWidth = 2.5;
+          ctx.stroke();
+        }
+
+        /* Shockwave rings bursting out */
+        for (var si = 0; si < 3; si++) {
+          var sp = Math.max(0, p - si * 0.15);
+          var sw = maxR * sp * 0.9;
+          var sa2 = Math.max(0, 0.7 - sp);
+          ctx.beginPath();
+          ctx.arc(W / 2, H / 2, sw, 0, Math.PI * 2);
+          ctx.strokeStyle = 'rgba(34,211,238,' + sa2 + ')';
+          ctx.lineWidth = 2;
+          ctx.stroke();
+        }
+
+        /* Giant D rises and spins into view */
+        if (p > 0.28) {
+          var dp = Math.min((p - 0.28) / 0.42, 1);
+          var dEase = 1 - Math.pow(1 - dp, 2);
+          var dRot = (1 - dEase) * -200;
+          pxD.style.opacity = dEase.toString();
+          pxD.style.transform = 'translate(-50%,-50%) scale(' + (dEase * 1.15 + 0.05) + ') rotate(' + dRot + 'deg)';
+        }
+
+        if (p < 0.92) {
+          raf = requestAnimationFrame(tick);
+        } else {
+          cancelAnimationFrame(raf);
+          /* Gradient flash → navigate */
+          pxFlash.style.transition = 'opacity 0.18s ease';
+          pxFlash.style.opacity = '1';
+          if (!done) {
+            done = true;
+            setTimeout(function () { window.location.href = href; }, 180);
+          }
+        }
+      }
+      requestAnimationFrame(tick);
+    }
+
+    /* ---- Intercept internal nav links ---- */
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest('a');
+      if (!a) return;
+      var href = a.getAttribute('href');
+      if (!href) return;
+      if (a.target === '_blank') return;
+      if (href.startsWith('http') || href.startsWith('//') || href.startsWith('#') ||
+          href.startsWith('mailto') || href.startsWith('tel')) return;
+      if (!href.match(/\.html$|^\/$|^index/)) return;
+      e.preventDefault();
+      playExit(href);
+    }, true);
+
+    /* ---- Play entry on every page load ---- */
+    playEntry();
   }
 
 })();
