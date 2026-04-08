@@ -1,5 +1,5 @@
 {
-  "buildCommand": "echo 'no build'",
-  "outputDirectory": "dejoiy.co.in main/public",
+  "buildCommand": "mkdir -p public && cp -r 'dejoiy.co.in main/public/.' public/",
+  "outputDirectory": "public",
   "framework": null
 }

@@ -1,10 +1,1 @@
-{
-  "buildCommand": "echo 'static site - no build needed'",
-  "outputDirectory": "public",
-  "framework": null,
-  "functions": {
-    "api/contact.py": {
-      "runtime": "python3.9"
-    }
-  }
-}
+{}
