@@ -1,14 +1,10 @@
 {
-  "version": 2,
-  "builds": [
-    { "src": "public/**", "use": "@vercel/static" },
-    { "src": "api/contact.py", "use": "@vercel/python" }
-  ],
-  "routes": [
-    { "src": "/api/contact", "dest": "/api/contact.py" },
-    { "src": "/assets/(.*)", "dest": "/public/assets/$1" },
-    { "src": "/([^/]+\\.html)$", "dest": "/public/$1" },
-    { "src": "/", "dest": "/public/index.html" },
-    { "src": "/(.*)", "dest": "/public/$1" }
-  ]
+  "buildCommand": "echo 'static site - no build needed'",
+  "outputDirectory": "public",
+  "framework": null,
+  "functions": {
+    "api/contact.py": {
+      "runtime": "python3.9"
+    }
+  }
 }
