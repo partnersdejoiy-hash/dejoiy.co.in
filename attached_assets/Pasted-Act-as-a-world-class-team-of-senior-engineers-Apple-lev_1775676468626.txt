@@ -1,0 +1,207 @@
+Act as a world-class team of senior engineers, Apple-level designers, and animation experts. Your job is to build the official brand website for **DEJOIY**, a futuristic enterprise technology company.
+
+The website must look like it was built by a **$10M design team** for a billionaire founder. The visual identity must communicate **power, intelligence, trust, luxury, and innovation**.
+
+The design must feel like a combination of **Apple, Tesla, Stripe, OpenAI, and SpaceX level design quality**, but with a completely unique identity.
+
+Core objective:
+The website must look like the **richest business owner’s technology empire website in the world**. Every detail must feel premium and engineered.
+
+---
+
+BRAND IDENTITY
+
+Brand Name: DEJOIY
+Industry: Enterprise technology, AI systems, digital infrastructure, SaaS platforms
+Brand Personality: Visionary, dominant, futuristic, intelligent, elite
+
+The brand should feel like a **global technology empire**.
+
+Add a **custom animated "D" symbol** emerging from light or particles that represents the Dejoiy identity. The “D” should appear in multiple places as a design motif.
+
+---
+
+DESIGN STYLE
+
+Use a **futuristic luxury tech aesthetic**.
+
+Design references:
+
+• Apple product websites
+• Stripe.com interactions
+• Tesla landing page
+• Linear.app design quality
+• OpenAI smooth UI
+• SpaceX minimal luxury style
+
+The website must include:
+
+• Ultra-smooth animations
+• Premium typography
+• Glassmorphism effects
+• Subtle parallax motion
+• Gradient lighting effects
+• Scroll-triggered animations
+• Floating elements
+• 3D design sections
+• Interactive UI transitions
+
+Everything should feel **cinematic and premium**.
+
+---
+
+COLOR SYSTEM
+
+Primary color palette must feel rich and futuristic:
+
+Deep midnight black
+Royal blue gradients
+Electric cyan highlights
+Luxury purple accents
+Silver / chrome reflections
+
+Add glowing gradients such as:
+
+Deep navy → electric blue
+Black → purple nebula
+Dark blue → cyan glow
+
+The design must feel **like a futuristic digital empire**.
+
+---
+
+HOMEPAGE STRUCTURE
+
+Hero Section:
+
+Massive cinematic hero with animated particles forming the **Dejoiy “D” icon**.
+
+Headline example:
+
+“Building the Future of Intelligent Enterprises.”
+
+Subheadline:
+
+“Dejoiy creates the infrastructure powering the next generation of digital organizations.”
+
+Add glowing call-to-action buttons.
+
+---
+
+Empire Section
+
+Show Dejoiy as a technology ecosystem.
+
+Animated product cards for:
+
+Dejoiy Mail
+OrbitDesk Support
+Enterprise AI Systems
+Digital Infrastructure
+Developer Platforms
+
+Each card should animate on hover with glowing edges.
+
+---
+
+Innovation Section
+
+Add animated statistics:
+
+Millions of requests processed
+Enterprise-grade infrastructure
+Global scale technology
+
+Use animated counters and glowing numbers.
+
+---
+
+Technology Showcase
+
+Interactive cards showing:
+
+AI systems
+Enterprise SaaS platforms
+Infrastructure tools
+Developer ecosystems
+
+Include subtle 3D motion when hovering.
+
+---
+
+Founder Vision Section
+
+Large luxury typography with powerful messaging about building the future.
+
+Add subtle animated lines or light rays moving across the background.
+
+---
+
+Global Presence
+
+Animated world map with glowing nodes showing global infrastructure.
+
+---
+
+Footer
+
+Extremely premium footer design.
+
+Include:
+
+About
+Products
+Technology
+Developers
+Careers
+Contact
+
+Add subtle glowing divider lines.
+
+---
+
+ANIMATION REQUIREMENTS
+
+The entire website must feel alive.
+
+Use:
+
+Scroll animations
+Smooth transitions
+Floating UI motion
+Background particles
+Light trails
+Hover micro-interactions
+Gradient lighting shifts
+
+Animations must be **smooth and elegant, not excessive**.
+
+---
+
+TECHNOLOGY STACK
+
+Use modern enterprise technology:
+
+Next.js
+React
+TailwindCSS
+Framer Motion
+GSAP for advanced animation
+Three.js for subtle 3D effects
+
+Ensure the website is:
+
+Lightning fast
+Mobile responsive
+SEO optimized
+Production ready
+
+---
+
+FINAL EXPECTATION
+
+The final result must look like a **billion-dollar technology empire website**.
+
+It must feel like it was built by **a massive team of elite senior developers and designers**.
+
+Every animation, color, spacing, and typography decision must feel **perfectly engineered and premium**.
