@@ -2,7 +2,7 @@ import os
 import resend
 from flask import Flask, request, jsonify, send_from_directory
 
-app = Flask(__name__, static_folder='public._html', static_url_path='')
+app = Flask(__name__, static_folder='public', static_url_path='')
 
 resend.api_key = os.environ.get('RESEND_API_KEY', '')
 
