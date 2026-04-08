@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "routes": [
+    { "src": "/api/contact", "dest": "/api/contact.py", "methods": ["POST"] },
+    { "src": "/assets/(.*)", "dest": "/public._html/assets/$1" },
+    { "src": "/([^/]+\\.html)", "dest": "/public._html/$1" },
+    { "src": "/", "dest": "/public._html/index.html" },
+    { "src": "/(.*)", "dest": "/public._html/$1" }
+  ]
+}
