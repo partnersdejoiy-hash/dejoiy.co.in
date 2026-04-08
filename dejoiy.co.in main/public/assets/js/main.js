@@ -353,10 +353,17 @@
     resize();
     window.addEventListener('resize', resize);
 
-    /* ---- ENTRY: Warp rings collapse in, page revealed ---- */
+    /* ---- ENTRY: Flash fades out + warp rings collapse, page revealed ---- */
     function playEntry() {
+      /* Immediately cover with gradient flash so there's zero stuck frame */
+      pxD.style.transition = 'none';
+      pxD.style.opacity = '0';
+      pxD.style.transform = 'translate(-50%,-50%) scale(0) rotate(-180deg)';
+      pxFlash.style.transition = 'none';
+      pxFlash.style.opacity = '1';
+
       var startTime = null;
-      var dur = 1000;
+      var dur = 700;
       var raf;
 
       function tick(ts) {
@@ -366,11 +373,8 @@
 
         ctx.clearRect(0, 0, W, H);
 
-        var bgAlpha = Math.max(0, 1 - p * 1.4);
-        if (bgAlpha > 0) {
-          ctx.fillStyle = 'rgba(2,4,8,' + bgAlpha + ')';
-          ctx.fillRect(0, 0, W, H);
-        }
+        /* Fade the gradient flash out as rings collapse */
+        pxFlash.style.opacity = Math.max(0, 1 - ease * 1.4).toString();
 
         var maxR = Math.sqrt(W * W + H * H) * 0.7;
         var colors = ['#2563eb', '#7c3aed', '#06b6d4', '#6366f1', '#a78bfa', '#22d3ee'];
@@ -388,7 +392,11 @@
         }
 
         if (p < 1) { raf = requestAnimationFrame(tick); }
-        else { ctx.clearRect(0, 0, W, H); cancelAnimationFrame(raf); }
+        else {
+          ctx.clearRect(0, 0, W, H);
+          pxFlash.style.opacity = '0';
+          cancelAnimationFrame(raf);
+        }
       }
       requestAnimationFrame(tick);
     }
