@@ -11,10 +11,10 @@ Corporate headquarters website for DEJOIY India Private Limited. Fully redesigne
 - No build system or package manager (static files)
 
 ## Pages
-- `index.html` — $1B homepage with Three.js particle hero, animated stats, empire cards, world map, vision section
-- `about.html` — Brand story, mission/vision, timeline milestones
-- `services.html` — Full enterprise technology service catalog
-- `team.html` — Leadership philosophy, cultural values, founder section
+- `index.html` — Hero with YOU+JOY formula, BPO section (6 services), Marketplace (10M+ products), world map, animated D element
+- `about.html` — Brand story, mission/vision, animated timeline milestones
+- `services.html` — BPO & enterprise technology service catalog
+- `team.html` — Founder spotlight + ALL 9 team members with photos + 6 culture values
 - `contact.html` — Premium contact form with side info panel
 
 ## Design System (assets/css/styles.css)

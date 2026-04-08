@@ -2,20 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DEJOIY — Building the Future of Intelligent Enterprises</title>
-  <meta name="description" content="DEJOIY creates the infrastructure powering the next generation of digital organizations. Enterprise AI, digital commerce, and global technology infrastructure." />
-  <meta property="og:title" content="DEJOIY — Building the Future of Intelligent Enterprises" />
-  <meta property="og:description" content="DEJOIY creates the infrastructure powering the next generation of digital organizations." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>DEJOIY — You + Joy | BPO &amp; Marketplace Empire</title>
+  <meta name="description" content="DEJOIY is India's fastest-growing BPO and digital marketplace — bringing You + Joy to every enterprise transaction, support interaction, and commerce experience." />
+  <meta property="og:title" content="DEJOIY — You + Joy | BPO &amp; Marketplace" />
+  <meta property="og:description" content="Building the world's most joyful enterprise ecosystem — BPO services + digital marketplace, powered by AI." />
   <meta property="og:type" content="website" />
   <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-  <!-- Libraries -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
@@ -24,36 +22,28 @@
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════
-     NAVIGATION
-════════════════════════════════════════ -->
+<!-- ═══ NAVIGATION ═══ -->
 <header class="nav-wrap" id="mainNav">
   <div class="container">
     <div class="nav-inner">
-
-      <a href="index.html" class="nav-logo" aria-label="DEJOIY Home">
-        <div class="nav-logo-icon">
-          <img src="assets/images/logo/dejoiy-logo.png" alt="DEJOIY" />
-        </div>
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-icon"><img src="assets/images/logo/dejoiy-logo.png" alt="DEJOIY" /></div>
         <div>
           <div class="nav-logo-text">DEJOIY</div>
-          <div class="nav-logo-sub">Global HQ</div>
+          <div class="nav-logo-sub">You + Joy</div>
         </div>
       </a>
-
       <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html" class="active">Home</a></li>
         <li><a href="about.html">About</a></li>
-        <li><a href="services.html">Services</a></li>
+        <li><a href="services.html">BPO Services</a></li>
         <li><a href="team.html">Team</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
-
       <div class="nav-actions">
-        <a href="https://www.dejoiy.com" target="_blank" rel="noopener" class="btn-ghost" style="padding:0.65rem 1.25rem;font-size:0.85rem">Marketplace</a>
-        <a href="https://business.dejoiy.com" target="_blank" rel="noopener" class="btn-primary" style="padding:0.65rem 1.25rem;font-size:0.85rem">Business Portal</a>
+        <a href="https://www.dejoiy.com" target="_blank" rel="noopener" class="btn-ghost" style="padding:0.6rem 1.15rem;font-size:0.83rem">Marketplace</a>
+        <a href="https://business.dejoiy.com" target="_blank" rel="noopener" class="btn-primary" style="padding:0.6rem 1.15rem;font-size:0.83rem">Business Portal</a>
       </div>
-
       <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -61,74 +51,75 @@
   </div>
 </header>
 
-<!-- Mobile Menu -->
 <div class="mobile-menu" id="mobileMenu">
   <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="services.html">Services</a>
-    <a href="team.html">Team</a>
-    <a href="contact.html">Contact</a>
+    <a href="index.html">🏠 Home</a>
+    <a href="about.html">ℹ️ About</a>
+    <a href="services.html">💼 BPO Services</a>
+    <a href="team.html">👥 Team</a>
+    <a href="contact.html">✉️ Contact</a>
   </nav>
   <div class="mobile-ctas">
-    <a href="https://www.dejoiy.com" target="_blank" rel="noopener" class="btn-ghost" style="text-align:center">Visit Marketplace</a>
-    <a href="https://business.dejoiy.com" target="_blank" rel="noopener" class="btn-primary" style="text-align:center">Business Portal</a>
+    <a href="https://www.dejoiy.com" target="_blank" rel="noopener" class="btn-ghost" style="text-align:center;display:block">🛒 Visit Marketplace</a>
+    <a href="https://business.dejoiy.com" target="_blank" rel="noopener" class="btn-primary" style="text-align:center;display:block">🏢 Business Portal</a>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════
-     HERO
-════════════════════════════════════════ -->
+<!-- ═══ HERO ═══ -->
 <section class="hero-section">
   <canvas id="hero-canvas"></canvas>
   <div class="hero-gradient-overlay"></div>
 
-  <!-- Ambient orbs -->
-  <div class="orb orb-blue parallax-orb" style="width:600px;height:600px;top:-200px;left:-200px;opacity:0.15;"></div>
-  <div class="orb orb-purple parallax-orb" style="width:500px;height:500px;top:10%;right:-150px;opacity:0.12;"></div>
-  <div class="orb orb-cyan parallax-orb" style="width:400px;height:400px;bottom:0;left:40%;opacity:0.1;"></div>
+  <div class="orb orb-blue" style="width:700px;height:700px;top:-250px;left:-200px;opacity:0.12"></div>
+  <div class="orb orb-purple" style="width:550px;height:550px;top:5%;right:-150px;opacity:0.1"></div>
+  <div class="orb orb-cyan" style="width:450px;height:450px;bottom:-100px;left:35%;opacity:0.08"></div>
+
+  <!-- Big decorative D -->
+  <div style="position:absolute;right:-2%;top:50%;transform:translateY(-50%);z-index:1;pointer-events:none;user-select:none">
+    <div style="font-family:'Syne',sans-serif;font-size:clamp(14rem,25vw,28rem);font-weight:800;line-height:1;letter-spacing:-0.06em;background:linear-gradient(135deg,rgba(99,102,241,0.06),rgba(6,182,212,0.03));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:float 8s ease infinite">D</div>
+  </div>
 
   <div class="container hero-content">
     <div class="hero-eyebrow">
       <span class="badge">
         <span class="badge-dot"></span>
-        DEJOIY Global Headquarters — Est. 2024
+        India's #1 BPO &amp; Marketplace — Est. 2024
       </span>
     </div>
 
     <h1 class="display-title hero-title">
-      Building the<br />
-      <span class="gradient-text">Future</span> of<br />
-      Intelligent<br />
-      Enterprises.
+      Where <span class="gradient-text">YOU</span><br />
+      meets<br />
+      <span class="gradient-text">JOY</span>.
     </h1>
 
     <p class="hero-subtitle">
-      DEJOIY creates the infrastructure powering the next generation of digital organizations — from AI systems to enterprise platforms, global commerce to developer ecosystems.
+      DEJOIY is India's fastest-growing BPO and digital marketplace — delivering enterprise business services and a world-class commerce experience that brings joy to every interaction.
     </p>
 
     <div class="hero-ctas">
-      <a href="#ecosystem" class="btn-primary">
-        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M13 7l5 5-5 5M6 12h12"/></svg>
-        Explore Ecosystem
+      <a href="#marketplace" class="btn-primary">
+        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+        Shop Marketplace
       </a>
-      <a href="https://www.dejoiy.com" target="_blank" rel="noopener" class="btn-ghost">
-        Visit Marketplace
+      <a href="#bpo" class="btn-ghost">
+        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        BPO Services
       </a>
     </div>
 
     <div class="hero-stats">
       <div>
-        <div class="hero-stat-num gradient-text" data-counter data-target="4" data-suffix="+">4+</div>
-        <div class="hero-stat-label">Ecosystem Pillars</div>
+        <div class="hero-stat-num gradient-text" data-counter data-target="10" data-suffix="M+">10M+</div>
+        <div class="hero-stat-label">Orders Processed</div>
       </div>
       <div>
-        <div class="hero-stat-num gradient-text">24/7</div>
-        <div class="hero-stat-label">Business Enablement</div>
+        <div class="hero-stat-num gradient-text" data-counter data-target="500" data-suffix="+">500+</div>
+        <div class="hero-stat-label">Enterprise Clients</div>
       </div>
       <div>
-        <div class="hero-stat-num gradient-text">∞</div>
-        <div class="hero-stat-label">Scalability</div>
+        <div class="hero-stat-num gradient-text" data-counter data-target="50" data-suffix="+">50+</div>
+        <div class="hero-stat-label">Countries</div>
       </div>
     </div>
   </div>
@@ -139,536 +130,399 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════
-     MARQUEE
-════════════════════════════════════════ -->
+<!-- ═══ YOU + JOY FORMULA ═══ -->
+<section class="section-xs formula-section">
+  <div class="container">
+    <div class="formula-wrap reveal">
+      <div class="formula-part">
+        <div class="formula-word" style="color:#60a5fa">YOU</div>
+        <div class="formula-tag">The Customer</div>
+      </div>
+      <div class="formula-plus">+</div>
+      <div class="formula-part">
+        <div class="formula-word" style="color:#22d3ee">JOY</div>
+        <div class="formula-tag">The Experience</div>
+      </div>
+      <div class="formula-equals">=</div>
+      <div class="formula-part">
+        <div class="formula-result gradient-text">DEJOIY</div>
+        <div class="formula-tag" style="color:var(--text-secondary)">The Empire</div>
+      </div>
+    </div>
+    <p style="text-align:center;color:var(--text-dim);font-size:0.9rem;margin-top:1.5rem;letter-spacing:0.04em" class="reveal reveal-delay-2">
+      Every product. Every service. Every interaction — engineered to bring joy to you.
+    </p>
+  </div>
+</section>
+
+<!-- ═══ MARQUEE ═══ -->
 <div class="marquee-wrap">
   <div class="marquee-track">
-    <!-- duplicated for infinite scroll -->
-    <span class="marquee-item">Enterprise AI <span class="marquee-dot"></span></span>
-    <span class="marquee-item">Digital Commerce <span class="marquee-dot"></span></span>
-    <span class="marquee-item">SaaS Platforms <span class="marquee-dot"></span></span>
-    <span class="marquee-item">Developer Ecosystems <span class="marquee-dot"></span></span>
-    <span class="marquee-item">Business Infrastructure <span class="marquee-dot"></span></span>
-    <span class="marquee-item">Global Scale <span class="marquee-dot"></span></span>
-    <span class="marquee-item">Intelligent Systems <span class="marquee-dot"></span></span>
-    <span class="marquee-item">Enterprise AI <span class="marquee-dot"></span></span>
-    <span class="marquee-item">Digital Commerce <span class="marquee-dot"></span></span>
-    <span class="marquee-item">SaaS Platforms <span class="marquee-dot"></span></span>
-    <span class="marquee-item">Developer Ecosystems <span class="marquee-dot"></span></span>
-    <span class="marquee-item">Business Infrastructure <span class="marquee-dot"></span></span>
-    <span class="marquee-item">Global Scale <span class="marquee-dot"></span></span>
-    <span class="marquee-item">Intelligent Systems <span class="marquee-dot"></span></span>
+    <span class="marquee-item">BPO Services <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Digital Marketplace <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Customer Support <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Back Office Operations <span class="marquee-dot"></span></span>
+    <span class="marquee-item">AI-Powered Commerce <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Enterprise Solutions <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Global Delivery <span class="marquee-dot"></span></span>
+    <span class="marquee-item">YOU + JOY = DEJOIY <span class="marquee-dot"></span></span>
+    <span class="marquee-item">BPO Services <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Digital Marketplace <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Customer Support <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Back Office Operations <span class="marquee-dot"></span></span>
+    <span class="marquee-item">AI-Powered Commerce <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Enterprise Solutions <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Global Delivery <span class="marquee-dot"></span></span>
+    <span class="marquee-item">YOU + JOY = DEJOIY <span class="marquee-dot"></span></span>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════
-     STAT BAR
-════════════════════════════════════════ -->
-<div class="stat-bar section-sm">
+<!-- ═══ STATS BAR ═══ -->
+<div class="stat-bar">
   <div class="container">
     <div class="stat-bar-grid">
       <div class="reveal">
         <div class="stat-bar-num gradient-text" data-counter data-target="10" data-suffix="M+">10M+</div>
-        <div class="stat-bar-label">Requests Processed</div>
+        <div class="stat-bar-label">Products Listed</div>
       </div>
       <div class="reveal reveal-delay-1">
         <div class="stat-bar-num gradient-text" data-counter data-target="99.9" data-suffix="%">99.9%</div>
-        <div class="stat-bar-label">Uptime SLA</div>
+        <div class="stat-bar-label">SLA Uptime</div>
       </div>
       <div class="reveal reveal-delay-2">
         <div class="stat-bar-num gradient-text" data-counter data-target="50" data-suffix="+">50+</div>
-        <div class="stat-bar-label">Countries Served</div>
+        <div class="stat-bar-label">Countries Active</div>
       </div>
       <div class="reveal reveal-delay-3">
-        <div class="stat-bar-num gradient-text" data-counter data-target="500" data-suffix="+">500+</div>
-        <div class="stat-bar-label">Enterprise Partners</div>
+        <div class="stat-bar-num gradient-text" data-counter data-target="24" data-suffix="/7">24/7</div>
+        <div class="stat-bar-label">BPO Support</div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════
-     EMPIRE SECTION
-════════════════════════════════════════ -->
-<section class="section" id="ecosystem">
+<!-- ═══ MARKETPLACE SECTION ═══ -->
+<section class="section" id="marketplace">
   <div class="container">
     <div class="section-header reveal">
-      <div class="badge" style="margin-bottom:1.25rem">
-        <span class="badge-dot"></span>
-        The DEJOIY Empire
+      <div class="badge market-badge" style="margin-bottom:1.25rem">
+        🛒 DEJOIY Marketplace
       </div>
-      <h2 class="section-headline" style="max-width:700px">
-        A complete technology ecosystem for the modern enterprise.
+      <h2 class="section-headline" style="max-width:680px">
+        India's answer to global commerce.<br /><span class="gradient-gold">Better than Amazon.</span>
       </h2>
       <p class="section-body" style="margin-top:1rem">
-        Every pillar of the DEJOIY ecosystem is engineered for scale, intelligence, and lasting enterprise value — designed to work together or stand alone.
+        Millions of products. Thousands of sellers. One premium experience — built for India, engineered for the world. DEJOIY Marketplace combines AI-powered discovery with the fastest delivery network in the country.
+      </p>
+    </div>
+
+    <!-- Marketplace feature cards -->
+    <div style="display:grid;grid-template-columns:1.3fr 0.7fr;gap:1.25rem;margin-bottom:1.25rem" class="market-top-grid">
+      <div class="tech-card reveal" style="background:linear-gradient(135deg,rgba(245,193,93,0.06),rgba(99,102,241,0.04))">
+        <div class="tech-card-content">
+          <div class="tech-card-label" style="color:#fbbf24">Marketplace Advantage</div>
+          <h3 class="tech-card-title">10M+ Products.<br /><span class="gradient-gold">Zero Compromise</span> on Quality.</h3>
+          <p class="tech-card-body">Every seller on DEJOIY goes through our rigorous quality verification — so you always get exactly what you ordered, on time, every time.</p>
+          <div class="tech-tags">
+            <span class="tech-tag">AI Product Discovery</span>
+            <span class="tech-tag">Buyer Protection</span>
+            <span class="tech-tag">Express Delivery</span>
+            <span class="tech-tag">1-Click Returns</span>
+          </div>
+          <div style="margin-top:1.75rem">
+            <a href="https://www.dejoiy.com" target="_blank" rel="noopener" class="btn-primary">
+              Shop Now
+              <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M13 7l5 5-5 5M6 12h12"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:1.25rem">
+        <div class="tech-card reveal reveal-delay-1" style="flex:1">
+          <div class="tech-card-content" style="padding:1.75rem">
+            <div style="font-size:1.75rem;margin-bottom:0.75rem">⚡</div>
+            <div class="tech-card-label">Lightning Fast</div>
+            <h4 class="tech-card-title" style="font-size:1.2rem">Same-Day Delivery</h4>
+            <p class="tech-card-body" style="font-size:0.84rem">Order before noon, receive today. Our hyperlocal delivery network covers 500+ cities.</p>
+          </div>
+        </div>
+        <div class="tech-card reveal reveal-delay-2" style="flex:1">
+          <div class="tech-card-content" style="padding:1.75rem">
+            <div style="font-size:1.75rem;margin-bottom:0.75rem">🛡️</div>
+            <div class="tech-card-label">Trust First</div>
+            <h4 class="tech-card-title" style="font-size:1.2rem">100% Buyer Protection</h4>
+            <p class="tech-card-body" style="font-size:0.84rem">Every purchase is covered. No questions asked refunds within 30 days.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product preview row -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem" class="product-grid">
+      <div class="empire-card glow-border reveal">
+        <div style="height:160px;border-radius:12px;overflow:hidden;margin-bottom:1.25rem;background:var(--bg-dark)">
+          <img src="assets/images/products/product-1.jpg" alt="Premium product" style="width:100%;height:100%;object-fit:cover" />
+        </div>
+        <div class="empire-card-title" style="font-size:1rem">Smart Lifestyle</div>
+        <div class="empire-card-desc" style="font-size:0.83rem">Curated lifestyle products with premium presentation and buyer trust at every step.</div>
+        <a href="https://www.dejoiy.com" target="_blank" rel="noopener" class="empire-card-link">Browse Category →</a>
+      </div>
+      <div class="empire-card glow-border reveal reveal-delay-1">
+        <div style="height:160px;border-radius:12px;overflow:hidden;margin-bottom:1.25rem;background:var(--bg-dark)">
+          <img src="assets/images/products/product-2.jpg" alt="Technology product" style="width:100%;height:100%;object-fit:cover" />
+        </div>
+        <div class="empire-card-title" style="font-size:1rem">Technology</div>
+        <div class="empire-card-desc" style="font-size:0.83rem">Genuine tech from verified sellers — smartphones, laptops, accessories, and more.</div>
+        <a href="https://www.dejoiy.com" target="_blank" rel="noopener" class="empire-card-link">Browse Category →</a>
+      </div>
+      <div class="empire-card glow-border reveal reveal-delay-2">
+        <div style="height:160px;border-radius:12px;overflow:hidden;margin-bottom:1.25rem;background:var(--bg-dark)">
+          <img src="assets/images/products/product-3.jpg" alt="Premium consumer" style="width:100%;height:100%;object-fit:cover" />
+        </div>
+        <div class="empire-card-title" style="font-size:1rem">Premium Consumer</div>
+        <div class="empire-card-desc" style="font-size:0.83rem">The best products, the best prices — DEJOIY's exclusive brand partnerships bring unbeatable value.</div>
+        <a href="https://www.dejoiy.com" target="_blank" rel="noopener" class="empire-card-link">Browse Category →</a>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:2.5rem" class="reveal">
+      <a href="https://www.dejoiy.com" target="_blank" rel="noopener" class="btn-primary" style="font-size:1rem;padding:1.1rem 2.5rem">
+        Visit Full Marketplace
+        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M13 7l5 5-5 5M6 12h12"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BPO SECTION ═══ -->
+<section class="section" id="bpo" style="background:rgba(255,255,255,0.015)">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="badge" style="margin-bottom:1.25rem;background:rgba(16,185,129,0.12);border-color:rgba(16,185,129,0.3);color:#6ee7b7">
+        <span class="badge-dot" style="background:#10b981"></span>
+        BPO Services
+      </div>
+      <h2 class="section-headline" style="max-width:680px">
+        World-class business process outsourcing — <span class="gradient-text">your operations, our excellence.</span>
+      </h2>
+      <p class="section-body" style="margin-top:1rem">
+        DEJOIY BPO delivers enterprise-grade outsourcing services with AI-augmented workflows, 24/7 multilingual support, and guaranteed SLA performance. We run your operations so you can focus on growth.
       </p>
     </div>
 
     <div class="empire-grid">
-      <!-- Card 1 -->
-      <div class="empire-card glow-border reveal">
-        <div class="empire-card-icon" style="background:linear-gradient(135deg,rgba(37,99,235,0.25),rgba(6,182,212,0.15))">
-          <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="#60a5fa" stroke-width="1.7">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/>
-          </svg>
+      <div class="bpo-card reveal">
+        <div class="empire-card-icon" style="background:linear-gradient(135deg,rgba(16,185,129,0.2),rgba(6,182,212,0.1))">
+          <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="#34d399" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
         </div>
-        <div class="empire-card-title">Dejoiy Marketplace</div>
-        <div class="empire-card-desc">A premium commerce destination connecting buyers with discovery, trust, and speed. The public face of the DEJOIY empire.</div>
-        <a href="https://www.dejoiy.com" target="_blank" rel="noopener" class="empire-card-link">
-          Visit Platform
-          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M13 7l5 5-5 5M6 12h12"/></svg>
-        </a>
+        <div class="empire-card-title">Customer Support BPO</div>
+        <div class="empire-card-desc">24/7 multilingual customer service — voice, email, chat, and social. AI-augmented agents delivering CSAT scores above 95%.</div>
+        <a href="services.html" class="empire-card-link">Learn More →</a>
       </div>
 
-      <!-- Card 2 -->
-      <div class="empire-card glow-border reveal reveal-delay-1">
-        <div class="empire-card-icon" style="background:linear-gradient(135deg,rgba(124,58,237,0.25),rgba(217,70,239,0.15))">
-          <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="#a78bfa" stroke-width="1.7">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
-          </svg>
+      <div class="bpo-card reveal reveal-delay-1">
+        <div class="empire-card-icon" style="background:linear-gradient(135deg,rgba(99,102,241,0.2),rgba(124,58,237,0.1))">
+          <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="#818cf8" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
         </div>
-        <div class="empire-card-title">Business Portal</div>
-        <div class="empire-card-desc">Enterprise-grade business infrastructure, operational workflows, and growth tools for modern organizations at any scale.</div>
-        <a href="https://business.dejoiy.com" target="_blank" rel="noopener" class="empire-card-link">
-          Open Portal
-          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M13 7l5 5-5 5M6 12h12"/></svg>
-        </a>
+        <div class="empire-card-title">Back Office Processing</div>
+        <div class="empire-card-desc">Data entry, document verification, invoice processing, and accounting operations handled with 99.9% accuracy SLA.</div>
+        <a href="services.html" class="empire-card-link">Learn More →</a>
       </div>
 
-      <!-- Card 3 -->
-      <div class="empire-card glow-border reveal reveal-delay-2">
-        <div class="empire-card-icon" style="background:linear-gradient(135deg,rgba(6,182,212,0.25),rgba(37,99,235,0.15))">
-          <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="#22d3ee" stroke-width="1.7">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/>
-          </svg>
-        </div>
-        <div class="empire-card-title">Enterprise AI Systems</div>
-        <div class="empire-card-desc">Proprietary AI infrastructure powering intelligent automation, predictive analytics, and smart decision engines.</div>
-        <a href="services.html" class="empire-card-link">
-          Explore AI
-          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M13 7l5 5-5 5M6 12h12"/></svg>
-        </a>
-      </div>
-
-      <!-- Card 4 -->
-      <div class="empire-card glow-border reveal reveal-delay-3">
+      <div class="bpo-card reveal reveal-delay-2">
         <div class="empire-card-icon" style="background:linear-gradient(135deg,rgba(245,193,93,0.2),rgba(239,68,68,0.1))">
-          <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="#fbbf24" stroke-width="1.7">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-          </svg>
+          <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="#fbbf24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
         </div>
-        <div class="empire-card-title">Dejoiy Mail</div>
-        <div class="empire-card-desc">Enterprise communication infrastructure built for reliability, security, and seamless team collaboration at global scale.</div>
-        <a href="services.html" class="empire-card-link">
-          Learn More
-          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M13 7l5 5-5 5M6 12h12"/></svg>
-        </a>
+        <div class="empire-card-title">HR &amp; Payroll BPO</div>
+        <div class="empire-card-desc">End-to-end HR outsourcing — recruitment, onboarding, payroll processing, compliance, and employee lifecycle management.</div>
+        <a href="services.html" class="empire-card-link">Learn More →</a>
       </div>
 
-      <!-- Card 5 -->
-      <div class="empire-card glow-border reveal reveal-delay-4">
-        <div class="empire-card-icon" style="background:linear-gradient(135deg,rgba(20,184,166,0.2),rgba(6,182,212,0.15))">
-          <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="#2dd4bf" stroke-width="1.7">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/>
-          </svg>
+      <div class="bpo-card reveal reveal-delay-3">
+        <div class="empire-card-icon" style="background:linear-gradient(135deg,rgba(6,182,212,0.2),rgba(37,99,235,0.1))">
+          <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="#22d3ee" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
         </div>
-        <div class="empire-card-title">OrbitDesk Support</div>
-        <div class="empire-card-desc">Intelligent customer support infrastructure with AI-powered ticketing, real-time resolution, and enterprise SLAs.</div>
-        <a href="services.html" class="empire-card-link">
-          Discover
-          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M13 7l5 5-5 5M6 12h12"/></svg>
-        </a>
+        <div class="empire-card-title">IT Support BPO</div>
+        <div class="empire-card-desc">Level 1-3 IT helpdesk, infrastructure monitoring, cybersecurity operations, and cloud management — always on, always resolved.</div>
+        <a href="services.html" class="empire-card-link">Learn More →</a>
       </div>
 
-      <!-- Card 6 -->
-      <div class="empire-card glow-border reveal reveal-delay-5">
-        <div class="empire-card-icon" style="background:linear-gradient(135deg,rgba(99,102,241,0.25),rgba(124,58,237,0.15))">
-          <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="#818cf8" stroke-width="1.7">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
-          </svg>
+      <div class="bpo-card reveal reveal-delay-4">
+        <div class="empire-card-icon" style="background:linear-gradient(135deg,rgba(217,70,239,0.2),rgba(124,58,237,0.1))">
+          <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="#e879f9" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
         </div>
-        <div class="empire-card-title">Developer Ecosystem</div>
-        <div class="empire-card-desc">Open APIs, SDKs, and developer tools enabling builders to create within and upon the DEJOIY infrastructure layer.</div>
-        <a href="services.html" class="empire-card-link">
-          Build With Us
-          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M13 7l5 5-5 5M6 12h12"/></svg>
-        </a>
+        <div class="empire-card-title">Analytics &amp; Insights BPO</div>
+        <div class="empire-card-desc">Data analytics, business intelligence, market research, and reporting — turning your raw data into strategic competitive advantage.</div>
+        <a href="services.html" class="empire-card-link">Learn More →</a>
+      </div>
+
+      <div class="bpo-card reveal reveal-delay-5">
+        <div class="empire-card-icon" style="background:linear-gradient(135deg,rgba(245,193,93,0.15),rgba(16,185,129,0.1))">
+          <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="#fbbf24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        </div>
+        <div class="empire-card-title">Dejoiy Mail BPO</div>
+        <div class="empire-card-desc">Enterprise email management, transactional mail infrastructure, campaign operations, and inbox management at scale.</div>
+        <a href="services.html" class="empire-card-link">Learn More →</a>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.25rem;margin-top:1.25rem" class="bpo-stat-grid">
+      <div class="innovation-stat-card reveal" style="text-align:center">
+        <div class="innovation-number gradient-text" data-counter data-target="95" data-suffix="%">95%</div>
+        <div class="innovation-label">CSAT Score Average</div>
+        <div class="innovation-sub">Above industry benchmark of 82%</div>
+        <div class="innovation-bar"><div class="innovation-bar-fill" style="width:95%"></div></div>
+      </div>
+      <div class="innovation-stat-card reveal reveal-delay-1" style="text-align:center">
+        <div class="innovation-number gradient-text" data-counter data-target="40" data-suffix="%">40%</div>
+        <div class="innovation-label">Cost Reduction</div>
+        <div class="innovation-sub">vs. in-house operations average</div>
+        <div class="innovation-bar"><div class="innovation-bar-fill" style="width:40%;background:linear-gradient(90deg,#a78bfa,#ec4899)"></div></div>
+      </div>
+      <div class="innovation-stat-card reveal reveal-delay-2" style="text-align:center">
+        <div class="innovation-number gradient-text" data-counter data-target="24" data-suffix="hr">24hr</div>
+        <div class="innovation-label">Average Go-Live</div>
+        <div class="innovation-sub">From contract to full operations</div>
+        <div class="innovation-bar"><div class="innovation-bar-fill" style="width:80%;background:linear-gradient(90deg,#34d399,#22d3ee)"></div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════
-     INNOVATION STATS
-════════════════════════════════════════ -->
-<section class="section innovation-section" style="background:rgba(255,255,255,0.01)">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="badge" style="margin-bottom:1.25rem">
-        <span class="badge-dot"></span>
-        Infrastructure at Scale
-      </div>
-      <h2 class="section-headline" style="max-width:600px">
-        Enterprise-grade infrastructure. Global-scale intelligence.
-      </h2>
-    </div>
-
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem" class="innovation-responsive">
-      <!-- Large card -->
-      <div class="innovation-stat-card reveal" style="display:flex;flex-direction:column;justify-content:space-between;min-height:320px">
-        <div>
-          <div class="innovation-number gradient-text" data-counter data-target="10" data-suffix="M+">10M+</div>
-          <div class="innovation-label">Requests Processed Monthly</div>
-          <div class="innovation-sub">Distributed across our global infrastructure network with sub-50ms median latency.</div>
-        </div>
-        <div>
-          <div class="innovation-bar"><div class="innovation-bar-fill" style="width:90%"></div></div>
-          <div style="font-size:0.78rem;color:var(--text-dim);margin-top:0.5rem">Network Utilization: 90%</div>
-        </div>
-      </div>
-
-      <!-- Right column -->
-      <div style="display:flex;flex-direction:column;gap:2rem">
-        <div class="innovation-stat-card reveal reveal-delay-1">
-          <div class="innovation-number gradient-text" style="font-size:clamp(2rem,4vw,3.5rem)" data-counter data-target="99.9" data-suffix="%">99.9%</div>
-          <div class="innovation-label">Uptime SLA</div>
-          <div class="innovation-sub">Zero-downtime architecture with multi-region redundancy.</div>
-          <div class="innovation-bar"><div class="innovation-bar-fill" style="width:99.9%;background:linear-gradient(90deg,#22d3ee,#6366f1)"></div></div>
-        </div>
-
-        <div class="innovation-stat-card reveal reveal-delay-2">
-          <div class="innovation-number gradient-text" style="font-size:clamp(2rem,4vw,3.5rem)" data-counter data-target="50" data-suffix="+">50+</div>
-          <div class="innovation-label">Countries Active</div>
-          <div class="innovation-sub">Global reach with local compliance and regional data sovereignty.</div>
-          <div class="innovation-bar"><div class="innovation-bar-fill" style="width:75%;background:linear-gradient(90deg,#a78bfa,#ec4899)"></div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════
-     TECHNOLOGY SHOWCASE
-════════════════════════════════════════ -->
-<section class="section">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="badge" style="margin-bottom:1.25rem">
-        <span class="badge-dot"></span>
-        Technology Stack
-      </div>
-      <h2 class="section-headline" style="max-width:700px">
-        Engineered for the next decade of digital infrastructure.
-      </h2>
-    </div>
-
-    <div class="tech-showcase-grid">
-      <!-- Main feature card -->
-      <div class="tech-card reveal" style="position:relative;overflow:hidden;">
-        <div style="position:absolute;top:-100px;right:-100px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(99,102,241,0.08),transparent 70%);pointer-events:none"></div>
-        <div class="tech-card-content">
-          <div class="tech-card-label">Core Platform</div>
-          <h3 class="tech-card-title gradient-text">AI-First<br />Infrastructure</h3>
-          <p class="tech-card-body">
-            Built from the ground up with machine intelligence at its core. Every layer of the DEJOIY stack — from data ingestion to user interaction — is designed to be intelligent, adaptive, and self-optimizing.
-          </p>
-          <div class="tech-tags">
-            <span class="tech-tag">Edge Computing</span>
-            <span class="tech-tag">Neural Networks</span>
-            <span class="tech-tag">Real-time Processing</span>
-            <span class="tech-tag">Auto-scaling</span>
-            <span class="tech-tag">Zero Trust Security</span>
-          </div>
-          <div style="margin-top:2rem">
-            <a href="services.html" class="btn-primary" style="width:fit-content">
-              Explore Technology
-              <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M13 7l5 5-5 5M6 12h12"/></svg>
-            </a>
-          </div>
-        </div>
-        <!-- Decorative code lines -->
-        <div style="padding:2rem 2.5rem;border-top:1px solid rgba(255,255,255,0.06);font-family:monospace;font-size:0.78rem;color:var(--text-dim);line-height:2">
-          <span style="color:#60a5fa">const</span> dejoiy = <span style="color:#22d3ee">await</span> Enterprise.<span style="color:#a78bfa">init</span>({<br />
-          &nbsp;&nbsp;ai: <span style="color:#4ade80">true</span>, scale: <span style="color:#fbbf24">'∞'</span>, region: <span style="color:#f87171">'global'</span><br />
-          });
-        </div>
-      </div>
-
-      <!-- Side cards -->
-      <div style="display:flex;flex-direction:column;gap:1.5rem">
-        <div class="tech-card reveal reveal-delay-1">
-          <div class="tech-card-content" style="padding:2rem">
-            <div class="tech-card-label">Security</div>
-            <h3 class="tech-card-title" style="font-size:1.4rem">Zero-Trust Architecture</h3>
-            <p class="tech-card-body" style="font-size:0.88rem">End-to-end encrypted. SOC 2 compliant. Enterprise-grade authentication at every layer.</p>
-          </div>
-        </div>
-
-        <div class="tech-card reveal reveal-delay-2">
-          <div class="tech-card-content" style="padding:2rem">
-            <div class="tech-card-label">Performance</div>
-            <h3 class="tech-card-title" style="font-size:1.4rem">&lt;50ms Global Latency</h3>
-            <p class="tech-card-body" style="font-size:0.88rem">Multi-region edge deployment ensures your users experience instant responses regardless of location.</p>
-          </div>
-        </div>
-
-        <div class="tech-card reveal reveal-delay-3">
-          <div class="tech-card-content" style="padding:2rem">
-            <div class="tech-card-label">Compliance</div>
-            <h3 class="tech-card-title" style="font-size:1.4rem">Enterprise Ready</h3>
-            <p class="tech-card-body" style="font-size:0.88rem">GDPR, SOC 2, ISO 27001 compliant with regional data residency guarantees.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════
-     VISION / FOUNDER QUOTE
-════════════════════════════════════════ -->
-<section class="section vision-section" style="background:rgba(99,102,241,0.03)">
+<!-- ═══ VISION QUOTE ═══ -->
+<section class="section vision-section" style="background:rgba(99,102,241,0.02)">
   <div class="vision-bg-lines"></div>
-
   <div class="container" style="position:relative;z-index:1">
-    <div style="text-align:center;margin-bottom:3rem" class="reveal">
-      <div class="badge" style="margin-bottom:1.25rem">
-        <span class="badge-dot"></span>
-        Founder Vision
-      </div>
+    <div style="text-align:center;margin-bottom:2.5rem" class="reveal">
+      <div class="badge"><span class="badge-dot"></span>The DEJOIY Formula</div>
     </div>
-
     <div class="vision-quote reveal">
       <div class="vision-quote-inner">
-        "We are not building a product. We are building the operating system for the next era of global commerce and enterprise intelligence."
+        "DEJOIY exists because every enterprise deserves joyful operations — from the moment a customer clicks 'buy' to the moment a support agent solves their problem."
       </div>
     </div>
-
-    <div style="text-align:center;margin-top:2.5rem" class="reveal reveal-delay-2">
-      <div style="font-size:0.88rem;color:var(--text-dim);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.5rem">DEJOIY Founder & CEO</div>
-      <div style="font-size:1rem;font-weight:600;color:var(--text-secondary)">DEJOIY India Private Limited</div>
-    </div>
-
-    <div style="margin-top:4rem;text-align:center" class="reveal reveal-delay-3">
-      <a href="team.html" class="btn-ghost">Meet Our Leadership</a>
+    <div style="text-align:center;margin-top:2.25rem" class="reveal reveal-delay-2">
+      <div style="font-size:0.85rem;color:var(--text-dim);letter-spacing:0.1em;text-transform:uppercase">DEJOIY Founder — You + Joy = DEJOIY</div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════
-     GLOBAL PRESENCE
-════════════════════════════════════════ -->
+<!-- ═══ GLOBAL PRESENCE ═══ -->
 <section class="section">
   <div class="container">
     <div class="section-header center reveal">
-      <div class="badge" style="margin-bottom:1.25rem">
-        <span class="badge-dot"></span>
-        Global Infrastructure
-      </div>
-      <h2 class="section-headline">Powering enterprises across the world.</h2>
-      <p class="section-body" style="margin:1rem auto 0">
-        From Mumbai to New York, Singapore to London — DEJOIY infrastructure runs in every major market, delivering enterprise-grade performance with local intelligence.
-      </p>
+      <div class="badge" style="margin-bottom:1.25rem"><span class="badge-dot"></span>Global Reach</div>
+      <h2 class="section-headline">Delivering joy across every continent.</h2>
+      <p class="section-body" style="margin:1rem auto 0">From Mumbai to New York — DEJOIY BPO and marketplace operations span 50+ countries with localized excellence.</p>
     </div>
 
-    <div class="world-map-container reveal" style="margin-top:3rem">
-      <!-- SVG world map outline -->
+    <div class="world-map-container reveal" style="margin-top:2.5rem">
       <svg class="world-map-svg" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
-        <!-- Simplified world regions as paths -->
         <g fill="none" stroke="rgba(99,102,241,0.4)" stroke-width="0.8">
-          <!-- North America -->
           <path d="M 95 120 L 85 140 L 75 155 L 85 170 L 95 185 L 105 195 L 120 200 L 135 195 L 145 180 L 155 165 L 165 150 L 175 135 L 170 120 L 155 110 L 140 105 L 125 108 L 110 115 Z"/>
-          <!-- South America -->
           <path d="M 150 230 L 140 250 L 145 270 L 155 290 L 160 310 L 158 330 L 150 345 L 145 360 L 155 375 L 165 370 L 175 355 L 178 335 L 175 315 L 170 295 L 168 275 L 172 255 L 170 240 L 162 232 Z"/>
-          <!-- Europe -->
           <path d="M 440 100 L 430 115 L 435 130 L 450 140 L 465 135 L 475 120 L 470 105 L 455 98 Z"/>
-          <!-- Africa -->
           <path d="M 460 180 L 445 200 L 440 225 L 445 255 L 455 280 L 460 305 L 465 325 L 475 335 L 485 325 L 492 305 L 490 280 L 485 255 L 488 225 L 482 200 L 470 182 Z"/>
-          <!-- Asia/India -->
           <path d="M 580 130 L 565 150 L 570 175 L 585 195 L 600 185 L 610 165 L 605 145 L 592 133 Z"/>
-          <!-- Southeast Asia -->
           <path d="M 680 180 L 670 195 L 675 215 L 690 225 L 702 215 L 705 198 L 695 183 Z"/>
-          <!-- Oceania -->
           <path d="M 750 310 L 740 330 L 750 350 L 770 355 L 785 340 L 782 320 L 768 308 Z"/>
-          <!-- Additional landmass shapes -->
           <path d="M 320 90 L 310 105 L 315 120 L 330 125 L 345 118 L 348 103 L 335 92 Z"/>
           <path d="M 500 75 L 490 88 L 498 102 L 515 105 L 525 92 L 518 78 Z"/>
           <path d="M 610 90 L 600 108 L 610 125 L 630 128 L 645 112 L 638 95 L 622 88 Z"/>
           <path d="M 700 100 L 690 118 L 700 135 L 720 138 L 735 120 L 725 103 Z"/>
           <path d="M 800 140 L 790 160 L 795 180 L 815 185 L 830 168 L 822 148 Z"/>
         </g>
-        <!-- Grid lines -->
         <g stroke="rgba(255,255,255,0.03)" stroke-width="0.5">
-          <line x1="0" y1="125" x2="1000" y2="125"/>
-          <line x1="0" y1="250" x2="1000" y2="250"/>
-          <line x1="0" y1="375" x2="1000" y2="375"/>
-          <line x1="250" y1="0" x2="250" y2="500"/>
-          <line x1="500" y1="0" x2="500" y2="500"/>
-          <line x1="750" y1="0" x2="750" y2="500"/>
+          <line x1="0" y1="125" x2="1000" y2="125"/><line x1="0" y1="250" x2="1000" y2="250"/>
+          <line x1="0" y1="375" x2="1000" y2="375"/><line x1="250" y1="0" x2="250" y2="500"/>
+          <line x1="500" y1="0" x2="500" y2="500"/><line x1="750" y1="0" x2="750" y2="500"/>
         </g>
       </svg>
+      <div class="map-node" style="left:19%;top:45%"></div>
+      <div class="map-node" style="left:14%;top:50%;animation-delay:0.4s"></div>
+      <div class="map-node" style="left:45%;top:38%;animation-delay:0.8s"></div>
+      <div class="map-node" style="left:50%;top:42%;animation-delay:1.2s"></div>
+      <div class="map-node" style="left:56%;top:50%;animation-delay:1.6s"></div>
+      <div class="map-node" style="left:68%;top:48%;animation-delay:2s"></div>
+      <div class="map-node" style="left:76%;top:44%;animation-delay:2.4s"></div>
+      <div class="map-node" style="left:76%;top:64%;animation-delay:2.8s"></div>
+      <div class="map-node" style="left:46%;top:60%;animation-delay:3.2s"></div>
 
-      <!-- Map nodes positioned over approximate city locations -->
-      <div class="map-node" style="left:19%;top:45%" title="New York"></div>
-      <div class="map-node" style="left:14%;top:50%" title="San Francisco"></div>
-      <div class="map-node" style="left:45%;top:38%" title="London"></div>
-      <div class="map-node" style="left:50%;top:42%" title="Frankfurt"></div>
-      <div class="map-node" style="left:56%;top:50%" title="Mumbai"></div>
-      <div class="map-node" style="left:68%;top:48%" title="Singapore"></div>
-      <div class="map-node" style="left:76%;top:44%" title="Tokyo"></div>
-      <div class="map-node" style="left:76%;top:64%" title="Sydney"></div>
-      <div class="map-node" style="left:46%;top:60%" title="Lagos"></div>
-
-      <!-- Region labels -->
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem;border-top:1px solid rgba(255,255,255,0.06);padding-top:2rem">
-        <div style="text-align:center">
-          <div style="font-size:1.3rem;font-weight:800;font-family:'Syne',sans-serif" class="gradient-text">Americas</div>
-          <div style="font-size:0.8rem;color:var(--text-dim);margin-top:0.25rem">New York · São Paulo · Toronto</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem;border-top:1px solid rgba(255,255,255,0.05);padding-top:2rem;text-align:center">
+        <div>
+          <div style="font-size:1.2rem;font-weight:800;font-family:'Syne',sans-serif" class="gradient-text">Americas</div>
+          <div style="font-size:0.78rem;color:var(--text-dim);margin-top:0.2rem">New York · Toronto · São Paulo</div>
         </div>
-        <div style="text-align:center">
-          <div style="font-size:1.3rem;font-weight:800;font-family:'Syne',sans-serif" class="gradient-text">EMEA</div>
-          <div style="font-size:0.8rem;color:var(--text-dim);margin-top:0.25rem">London · Frankfurt · Dubai</div>
+        <div>
+          <div style="font-size:1.2rem;font-weight:800;font-family:'Syne',sans-serif" class="gradient-text">EMEA</div>
+          <div style="font-size:0.78rem;color:var(--text-dim);margin-top:0.2rem">London · Frankfurt · Dubai</div>
         </div>
-        <div style="text-align:center">
-          <div style="font-size:1.3rem;font-weight:800;font-family:'Syne',sans-serif" class="gradient-text">APAC</div>
-          <div style="font-size:0.8rem;color:var(--text-dim);margin-top:0.25rem">Mumbai · Singapore · Tokyo</div>
+        <div>
+          <div style="font-size:1.2rem;font-weight:800;font-family:'Syne',sans-serif" class="gradient-text">APAC</div>
+          <div style="font-size:0.78rem;color:var(--text-dim);margin-top:0.2rem">Mumbai · Singapore · Tokyo</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════
-     ABOUT PILLARS
-════════════════════════════════════════ -->
-<section class="section" style="background:rgba(255,255,255,0.01)">
-  <div class="container">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center" class="about-grid">
-      <div class="reveal">
-        <div class="badge" style="margin-bottom:1.25rem">
-          <span class="badge-dot"></span>
-          Who We Are
-        </div>
-        <h2 class="section-headline">A modern technology company built on an ecosystem mindset.</h2>
-        <p class="section-body" style="margin-top:1rem">
-          DEJOIY exists to create a connected digital infrastructure that powers commerce, business growth, partner enablement, and scalable operational systems. We think in systems, not products.
-        </p>
-        <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap">
-          <a href="about.html" class="btn-primary">Our Story</a>
-          <a href="team.html" class="btn-ghost">Meet the Team</a>
-        </div>
-      </div>
-
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
-        <div class="empire-card reveal reveal-delay-1" style="padding:1.75rem">
-          <div style="font-size:2rem;margin-bottom:0.75rem">🎯</div>
-          <div style="font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-dim);margin-bottom:0.5rem">Mission</div>
-          <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.7">Build reliable digital platforms that simplify commerce and empower business users.</p>
-        </div>
-        <div class="empire-card reveal reveal-delay-2" style="padding:1.75rem">
-          <div style="font-size:2rem;margin-bottom:0.75rem">🔭</div>
-          <div style="font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-dim);margin-bottom:0.5rem">Vision</div>
-          <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.7">A category-defining technology ecosystem connecting customers, businesses, and operations.</p>
-        </div>
-        <div class="empire-card reveal reveal-delay-3" style="padding:1.75rem">
-          <div style="font-size:2rem;margin-bottom:0.75rem">⚡</div>
-          <div style="font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-dim);margin-bottom:0.5rem">Speed</div>
-          <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.7">Move faster than the market. Ship intelligently. Iterate with purpose.</p>
-        </div>
-        <div class="empire-card reveal reveal-delay-4" style="padding:1.75rem">
-          <div style="font-size:2rem;margin-bottom:0.75rem">🌐</div>
-          <div style="font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-dim);margin-bottom:0.5rem">Global</div>
-          <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.7">Built for every market. Designed for every culture. Scaled for the world.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════
-     CTA
-════════════════════════════════════════ -->
+<!-- ═══ CTA ═══ -->
 <section class="section-sm">
   <div class="container">
     <div class="cta-card reveal">
       <div class="cta-card-inner">
-        <div class="badge" style="margin-bottom:1.5rem">
-          <span class="badge-dot"></span>
-          Let's Build Together
-        </div>
-        <h2 class="section-headline" style="max-width:700px;margin:0 auto 1rem">
-          Ready to build the next chapter of digital growth?
+        <div class="badge" style="margin-bottom:1.5rem"><span class="badge-dot"></span>Start Your Journey</div>
+        <h2 class="section-headline" style="max-width:620px;margin:0 auto 0.85rem">
+          Ready to experience <span class="gradient-text">You + Joy</span>?
         </h2>
-        <p class="section-body" style="margin:0 auto 2.5rem;text-align:center">
-          Whether you're exploring partnerships, enterprise solutions, or technology collaboration — DEJOIY is open to meaningful conversations that create lasting value.
-        </p>
+        <p class="section-body" style="margin:0 auto 2.25rem;text-align:center">Whether you need world-class BPO or the best marketplace — DEJOIY delivers both, backed by the promise of joy in every interaction.</p>
         <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
-          <a href="contact.html" class="btn-primary">
-            Contact DEJOIY
-            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M13 7l5 5-5 5M6 12h12"/></svg>
-          </a>
-          <a href="https://business.dejoiy.com" target="_blank" rel="noopener" class="btn-ghost">Open Business Portal</a>
+          <a href="contact.html" class="btn-primary">Get Started Free <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="margin-left:2px"><path d="M13 7l5 5-5 5M6 12h12"/></svg></a>
+          <a href="https://www.dejoiy.com" target="_blank" rel="noopener" class="btn-ghost">Shop Marketplace</a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════
-     FOOTER
-════════════════════════════════════════ -->
+<!-- ═══ FOOTER ═══ -->
 <footer class="site-footer">
   <div class="container">
     <div class="footer-grid">
-      <!-- Brand -->
       <div>
         <a href="index.html" class="nav-logo" style="display:inline-flex;margin-bottom:1rem">
-          <div class="nav-logo-icon">
-            <img src="assets/images/logo/dejoiy-logo.png" alt="DEJOIY" />
-          </div>
-          <div>
-            <div class="nav-logo-text">DEJOIY</div>
-            <div class="nav-logo-sub">Global HQ</div>
-          </div>
+          <div class="nav-logo-icon"><img src="assets/images/logo/dejoiy-logo.png" alt="DEJOIY" /></div>
+          <div><div class="nav-logo-text">DEJOIY</div><div class="nav-logo-sub">You + Joy</div></div>
         </a>
-        <p class="footer-brand-desc">
-          DEJOIY is the corporate headquarters of a global technology ecosystem spanning commerce, AI infrastructure, enterprise software, and partner enablement.
-        </p>
+        <p class="footer-brand-desc">DEJOIY India Private Limited — Where YOU + JOY = DEJOIY. Building India's greatest BPO and digital marketplace empire.</p>
         <div class="social-row">
-          <a href="#" class="social-btn" aria-label="LinkedIn">in</a>
-          <a href="#" class="social-btn" aria-label="Instagram">ig</a>
-          <a href="#" class="social-btn" aria-label="X / Twitter">𝕏</a>
-          <a href="#" class="social-btn" aria-label="YouTube">▶</a>
+          <a href="#" class="social-btn" title="LinkedIn">in</a>
+          <a href="#" class="social-btn" title="Instagram">ig</a>
+          <a href="#" class="social-btn" title="X">𝕏</a>
+          <a href="#" class="social-btn" title="YouTube">▶</a>
         </div>
       </div>
-
-      <!-- Navigation -->
       <div>
         <div class="footer-col-title">Company</div>
         <div class="footer-links">
           <a href="index.html">Home</a>
-          <a href="about.html">About DEJOIY</a>
-          <a href="services.html">Services</a>
-          <a href="team.html">Leadership</a>
+          <a href="about.html">About Us</a>
+          <a href="services.html">BPO Services</a>
+          <a href="team.html">Our Team</a>
           <a href="contact.html">Contact</a>
         </div>
       </div>
-
-      <!-- Platforms -->
       <div>
         <div class="footer-col-title">Platforms</div>
         <div class="footer-links">
-          <a href="https://www.dejoiy.com" target="_blank" rel="noopener">Marketplace</a>
-          <a href="https://business.dejoiy.com" target="_blank" rel="noopener">Business Portal</a>
-          <a href="services.html">Enterprise AI</a>
-          <a href="services.html">Developer APIs</a>
-          <a href="services.html">OrbitDesk</a>
+          <a href="https://www.dejoiy.com" target="_blank" rel="noopener">🛒 Marketplace</a>
+          <a href="https://business.dejoiy.com" target="_blank" rel="noopener">🏢 Business Portal</a>
+          <a href="services.html">💼 BPO Services</a>
+          <a href="services.html">📧 Dejoiy Mail</a>
+          <a href="services.html">🎧 OrbitDesk</a>
         </div>
       </div>
-
-      <!-- Legal -->
       <div>
         <div class="footer-col-title">Legal</div>
         <div class="footer-links">
@@ -680,31 +534,32 @@
         </div>
       </div>
     </div>
-
     <div class="footer-divider"></div>
-
     <div class="footer-bottom">
       <div class="footer-bottom-text">
         © 2026 DEJOIY India Private Limited. All rights reserved.<br />
-        DEJOIY® and all associated platforms are proprietary brands of DEJOIY India Private Limited.
+        YOU + JOY = DEJOIY® — Registered trademark of DEJOIY India Private Limited.
       </div>
       <div class="footer-domains">
         <a href="https://www.dejoiy.co.in">dejoiy.co.in</a>
-        <a href="https://www.dejoiy.com" target="_blank" rel="noopener">dejoiy.com</a>
-        <a href="https://business.dejoiy.com" target="_blank" rel="noopener">business.dejoiy.com</a>
+        <a href="https://www.dejoiy.com" target="_blank">dejoiy.com</a>
+        <a href="https://business.dejoiy.com" target="_blank">business.dejoiy.com</a>
       </div>
     </div>
   </div>
 </footer>
 
-<!-- Innovation grid responsive -->
 <style>
 @media(max-width:768px){
-  .about-grid{grid-template-columns:1fr!important}
-  .innovation-responsive{grid-template-columns:1fr!important}
+  .market-top-grid{grid-template-columns:1fr!important}
+  .product-grid{grid-template-columns:1fr!important}
+  .bpo-stat-grid{grid-template-columns:1fr!important}
+}
+@media(max-width:1100px){
+  .market-top-grid{grid-template-columns:1fr!important}
+  .bpo-stat-grid{grid-template-columns:1fr 1fr!important}
 }
 </style>
-
 <script src="assets/js/main.js"></script>
 </body>
 </html>

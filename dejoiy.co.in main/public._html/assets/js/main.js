@@ -1,332 +1,322 @@
 /* ================================================
-   DEJOIY — Main Application Script v2.0
-   $1B Brand Identity
+   DEJOIY — Main JS v3.0
+   BPO + Marketplace | YOU + JOY = DEJOIY
 ================================================ */
+;(function () {
+  'use strict';
 
-(function () {
-  "use strict";
+  document.addEventListener('DOMContentLoaded', function () {
+    initNav();
+    initScrollReveal();
+    initCounters();
+    initInnovationBars();
+    initImageSwap();
+    initThreeJS();
+  });
 
-  /* ── NAV SCROLL STATE ── */
-  const nav = document.querySelector(".nav-wrap");
-  if (nav) {
-    const handleScroll = () => {
-      nav.classList.toggle("scrolled", window.scrollY > 40);
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
+  /* ══════════════════════════
+     NAVIGATION
+  ══════════════════════════ */
+  function initNav() {
+    var nav = document.getElementById('mainNav');
+    var hamburger = document.getElementById('navHamburger');
+    var mobileMenu = document.getElementById('mobileMenu');
+    var menuOpen = false;
+
+    window.addEventListener('scroll', function () {
+      if (!nav) return;
+      if ((window.pageYOffset || document.documentElement.scrollTop) > 60) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    }, { passive: true });
+
+    if (hamburger && mobileMenu) {
+      hamburger.addEventListener('click', function () {
+        menuOpen = !menuOpen;
+        if (menuOpen) {
+          hamburger.classList.add('open');
+          hamburger.setAttribute('aria-expanded', 'true');
+          mobileMenu.classList.add('open');
+          document.body.style.overflow = 'hidden';
+        } else {
+          close();
+        }
+      });
+
+      document.addEventListener('click', function (e) {
+        if (menuOpen && !mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
+          close();
+        }
+      });
+
+      mobileMenu.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', close);
+      });
+    }
+
+    function close() {
+      menuOpen = false;
+      if (hamburger) { hamburger.classList.remove('open'); hamburger.setAttribute('aria-expanded', 'false'); }
+      if (mobileMenu) { mobileMenu.classList.remove('open'); }
+      document.body.style.overflow = '';
+    }
+
+    /* Active link */
+    var currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-links a').forEach(function (link) {
+      if (link.getAttribute('href') === currentPage) {
+        link.classList.add('active');
+      }
+    });
   }
 
-  /* ── MOBILE MENU ── */
-  const hamburger = document.getElementById("navHamburger");
-  const mobileMenu = document.getElementById("mobileMenu");
-  if (hamburger && mobileMenu) {
-    hamburger.addEventListener("click", () => {
-      mobileMenu.classList.toggle("open");
-      hamburger.setAttribute(
-        "aria-expanded",
-        mobileMenu.classList.contains("open").toString()
-      );
-    });
-    document.querySelectorAll(".mobile-menu a").forEach((link) => {
-      link.addEventListener("click", () => {
-        mobileMenu.classList.remove("open");
-        hamburger.setAttribute("aria-expanded", "false");
+  /* ══════════════════════════
+     SCROLL REVEAL
+  ══════════════════════════ */
+  function initScrollReveal() {
+    var els = document.querySelectorAll('.reveal');
+    if (!els.length) return;
+
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
+
+    els.forEach(function (el) { obs.observe(el); });
+  }
+
+  /* ══════════════════════════
+     ANIMATED COUNTERS
+  ══════════════════════════ */
+  function initCounters() {
+    var counters = document.querySelectorAll('[data-counter]');
+    if (!counters.length) return;
+
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    counters.forEach(function (el) { obs.observe(el); });
+  }
+
+  function animateCounter(el) {
+    var raw = el.getAttribute('data-target');
+    if (!raw) return;
+    var target = parseFloat(raw);
+    var suffix = el.getAttribute('data-suffix') || '';
+    var isDecimal = raw.indexOf('.') !== -1;
+    var decimals = isDecimal ? (raw.split('.')[1] || '').length : 0;
+    var duration = 2200;
+    var startTime = null;
+
+    function step(ts) {
+      if (!startTime) startTime = ts;
+      var t = Math.min((ts - startTime) / duration, 1);
+      var eased = 1 - Math.pow(1 - t, 3);
+      var cur = target * eased;
+      el.textContent = (isDecimal ? cur.toFixed(decimals) : Math.round(cur)) + suffix;
+      if (t < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  /* ══════════════════════════
+     INNOVATION BARS
+  ══════════════════════════ */
+  function initInnovationBars() {
+    var bars = document.querySelectorAll('.innovation-bar-fill');
+    if (!bars.length) return;
+
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animated');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    bars.forEach(function (b) { obs.observe(b); });
+  }
+
+  /* ══════════════════════════
+     IMAGE SWAP
+  ══════════════════════════ */
+  function initImageSwap() {
+    document.querySelectorAll('[data-swap-image]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var state = btn.getAttribute('data-state');
+        var card = btn.closest('.founder-feature-card');
+        if (!card) return;
+        var img = card.querySelector('.founder-img-wrap img');
+        if (!img) return;
+
+        img.style.opacity = '0';
+        img.style.transition = 'opacity 0.3s ease';
+
+        setTimeout(function () {
+          if (state === 'primary') {
+            img.src = btn.getAttribute('data-alternate');
+            img.alt = btn.getAttribute('data-alternate-alt') || '';
+            btn.setAttribute('data-state', 'alternate');
+            btn.textContent = '← Original Photo';
+          } else {
+            img.src = btn.getAttribute('data-primary');
+            img.alt = btn.getAttribute('data-primary-alt') || '';
+            btn.setAttribute('data-state', 'primary');
+            btn.textContent = '✨ Spirit Animal';
+          }
+          img.style.opacity = '1';
+        }, 300);
       });
     });
   }
 
-  /* ── INTERSECTION OBSERVER REVEALS ── */
-  const revealEls = document.querySelectorAll(".reveal");
-  if (revealEls.length) {
-    const revealObs = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
-    );
-    revealEls.forEach((el) => revealObs.observe(el));
-  }
+  /* ══════════════════════════
+     THREE.JS PARTICLE D
+  ══════════════════════════ */
+  function initThreeJS() {
+    var canvas = document.getElementById('hero-canvas');
+    if (!canvas) return;
 
-  /* ── ANIMATED COUNTERS ── */
-  function animateCounter(el) {
-    const target = parseFloat(el.getAttribute("data-target") || el.textContent);
-    const suffix = el.getAttribute("data-suffix") || "";
-    const prefix = el.getAttribute("data-prefix") || "";
-    const duration = 2000;
-    const start = performance.now();
-
-    function update(time) {
-      const elapsed = time - start;
-      const progress = Math.min(elapsed / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 4);
-      const current = Math.round(eased * target * 10) / 10;
-      el.textContent = prefix + (Number.isInteger(target) ? Math.round(current) : current.toFixed(1)) + suffix;
-      if (progress < 1) requestAnimationFrame(update);
+    if (typeof THREE === 'undefined') {
+      setTimeout(initThreeJS, 800);
+      return;
     }
 
-    requestAnimationFrame(update);
-  }
+    var W = canvas.offsetWidth || window.innerWidth;
+    var H = canvas.offsetHeight || window.innerHeight;
 
-  const counterEls = document.querySelectorAll("[data-counter]");
-  if (counterEls.length) {
-    const counterObs = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            animateCounter(entry.target);
-            counterObs.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
-    counterEls.forEach((el) => counterObs.observe(el));
-  }
-
-  /* ── INNOVATION BAR FILLS ── */
-  const barFills = document.querySelectorAll(".innovation-bar-fill");
-  if (barFills.length) {
-    const barObs = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("animated");
-            barObs.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
-    barFills.forEach((el) => barObs.observe(el));
-  }
-
-  /* ── THREE.JS HERO PARTICLE SYSTEM ── */
-  function initHeroCanvas() {
-    const canvas = document.getElementById("hero-canvas");
-    if (!canvas || typeof THREE === "undefined") return;
-
-    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+    var renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.setSize(canvas.offsetWidth, canvas.offsetHeight);
+    renderer.setSize(W, H);
     renderer.setClearColor(0x000000, 0);
 
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(60, canvas.offsetWidth / canvas.offsetHeight, 0.1, 1000);
-    camera.position.z = 5;
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(60, W / H, 0.1, 1000);
+    camera.position.z = 16;
 
-    /* -- Build "D" shape particle positions -- */
-    const dPoints = [];
-    const count = 1800;
+    var isMobile = window.innerWidth < 768;
+    var particleCount = isMobile ? 800 : 1600;
 
-    for (let i = 0; i < count; i++) {
-      const t = (i / count) * Math.PI * 2;
-      let x, y, z;
+    /* Draw D on 2D canvas to get pixel map */
+    var c2 = document.createElement('canvas');
+    c2.width = 200; c2.height = 200;
+    var ctx2 = c2.getContext('2d');
+    ctx2.fillStyle = '#000';
+    ctx2.fillRect(0, 0, 200, 200);
+    ctx2.fillStyle = '#fff';
+    ctx2.font = 'bold 200px Arial Black, sans-serif';
+    ctx2.textAlign = 'center';
+    ctx2.textBaseline = 'middle';
+    ctx2.fillText('D', 100, 105);
 
-      if (i < count * 0.55) {
-        // Semicircle arc of D
-        const ang = (i / (count * 0.55)) * Math.PI - Math.PI / 2;
-        const r = 1.5 + Math.random() * 0.06 - 0.03;
-        x = Math.cos(ang) * r + 0.2;
-        y = Math.sin(ang) * r;
-      } else if (i < count * 0.70) {
-        // Left vertical bar of D (top)
-        x = -1.5 + Math.random() * 0.06;
-        y = ((i - count * 0.55) / (count * 0.15)) * 3 - 1.5;
+    var imgData = ctx2.getImageData(0, 0, 200, 200).data;
+    var valid = [];
+    for (var y = 0; y < 200; y++) {
+      for (var x = 0; x < 200; x++) {
+        if (imgData[(y * 200 + x) * 4] > 100) valid.push([x, y]);
+      }
+    }
+
+    var dPos = [];
+    var scatterPos = [];
+    for (var i = 0; i < particleCount; i++) {
+      var p = valid[Math.floor(Math.random() * valid.length)];
+      dPos.push((p[0] / 200 - 0.5) * 18, -(p[1] / 200 - 0.5) * 18, (Math.random() - 0.5) * 2);
+      scatterPos.push((Math.random() - 0.5) * 36, (Math.random() - 0.5) * 36, (Math.random() - 0.5) * 18);
+    }
+
+    var geo = new THREE.BufferGeometry();
+    /* We'll linearly interpolate in JS each frame */
+    var currentPos = scatterPos.slice(); /* Start scattered */
+    geo.setAttribute('position', new THREE.Float32BufferAttribute(currentPos, 3));
+
+    var mat = new THREE.PointsMaterial({
+      size: isMobile ? 0.12 : 0.09,
+      transparent: true,
+      opacity: 0.72,
+      sizeAttenuation: true,
+      color: new THREE.Color(0x6366f1)
+    });
+
+    var pts = new THREE.Points(geo, mat);
+    scene.add(pts);
+
+    var clock = new THREE.Clock();
+    var mouseX = 0, mouseY = 0;
+    var morphT = 0;
+    var direction = 1;
+    var holdFrames = 0;
+    var holding = false;
+
+    document.addEventListener('mousemove', function (e) {
+      mouseX = (e.clientX / window.innerWidth - 0.5);
+      mouseY = -(e.clientY / window.innerHeight - 0.5);
+    }, { passive: true });
+
+    function easeInOut(t) { return t * t * (3 - 2 * t); }
+
+    (function animate() {
+      requestAnimationFrame(animate);
+      var time = clock.getElapsedTime();
+      var posAttr = geo.getAttribute('position');
+      var arr = posAttr.array;
+      var ease = easeInOut(Math.max(0, Math.min(1, morphT)));
+
+      for (var k = 0; k < particleCount; k++) {
+        var b = k * 3;
+        arr[b]   = scatterPos[b]   + (dPos[b]   - scatterPos[b])   * ease;
+        arr[b+1] = scatterPos[b+1] + (dPos[b+1] - scatterPos[b+1]) * ease;
+        arr[b+2] = scatterPos[b+2] + (dPos[b+2] - scatterPos[b+2]) * ease;
+      }
+      posAttr.needsUpdate = true;
+
+      /* Morph logic */
+      if (!holding) {
+        morphT += 0.006 * direction;
+        if (morphT >= 1) {
+          morphT = 1; holding = true; holdFrames = 0;
+        } else if (morphT <= 0) {
+          morphT = 0; holding = true; holdFrames = 0; direction *= -1;
+        }
       } else {
-        // Scattered fill particles inside D
-        const attempts = 5;
-        x = (Math.random() - 0.5) * 3.4;
-        y = (Math.random() - 0.5) * 3;
-        // basic D shape boundary
-        if (x > -1.45) {
-          const dist = Math.sqrt((x - 0.2) * (x - 0.2) + y * y);
-          if (dist > 1.55 || x < -1.4) {
-            x = (Math.random() - 0.3) * 2 - 0.4;
-            y = (Math.random() - 0.5) * 3;
-          }
+        holdFrames++;
+        if (holdFrames > 180) {
+          holding = false;
+          direction *= -1;
         }
       }
 
-      z = (Math.random() - 0.5) * 0.4;
-      dPoints.push(x, y, z);
-    }
+      /* Rotation + parallax */
+      pts.rotation.y = time * 0.03 + mouseX * 0.12;
+      pts.rotation.x = mouseY * 0.07;
 
-    const geometry = new THREE.BufferGeometry();
-    geometry.setAttribute("position", new THREE.Float32BufferAttribute(dPoints, 3));
-
-    // Random offsets for wave animation
-    const offsets = new Float32Array(count);
-    for (let i = 0; i < count; i++) offsets[i] = Math.random() * Math.PI * 2;
-    geometry.setAttribute("offset", new THREE.BufferAttribute(offsets, 1));
-
-    const material = new THREE.PointsMaterial({
-      size: 0.022,
-      vertexColors: false,
-      color: new THREE.Color(0x60a5fa),
-      transparent: true,
-      opacity: 0.9,
-      sizeAttenuation: true,
-    });
-
-    const points = new THREE.Points(geometry, material);
-    scene.add(points);
-
-    // Secondary scattered particles (ambient)
-    const ambientCount = 600;
-    const ambientPositions = new Float32Array(ambientCount * 3);
-    for (let i = 0; i < ambientCount; i++) {
-      ambientPositions[i * 3] = (Math.random() - 0.5) * 10;
-      ambientPositions[i * 3 + 1] = (Math.random() - 0.5) * 8;
-      ambientPositions[i * 3 + 2] = (Math.random() - 0.5) * 4;
-    }
-    const ambientGeo = new THREE.BufferGeometry();
-    ambientGeo.setAttribute("position", new THREE.Float32BufferAttribute(ambientPositions, 3));
-    const ambientMat = new THREE.PointsMaterial({
-      size: 0.01,
-      color: new THREE.Color(0x818cf8),
-      transparent: true,
-      opacity: 0.3,
-      sizeAttenuation: true,
-    });
-    const ambient = new THREE.Points(ambientGeo, ambientMat);
-    scene.add(ambient);
-
-    let mouse = { x: 0, y: 0 };
-    let targetRotX = 0, targetRotY = 0;
-
-    canvas.addEventListener("mousemove", (e) => {
-      const rect = canvas.getBoundingClientRect();
-      mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
-      mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
-      targetRotY = mouse.x * 0.2;
-      targetRotX = mouse.y * 0.15;
-    });
-
-    let frame = 0;
-
-    function animate() {
-      requestAnimationFrame(animate);
-      frame++;
-
-      // Wave the particles gently
-      const pos = geometry.attributes.position.array;
-      const off = geometry.attributes.offset.array;
-      for (let i = 0; i < count; i++) {
-        const idx = i * 3;
-        pos[idx + 2] = Math.sin(frame * 0.012 + off[i]) * 0.08;
-      }
-      geometry.attributes.position.needsUpdate = true;
-
-      // Smooth mouse tracking
-      points.rotation.y += (targetRotY - points.rotation.y) * 0.04;
-      points.rotation.x += (targetRotX - points.rotation.x) * 0.04;
-      ambient.rotation.y += 0.0005;
-
-      // Color pulse
-      const hue = (frame * 0.002) % 1;
-      material.color.setHSL(0.58 + hue * 0.15, 0.8, 0.65);
+      /* Slow color pulse */
+      var h = 0.67 + Math.sin(time * 0.2) * 0.06;
+      mat.color.setHSL(h, 0.85, 0.62);
 
       renderer.render(scene, camera);
-    }
+    })();
 
-    animate();
-
-    // Resize
-    const resizeObs = new ResizeObserver(() => {
-      renderer.setSize(canvas.offsetWidth, canvas.offsetHeight);
-      camera.aspect = canvas.offsetWidth / canvas.offsetHeight;
+    window.addEventListener('resize', function () {
+      var w = window.innerWidth;
+      var h = canvas.offsetHeight || window.innerHeight;
+      camera.aspect = w / h;
       camera.updateProjectionMatrix();
+      renderer.setSize(w, h);
     });
-    resizeObs.observe(canvas);
   }
-
-  /* ── GSAP SCROLL ANIMATIONS ── */
-  function initGSAP() {
-    if (typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") return;
-
-    gsap.registerPlugin(ScrollTrigger);
-
-    // Parallax orbs
-    document.querySelectorAll(".parallax-orb").forEach((orb, i) => {
-      gsap.to(orb, {
-        y: -100 * (i % 2 === 0 ? 1 : -1),
-        scrollTrigger: {
-          trigger: orb.closest("section") || document.body,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
-    });
-
-    // Vision quote word-by-word
-    const visionQuote = document.querySelector(".vision-quote-inner");
-    if (visionQuote) {
-      const text = visionQuote.textContent;
-      const words = text.split(" ");
-      visionQuote.innerHTML = words
-        .map((w) => `<span class="vword" style="opacity:0.2;display:inline-block;margin-right:0.25em">${w}</span>`)
-        .join("");
-
-      gsap.to(".vword", {
-        opacity: 1,
-        stagger: 0.05,
-        duration: 0.5,
-        scrollTrigger: {
-          trigger: visionQuote,
-          start: "top 80%",
-          end: "bottom 40%",
-          scrub: true,
-        },
-      });
-    }
-  }
-
-  /* ── IMAGE SWAP (team) ── */
-  document.querySelectorAll("[data-swap-image]").forEach((card) => {
-    card.addEventListener("click", function () {
-      const img = card.querySelector("img");
-      const primary = card.getAttribute("data-primary");
-      const alternate = card.getAttribute("data-alternate");
-      const state = card.getAttribute("data-state") || "primary";
-      if (!img || !primary || !alternate) return;
-
-      img.style.opacity = "0";
-      img.style.transition = "opacity 0.3s ease";
-
-      setTimeout(() => {
-        if (state === "primary") {
-          img.src = alternate;
-          img.alt = card.getAttribute("data-alternate-alt") || "";
-          card.setAttribute("data-state", "alternate");
-        } else {
-          img.src = primary;
-          img.alt = card.getAttribute("data-primary-alt") || "";
-          card.setAttribute("data-state", "primary");
-        }
-        img.style.opacity = "1";
-      }, 300);
-    });
-  });
-
-  /* ── MAP NODES STAGGER ── */
-  document.querySelectorAll(".map-node").forEach((node, i) => {
-    node.style.animationDelay = `${(i * 0.4) % 3}s`;
-  });
-
-  /* ── INIT ── */
-  document.addEventListener("DOMContentLoaded", () => {
-    initHeroCanvas();
-    initGSAP();
-  });
-
-  // Also try after load for Three.js
-  window.addEventListener("load", () => {
-    initHeroCanvas();
-  });
 
 })();
