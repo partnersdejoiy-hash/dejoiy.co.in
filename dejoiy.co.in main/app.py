@@ -86,7 +86,7 @@ def contact():
         </div>
       </div>
       <div style="padding:16px 32px;background:#0d0d0d;text-align:center;font-size:12px;color:#4b5563">
-        DEJOIY India Private Limited · connect@dejoiy.com
+        DEJOIY · connect@dejoiy.com
       </div>
     </div>
     """
