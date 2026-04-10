@@ -18,6 +18,18 @@ PAGES = {
 def index():
     return send_from_directory(app.static_folder, 'index.html')
 
+@app.after_request
+def add_cache_headers(response):
+    path = request.path
+    if path.startswith('/assets/'):
+        if path.endswith(('.css', '.js')):
+            response.cache_control.max_age = 604800
+            response.cache_control.public = True
+        elif path.endswith(('.jpg', '.jpeg', '.png', '.svg', '.webp', '.gif')):
+            response.cache_control.max_age = 2592000
+            response.cache_control.public = True
+    return response
+
 @app.route('/<page>')
 def page(page):
     if page in PAGES:
