@@ -59,8 +59,15 @@ def contact():
     html_body = f"""
     <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;background:#0d0d0d;color:#f0f0f0;border-radius:12px;overflow:hidden">
       <div style="background:linear-gradient(135deg,#2563eb,#7c3aed);padding:24px 32px">
-        <h1 style="margin:0;font-size:22px;color:white;letter-spacing:0.04em">New Enquiry — DEJOIY</h1>
-        <p style="margin:6px 0 0;color:rgba(255,255,255,0.75);font-size:13px">YOU + JOY = DEJOIY</p>
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px">
+          <img src="https://dejoiy.co.in/assets/images/logo/dejoiy-logo.png" alt="DEJOIY" width="44" height="44" style="border-radius:10px;display:block" />
+          <div>
+            <div style="font-size:20px;font-weight:800;color:white;letter-spacing:0.04em;line-height:1.1">DEJOIY</div>
+            <div style="font-size:11px;color:rgba(255,255,255,0.65);letter-spacing:0.1em;text-transform:uppercase">You + Joy</div>
+          </div>
+        </div>
+        <h1 style="margin:0;font-size:20px;color:white;letter-spacing:0.02em">New Enquiry</h1>
+        <p style="margin:5px 0 0;color:rgba(255,255,255,0.7);font-size:12px">YOU + JOY = DEJOIY</p>
       </div>
       <div style="padding:28px 32px;background:#111827">
         <table style="width:100%;border-collapse:collapse">
@@ -86,7 +93,7 @@ def contact():
 
     try:
         resend.Emails.send({
-            'from': 'DEJOIY Contact <onboarding@resend.dev>',
+            'from': 'DEJOIY <noreply.notifications@dejoiy.com>',
             'to': ['partners.dejoiy@gmail.com'],
             'reply_to': email,
             'subject': f'[DEJOIY] New {enquiry or "Enquiry"} from {first_name} {last_name}',
