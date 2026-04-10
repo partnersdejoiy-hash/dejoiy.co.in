@@ -1,5 +1,7 @@
 {
   "buildCommand": "mkdir -p public && cp -r 'dejoiy.co.in main/public/.' public/",
   "outputDirectory": "public",
-  "framework": null
+  "framework": null,
+  "cleanUrls": true,
+  "trailingSlash": false
 }
