@@ -1,18 +1,34 @@
 import os
 import resend
-from flask import Flask, request, jsonify, send_from_directory
+from flask import Flask, request, jsonify, send_from_directory, redirect
 
 app = Flask(__name__, static_folder='public', static_url_path='')
 
 resend.api_key = os.environ.get('RESEND_API_KEY', '')
 
+PAGES = {
+    '':         'index.html',
+    'about':    'about.html',
+    'services': 'services.html',
+    'team':     'team.html',
+    'contact':  'contact.html',
+}
+
 @app.route('/')
 def index():
     return send_from_directory(app.static_folder, 'index.html')
 
-@app.route('/<path:path>')
-def static_files(path):
-    return send_from_directory(app.static_folder, path)
+@app.route('/<page>')
+def page(page):
+    if page in PAGES:
+        return send_from_directory(app.static_folder, PAGES[page])
+    if page.endswith('.html'):
+        slug = page[:-5]
+        if slug == 'index':
+            return redirect('/', 301)
+        if slug in PAGES:
+            return redirect(f'/{slug}', 301)
+    return send_from_directory(app.static_folder, page)
 
 @app.route('/api/contact', methods=['POST'])
 def contact():
