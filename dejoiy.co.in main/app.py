@@ -95,7 +95,7 @@ def contact():
         resend.Emails.send({
             'from': 'DEJOIY <noreply.notifications@dejoiy.com>',
             'to': ['partners.dejoiy@gmail.com'],
-            'reply_to': email,
+            'reply_to': 'connect@dejoiy.com',
             'subject': f'[DEJOIY] New {enquiry or "Enquiry"} from {first_name} {last_name}',
             'html': html_body,
         })
