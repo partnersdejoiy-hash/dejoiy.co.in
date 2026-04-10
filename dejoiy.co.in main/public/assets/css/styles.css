@@ -546,6 +546,7 @@ svg { display:block; flex-shrink:0; }
   content:""; position:absolute; inset:0;
   background:radial-gradient(ellipse at 50% 0%,rgba(99,102,241,0.1),transparent 70%);
   opacity:0; transition:opacity 0.4s;
+  pointer-events:none;
 }
 .empire-card:hover {
   border-color:rgba(99,102,241,0.38);
