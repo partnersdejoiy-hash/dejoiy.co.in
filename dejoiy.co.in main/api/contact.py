@@ -58,7 +58,7 @@ class handler(BaseHTTPRequestHandler):
 
         try:
             resend.Emails.send({
-                'from': 'DEJOIY Contact <onboarding@resend.dev>',
+                'from': 'DEJOIY <noreply.notifications@dejoiy.com>',
                 'to': ['partners.dejoiy@gmail.com'],
                 'reply_to': email,
                 'subject': f'[DEJOIY] New {enquiry or "Enquiry"} from {first_name} {last_name}',
