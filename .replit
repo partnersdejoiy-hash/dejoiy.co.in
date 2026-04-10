@@ -36,3 +36,8 @@ externalPort = 80
 [deployment]
 deploymentTarget = "static"
 publicDir = "dejoiy.co.in main/public._html"
+
+[userenv]
+
+[userenv.shared]
+RESEND_API_KEY = "re_iHNGgqTb_AgyAR8WHszXMQZP4vXCqLt4r"
