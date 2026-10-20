@@ -335,11 +335,11 @@
       '#px-overlay{position:fixed;inset:0;z-index:99999;pointer-events:none;overflow:hidden}',
       '#px-canvas{position:absolute;inset:0;width:100%;height:100%}',
       '#px-d{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(0) rotate(-180deg);',
-      'font-family:"Syne",sans-serif;font-weight:800;font-size:55vw;line-height:0.9;',
-      'background:linear-gradient(135deg,#60a5fa,#a78bfa,#22d3ee);',
+      'font-family:"Anton", sans-serif;font-weight:800;font-size:55vw;line-height:0.9;',
+      'background:linear-gradient(135deg,#ff7ac6,#b9a2ff,#8db0ff);',
       '-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;',
       'opacity:0;will-change:transform,opacity;user-select:none}',
-      '#px-flash{position:absolute;inset:0;background:linear-gradient(135deg,#020408 0%,#2563eb 40%,#7c3aed 70%,#06b6d4 100%);opacity:0}'
+      '#px-flash{position:absolute;inset:0;background:linear-gradient(135deg,#05030d 0%,#e2399b 40%,#8b5cf6 70%,#3d6ff5 100%);opacity:0}'
     ].join('');
     document.head.appendChild(styleEl);
 
@@ -377,7 +377,7 @@
         pxFlash.style.opacity = Math.max(0, 1 - ease * 1.4).toString();
 
         var maxR = Math.sqrt(W * W + H * H) * 0.7;
-        var colors = ['#2563eb', '#7c3aed', '#06b6d4', '#6366f1', '#a78bfa', '#22d3ee'];
+        var colors = ['#e2399b', '#8b5cf6', '#3d6ff5', '#ff7ac6', '#b9a2ff', '#8db0ff'];
         for (var i = 0; i < 7; i++) {
           var frac = (i / 7);
           var r = maxR * (1 - ease) * (1 - frac * 0.3);
@@ -422,7 +422,7 @@
         ctx.clearRect(0, 0, W, H);
 
         /* Darkening BG */
-        ctx.fillStyle = 'rgba(2,4,8,' + Math.min(p * 2, 1) + ')';
+        ctx.fillStyle = 'rgba(5,3,13,' + Math.min(p * 2, 1) + ')';
         ctx.fillRect(0, 0, W, H);
 
         /* Vortex spiral arms */

@@ -1,7 +1,7 @@
-# DEJOIY Global Headquarters — $1B Brand Identity Website
+# DEJOIY — corporate website (dejoiy.co.in)
 
 ## Overview
-Corporate headquarters website for DEJOIY India Private Limited. Fully redesigned as a premium global brand identity — SpaceX-level scrolling structure, Apple-level design quality, cinematic typography, and enterprise technology positioning.
+Corporate website for DEJOIY India Private Limited (Founder & CEO: Jyoti Sharma): people, technology and connected commerce. Copy stays factual: no rankings, unverified statistics, certifications or awards.
 
 ## Technology Stack
 - Pure HTML5, CSS3, and vanilla JavaScript (ES6+)
@@ -17,7 +17,12 @@ Corporate headquarters website for DEJOIY India Private Limited. Fully redesigne
 - `team.html` — Founder spotlight + ALL 9 team members with photos + 6 culture values
 - `contact.html` — Premium contact form with side info panel
 
-## Design System (assets/css/styles.css)
+## Universe layer (assets/css/universe.css, assets/js/universe.js)
+- Shared with business.dejoiy.com: a live Three.js cosmos (nebula, deep starfield, the DEJOIY core, disc and orbits) fixed behind every page; sections steer the camera with `data-station="core|signal|wide|drift"` on a critically damped spring. universe.js is a copy of lib/cosmos/engine.js + shaders.js from the dejoiy-site repo.
+- Type: Anton (monument, headings) + Work Sans (text). Flat ground #07050f, ink #f2ede4, one accent (brand magenta #e5338a). Square corners; no glass, gradients or icon cards in the UI.
+- Static CSS star sky when WebGL is unavailable; reduced motion renders still frames.
+
+## Base design system (assets/css/styles.css)
 - Color system: Deep midnight (#020408) → royal indigo → electric cyan
 - Typography: Syne 800 for display, Inter for body
 - Components: `.empire-card`, `.badge`, `.btn-primary`, `.btn-ghost`, `.glass`, `.glow-border`
