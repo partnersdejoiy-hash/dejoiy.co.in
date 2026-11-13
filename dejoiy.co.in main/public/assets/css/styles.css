@@ -18,12 +18,12 @@
   --butter: #ffd93d;
 
   /* bold card tints */
-  --t-blue: #a9c2ff;
-  --t-pink: #ffa8d2;
-  --t-lime: #e4ff80;
-  --t-sky: #a3e6ff;
-  --t-orange: #ffbb8c;
-  --t-butter: #ffe680;
+  --t-blue: #5fa0f5;
+  --t-pink: #ea5b9f;
+  --t-lime: #6fd98a;
+  --t-sky: #64d1bd;
+  --t-orange: #ef8f4c;
+  --t-butter: #f5d05a;
 
   --line: 2.5px solid var(--ink);
   --shadow: 5px 5px 0 var(--ink);
@@ -370,3 +370,27 @@ textarea.field { resize: vertical; min-height: 140px; }
 .apppanel a.card h3 { margin: .4rem 0 0; }
 @keyframes panelIn { from { opacity: 0; transform: translateY(14px) rotate(-.6deg); } }
 @media (max-width: 860px) { .legal-grid { grid-template-columns: 1fr; } .legal-toc { position: static; } }
+
+/* Bold Dmail-style tints: text on coloured cards stays dark ink so it reads */
+.t-blue, .t-pink, .t-lime, .t-sky, .t-orange, .t-butter { --ink-2: #1c1c1c; --ink-3: #2c2c2c; }
+.t-blue p, .t-pink p, .t-lime p, .t-sky p, .t-orange p, .t-butter p,
+.t-blue li, .t-pink li, .t-lime li, .t-sky li, .t-orange li, .t-butter li { color: #1c1c1c; }
+.tile p { color: #1c1c1c; }
+.person span { color: #1c1c1c; }
+.founder .role { color: #141414; background: #fff; display: inline-block; padding: .2rem .6rem; border-radius: 999px; border: 2px solid #141414; }
+.world .num { opacity: .8; }
+/* CTA: Dmail-style colour block with ink text */
+.cta { background: var(--t-blue); color: var(--ink); }
+.cta p { color: #1c1c1c; }
+.cta::before { background: var(--t-pink); }
+.cta::after { background: var(--t-butter); }
+.cta .btn-lime { background: var(--ink); color: #fff; box-shadow: 4px 4px 0 #fff; }
+.cta .btn-lime:hover { box-shadow: 7px 7px 0 #fff; }
+.band-pink { background: var(--t-pink); }
+.band-blue { background: var(--t-blue); color: var(--ink); }
+.band-blue .lede { color: #1c1c1c; }
+.band-sky { background: var(--t-sky); }
+.band-butter { background: var(--t-butter); }
+.band-lime { background: var(--lime); }
+.apppanel .label, .apppanel p { color: #1c1c1c; }
+.mark-blue { background: var(--t-blue); color: var(--ink); }
