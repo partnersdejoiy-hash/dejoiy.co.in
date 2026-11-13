@@ -172,12 +172,12 @@
             img.src = btn.getAttribute('data-alternate');
             img.alt = btn.getAttribute('data-alternate-alt') || '';
             btn.setAttribute('data-state', 'alternate');
-            btn.textContent = '← Original Photo';
+            btn.textContent = 'Original Photo';
           } else {
             img.src = btn.getAttribute('data-primary');
             img.alt = btn.getAttribute('data-primary-alt') || '';
             btn.setAttribute('data-state', 'primary');
-            btn.textContent = '✨ Spirit Animal';
+            btn.textContent = 'Spirit Animal';
           }
           img.style.opacity = '1';
         }, 300);

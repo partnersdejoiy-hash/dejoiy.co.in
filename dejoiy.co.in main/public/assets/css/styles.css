@@ -1352,3 +1352,80 @@ body { background: var(--dj-ink); }
   radial-gradient(45% 60% at 85% 30%, rgba(58,107,255,.55), transparent 65%),
   radial-gradient(35% 45% at 100% 90%, rgba(255,61,154,.35), transparent 70%), transparent; }
 .site-footer { background: #0e0830; }
+
+/* ================================================
+   Gen-Z v6 — light pastel cards (dejoiy.com style), dark ink text
+================================================ */
+:root {
+  --p-blue: #dfe7ff; --p-pink: #ffdcec; --p-lime: #ecffc4; --p-sky: #d8f3ff; --p-lav: #e8e1ff; --p-peach: #ffe6d4;
+  --card-ink: #120b3a; --card-ink-2: #4a4378; --card-ink-3: #6f69a0;
+}
+.empire-card, .tech-card, .innovation-stat-card, .bpo-card, .team-card, .cta-card, .founder-feature-card, .world {
+  --text-primary: var(--card-ink); --text-secondary: var(--card-ink-2); --text-dim: var(--card-ink-3);
+  color: var(--card-ink); border: 0 !important;
+  box-shadow: 0 1px 0 rgba(255,255,255,.6) inset, 0 18px 40px rgba(8,4,40,.28) !important;
+}
+.empire-card, .tech-card, .innovation-stat-card, .bpo-card, .cta-card, .founder-feature-card { background: var(--p-lav) !important; }
+/* rotate pastels so neighbours differ */
+.empire-card:nth-of-type(6n+1), .tech-card:nth-of-type(4n+1), .innovation-stat-card:nth-of-type(3n+1) { background: var(--p-blue) !important; }
+.empire-card:nth-of-type(6n+2), .tech-card:nth-of-type(4n+2), .innovation-stat-card:nth-of-type(3n+2) { background: var(--p-pink) !important; }
+.empire-card:nth-of-type(6n+3), .tech-card:nth-of-type(4n+3), .innovation-stat-card:nth-of-type(3n+3) { background: var(--p-lime) !important; }
+.empire-card:nth-of-type(6n+4), .tech-card:nth-of-type(4n+4) { background: var(--p-sky) !important; }
+.empire-card:nth-of-type(6n+5) { background: var(--p-peach) !important; }
+.empire-card:nth-of-type(6n+6) { background: var(--p-lav) !important; }
+.empire-card-title, .tech-card-title, .team-card-name, .innovation-label, .empire-card h3, .tech-card h3, .tech-card h4 { color: var(--card-ink) !important; }
+.empire-card-desc, .tech-card-body, .innovation-sub, .empire-card p, .tech-card p, .founder-info p { color: var(--card-ink-2) !important; }
+.empire-card-link { color: var(--card-ink) !important; font-weight: 800; }
+.tech-card-label, .team-card-role { color: #c2187a !important; }
+.tech-tag { background: rgba(18,11,58,.07) !important; color: var(--card-ink) !important; border-color: rgba(18,11,58,.12) !important; }
+.empire-card-icon { background: #fff !important; box-shadow: 0 4px 12px rgba(18,11,58,.08); }
+.empire-card-icon svg { stroke: var(--card-ink) !important; }
+.empire-card .badge, .tech-card .badge { background: #fff; color: var(--card-ink); border-color: transparent; }
+.empire-card .badge-dot { background: var(--dj-pink); }
+.empire-card:hover, .tech-card:hover, .bpo-card:hover, .innovation-stat-card:hover, .team-card:hover {
+  transform: translateY(-4px) rotate(-.4deg); box-shadow: 6px 6px 0 var(--dj-lemon), 0 22px 44px rgba(8,4,40,.3) !important; }
+.empire-card::before, .glow-border::before { display: none !important; }
+.input-field { background: #fff !important; color: var(--card-ink) !important; border: 2px solid transparent !important; }
+.input-field:focus { border-color: var(--dj-pink) !important; }
+.input-field::placeholder { color: #8b86ad !important; }
+.empire-card label, .empire-card .form-label { color: var(--card-ink-2) !important; }
+
+/* Team cards: photo on top, pastel name plate */
+.team-card { background: var(--p-lav) !important; overflow: hidden; }
+.team-card:nth-child(4n+1) { background: var(--p-blue) !important; }
+.team-card:nth-child(4n+2) { background: var(--p-pink) !important; }
+.team-card:nth-child(4n+3) { background: var(--p-lime) !important; }
+.team-card:nth-child(4n+4) { background: var(--p-sky) !important; }
+.team-card-overlay { display: none; }
+.founder-feature-card { background: var(--p-peach) !important; }
+.founder-feature-card h2 { color: var(--card-ink) !important; }
+
+/* Homepage worlds: pastel blocks with saturated blobs */
+.world { color: var(--card-ink) !important; }
+.world p { opacity: 1; color: var(--card-ink-2); }
+.w-market { background: var(--p-blue) !important; }
+.w-market .blob { background: radial-gradient(circle at 30% 30%, #fff, var(--dj-blue) 62%); opacity: .55; }
+.w-bpo { background: var(--p-pink) !important; }
+.w-bpo .blob { background: radial-gradient(circle at 30% 30%, #fff, var(--dj-pink) 62%); opacity: .5; }
+.w-tech { background: var(--p-lime) !important; }
+.w-tech .blob { background: radial-gradient(circle at 30% 30%, #fff, #8fd400 62%); opacity: .45; }
+.w-mail { background: var(--p-sky) !important; }
+.w-mail .blob { background: radial-gradient(circle at 30% 30%, #fff, #1fb8f0 62%); opacity: .45; }
+.w-joi { background: var(--p-lav) !important; }
+.w-joi .blob { background: radial-gradient(circle at 30% 30%, #fff, #7b5cff 62%); opacity: .45; }
+.world .go { color: var(--card-ink); }
+.world:hover { box-shadow: 6px 6px 0 var(--dj-lemon), 0 22px 44px rgba(8,4,40,.3) !important; }
+
+/* Service rows and country chips become pastel tiles too */
+.svc-list { border: 0; gap: 1rem; }
+.svc { background: var(--p-lav); color: var(--card-ink); border: 0 !important; border-radius: 20px; padding: 1.4rem; }
+.svc:nth-child(6n+1) { background: var(--p-blue); } .svc:nth-child(6n+2) { background: var(--p-pink); }
+.svc:nth-child(6n+3) { background: var(--p-lime); } .svc:nth-child(6n+4) { background: var(--p-sky); }
+.svc:nth-child(6n+5) { background: var(--p-peach); }
+.svc p { color: var(--card-ink-2); } .svc i { color: #c2187a; }
+.country { background: var(--p-lav); color: var(--card-ink); border: 0; }
+.country small { color: #c2187a; }
+.country.hq { background: var(--dj-lemon); color: var(--card-ink); }
+.country.hq small { color: var(--card-ink); }
+.empire-card a:not(.btn-primary):not(.btn-ghost):not(.social-btn), .tech-card a:not(.btn-primary):not(.btn-ghost) { color: #c2187a !important; }
+.empire-card .social-btn { background: #fff; color: var(--card-ink); border-color: transparent; }

@@ -179,7 +179,7 @@
               .then(function(r) { return r.json(); })
               .then(function(d) {
                 if (d.success) {
-                  setStatus('✓ Message sent! We will get back to you within 24 hours.', false);
+                  setStatus('Message sent. We will reply within 24 hours.', false);
                   form.reset();
                 } else {
                   setStatus(d.error || 'Something went wrong. Please try again.', true);
@@ -203,14 +203,12 @@
       <!-- Info -->
       <div class="reveal reveal-delay-2" style="display:flex;flex-direction:column;gap:1.5rem">
         <div class="empire-card" style="padding:2rem">
-          <div style="font-size:1.5rem;margin-bottom:1rem">🌐</div>
           <div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-dim);margin-bottom:0.5rem">Global Headquarters</div>
-          <div style="font-size:1rem;font-weight:600;color:white;margin-bottom:0.25rem">DEJOIY India Private Limited</div>
+          <div style="font-size:1rem;font-weight:600;color:var(--text-primary);margin-bottom:0.25rem">DEJOIY India Private Limited</div>
           <div style="font-size:0.9rem;color:var(--text-secondary)">India — Serving enterprises globally</div>
         </div>
 
         <div class="empire-card" style="padding:2rem">
-          <div style="font-size:1.5rem;margin-bottom:1rem">✉️</div>
           <div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-dim);margin-bottom:0.75rem">Email Us Directly</div>
           <div style="display:flex;flex-direction:column;gap:0.75rem">
             <div>
@@ -231,14 +229,12 @@
         </div>
 
         <div class="empire-card" style="padding:2rem">
-          <div style="font-size:1.5rem;margin-bottom:1rem">⚡</div>
           <div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-dim);margin-bottom:0.5rem">Response Time</div>
-          <div style="font-size:1rem;font-weight:600;color:white;margin-bottom:0.25rem">Within 24 Hours</div>
+          <div style="font-size:1rem;font-weight:600;color:var(--text-primary);margin-bottom:0.25rem">Within 24 Hours</div>
           <div style="font-size:0.9rem;color:var(--text-secondary)">Enterprise enquiries are prioritized and routed to the right team.</div>
         </div>
 
         <div class="empire-card" style="padding:2rem">
-          <div style="font-size:1.5rem;margin-bottom:1rem">🔗</div>
           <div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-dim);margin-bottom:0.5rem">Direct Platforms</div>
           <div style="display:flex;flex-direction:column;gap:0.75rem;margin-top:0.75rem">
             <a href="https://www.dejoiy.com" target="_blank" rel="noopener" class="empire-card-link">Visit Marketplace <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M13 7l5 5-5 5M6 12h12"/></svg></a>
