@@ -216,16 +216,16 @@
     var camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
     camera.position.set(0, 0, 9);
 
-    scene.add(new THREE.HemisphereLight(0xbcd4ff, 0x3a1238, 0.55));
+    scene.add(new THREE.HemisphereLight(0xffffff, 0xffe9d6, 0.7));
     var key = new THREE.DirectionalLight(0xffffff, 1.2); key.position.set(3, 4, 5); scene.add(key);
-    var rimPink = new THREE.PointLight(0xff3d9a, 2.6, 20); rimPink.position.set(-4, -2, 3); scene.add(rimPink);
-    var rimSun = new THREE.PointLight(0xc6ff3d, 1.2, 20); rimSun.position.set(4, -3, 2); scene.add(rimSun);
+    var rimPink = new THREE.PointLight(0xff4fa3, 0.9, 20); rimPink.position.set(-4, -2, 3); scene.add(rimPink);
+    var rimSun = new THREE.PointLight(0xd4ff3a, 0.9, 20); rimSun.position.set(4, -3, 2); scene.add(rimSun);
 
     // Soft candy studio for reflections (avoids black rims on the glossy edges)
     (function () {
       var c = document.createElement('canvas'); c.width = 256; c.height = 128;
       var g = c.getContext('2d'), gr = g.createLinearGradient(0, 0, 0, 128);
-      gr.addColorStop(0, '#cfe0ff'); gr.addColorStop(0.45, '#5b9bff'); gr.addColorStop(0.7, '#ff3d9a'); gr.addColorStop(1, '#2a1640');
+      gr.addColorStop(0, '#ffffff'); gr.addColorStop(0.45, '#9cc0ff'); gr.addColorStop(0.7, '#2f6bff'); gr.addColorStop(1, '#fff3e0');
       g.fillStyle = gr; g.fillRect(0, 0, 256, 128);
       var tex = new THREE.CanvasTexture(c); tex.mapping = THREE.EquirectangularReflectionMapping; tex.encoding = THREE.sRGBEncoding;
       var pm = new THREE.PMREMGenerator(renderer);
@@ -237,7 +237,7 @@
     // Wobbly jelly blob: vertex displacement injected into a physical material
     var uniforms = { uTime: { value: 0 }, uAmp: { value: reduce ? 0.06 : 0.22 } };
     function lin(hex) { return new THREE.Color(hex).convertSRGBToLinear(); }
-    var jellyMat = new THREE.MeshPhysicalMaterial({ color: lin(0x3a6bff), roughness: 0.22, metalness: 0, clearcoat: 1, clearcoatRoughness: 0.06, envMapIntensity: 0.6 });
+    var jellyMat = new THREE.MeshPhysicalMaterial({ color: lin(0x2f6bff), roughness: 0.22, metalness: 0, clearcoat: 1, clearcoatRoughness: 0.06, envMapIntensity: 0.6 });
     jellyMat.onBeforeCompile = function (shader) {
       shader.uniforms.uTime = uniforms.uTime;
       shader.uniforms.uAmp = uniforms.uAmp;
@@ -253,11 +253,11 @@
 
     // Candy satellites in the brand colours
     var candy = [
-      { geo: new THREE.TorusGeometry(0.42, 0.17, 24, 64), c: 0xff3d9a, p: [-2.4, 1.3, 0.6] },
-      { geo: new THREE.SphereGeometry(0.34, 40, 40),      c: 0xc6ff3d, p: [2.3, 1.5, -0.4] },
+      { geo: new THREE.TorusGeometry(0.42, 0.17, 24, 64), c: 0xff4fa3, p: [-2.4, 1.3, 0.6] },
+      { geo: new THREE.SphereGeometry(0.34, 40, 40),      c: 0xd4ff3a, p: [2.3, 1.5, -0.4] },
       { geo: THREE.CapsuleGeometry ? new THREE.CapsuleGeometry(0.22, 0.5, 8, 24) : new THREE.CylinderGeometry(0.22, 0.22, 0.8, 24), c: 0x4dd8ff, p: [2.1, -1.6, 0.8] },
       { geo: new THREE.TorusKnotGeometry(0.28, 0.1, 96, 16), c: 0xff8a3d, p: [-2.0, -1.5, -0.3] },
-      { geo: new THREE.SphereGeometry(0.18, 32, 32),      c: 0xb9a6ff, p: [0.4, 2.3, 1.0] }
+      { geo: new THREE.SphereGeometry(0.18, 32, 32),      c: 0xffffff, p: [0.4, 2.3, 1.0] }
     ];
     var sats = candy.map(function (d, i) {
       var m = new THREE.Mesh(d.geo, new THREE.MeshPhysicalMaterial({ color: lin(d.c), roughness: 0.25, clearcoat: 1, clearcoatRoughness: 0.1 }));
@@ -363,196 +363,100 @@
   }
 
   /* ══════════════════════════
-     PAGE TRANSITIONS — RIDICULOUS EDITION
+     :D INTRO + PAGE TRANSITIONS
+     Pink eye drops, then ink eye, then the D. A wink, a quarter turn
+     into a smiley, and the curtain lifts. Full show once per session,
+     a quick wink on later pages.
   ══════════════════════════ */
   function initPageTransitions() {
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var css = document.createElement('style');
+    css.textContent =
+      '#dj-intro{position:fixed;inset:0;z-index:300;background:#2f6bff;display:grid;place-items:center;pointer-events:none}' +
+      '#dj-intro svg{width:min(46vmin,340px);overflow:visible}' +
+      '#dj-intro .p{transform-box:fill-box;transform-origin:center}' +
+      '#dj-intro.done{visibility:hidden}';
+    document.head.appendChild(css);
+
     var ov = document.createElement('div');
-    ov.id = 'px-overlay';
-    ov.innerHTML = '<canvas id="px-canvas"></canvas><div id="px-d">D</div><div id="px-flash"></div>';
-    document.body.appendChild(ov);
+    ov.id = 'dj-intro';
+    ov.setAttribute('aria-hidden', 'true');
+    // Same geometry as the logo mark: lime D-box, pink eye, ink eye, ink D
+    ov.innerHTML =
+      '<svg viewBox="-20 -40 200 200"><g class="p face">' +
+        '<path class="p box" d="M18 -20H80A70 70 0 0 1 80 120H18A18 18 0 0 1 0 102V-2A18 18 0 0 1 18 -20Z" fill="#D4FF3A"/>' +
+        '<g transform="translate(22 17) scale(.66)">' +
+          '<circle class="p eye1" cx="13" cy="28" r="12" fill="#FF4FA3"/>' +
+          '<circle class="p eye2" cx="13" cy="72" r="12" fill="#121212"/>' +
+          '<path class="p mouth" fill-rule="evenodd" d="M38 0H88A50 50 0 0 1 88 100H38Z M62 26H86A24 24 0 0 1 86 74H62Z" fill="#121212"/>' +
+        '</g></g></svg>';
+    (document.body || document.documentElement).appendChild(ov);
 
-    var styleEl = document.createElement('style');
-    styleEl.textContent = [
-      '#px-overlay{position:fixed;inset:0;z-index:99999;pointer-events:none;overflow:hidden}',
-      '#px-canvas{position:absolute;inset:0;width:100%;height:100%}',
-      '#px-d{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(0) rotate(-180deg);',
-      'font-family:"Bricolage Grotesque", sans-serif;font-weight:800;font-size:55vw;line-height:0.9;',
-      'background:linear-gradient(135deg,#5b9bff,#ff5fa2,#3ee6b0);',
-      '-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;',
-      'opacity:0;will-change:transform,opacity;user-select:none}',
-      '#px-flash{position:absolute;inset:0;background:linear-gradient(135deg,#0b0a1a 0%,#2f7cf6 40%,#ff5fa2 70%,#3ee6b0 100%);opacity:0}'
-    ].join('');
-    document.head.appendChild(styleEl);
+    var q = function (s) { return ov.querySelector(s); };
+    var face = q('.face'), box = q('.box'), e1 = q('.eye1'), e2 = q('.eye2'), mouth = q('.mouth');
+    var ease = 'cubic-bezier(.34,1.56,.64,1)'; // springy overshoot
 
-    var pxCanvas = document.getElementById('px-canvas');
-    var ctx = pxCanvas.getContext('2d');
-    var pxD = document.getElementById('px-d');
-    var pxFlash = document.getElementById('px-flash');
-    var W, H;
+    function drop(el, delay) {
+      return el.animate([
+        { transform: 'translateY(-160vh)', opacity: 1 },
+        { transform: 'translateY(0) scale(1.15,.8)', offset: .7 },
+        { transform: 'translateY(-10%) scale(.95,1.08)', offset: .85 },
+        { transform: 'translateY(0) scale(1,1)' }
+      ], { duration: 520, delay: delay, easing: 'cubic-bezier(.5,0,.75,0)', fill: 'backwards' });
+    }
+    function lift(delay) {
+      var a = ov.animate([{ clipPath: 'inset(0 0 0 0)' }, { clipPath: 'inset(0 0 100% 0)' }],
+        { duration: 520, delay: delay, easing: 'cubic-bezier(.7,0,.2,1)', fill: 'forwards' });
+      a.onfinish = function () { ov.classList.add('done'); };
+    }
 
-    function resize() { W = pxCanvas.width = window.innerWidth; H = pxCanvas.height = window.innerHeight; }
-    resize();
-    window.addEventListener('resize', resize);
-
-    /* ---- ENTRY: Flash fades out + warp rings collapse, page revealed ---- */
     function playEntry() {
-      /* Immediately cover with gradient flash so there's zero stuck frame */
-      pxD.style.transition = 'none';
-      pxD.style.opacity = '0';
-      pxD.style.transform = 'translate(-50%,-50%) scale(0) rotate(-180deg)';
-      pxFlash.style.transition = 'none';
-      pxFlash.style.opacity = '1';
-
-      var startTime = null;
-      var dur = 700;
-      var raf;
-
-      function tick(ts) {
-        if (!startTime) startTime = ts;
-        var p = Math.min((ts - startTime) / dur, 1);
-        var ease = 1 - Math.pow(1 - p, 3);
-
-        ctx.clearRect(0, 0, W, H);
-
-        /* Fade the gradient flash out as rings collapse */
-        pxFlash.style.opacity = Math.max(0, 1 - ease * 1.4).toString();
-
-        var maxR = Math.sqrt(W * W + H * H) * 0.7;
-        var colors = ['#2f7cf6', '#ff5fa2', '#3ee6b0', '#2f7cf6', '#ff5fa2', '#3ee6b0'];
-        for (var i = 0; i < 7; i++) {
-          var frac = (i / 7);
-          var r = maxR * (1 - ease) * (1 - frac * 0.3);
-          var alpha = Math.max(0, (1 - p) * 0.9 - frac * 0.1);
-          ctx.beginPath();
-          ctx.arc(W / 2, H / 2, r, 0, Math.PI * 2);
-          ctx.strokeStyle = colors[i % colors.length];
-          ctx.globalAlpha = alpha;
-          ctx.lineWidth = 3;
-          ctx.stroke();
-          ctx.globalAlpha = 1;
-        }
-
-        if (p < 1) { raf = requestAnimationFrame(tick); }
-        else {
-          ctx.clearRect(0, 0, W, H);
-          pxFlash.style.opacity = '0';
-          cancelAnimationFrame(raf);
-        }
+      var seen = false;
+      try { seen = sessionStorage.getItem('dj-intro') === '1'; sessionStorage.setItem('dj-intro', '1'); } catch (e) {}
+      if (reduce || !ov.animate) { ov.classList.add('done'); return; }
+      if (seen) { // quick: wink and lift
+        e1.animate([{ transform: 'scaleY(1)' }, { transform: 'scaleY(.12)' }, { transform: 'scaleY(1)' }], { duration: 260, delay: 60 });
+        lift(260);
+        return;
       }
-      requestAnimationFrame(tick);
+      box.animate([{ transform: 'scale(0) rotate(-20deg)' }, { transform: 'scale(1) rotate(0)' }], { duration: 420, easing: ease, fill: 'backwards' });
+      drop(e1, 300);          // first eye
+      drop(e2, 620);          // second eye
+      drop(mouth, 940);       // then the D
+      // wink with the pink eye
+      e1.animate([{ transform: 'scaleY(1)' }, { transform: 'scaleY(.1)' }, { transform: 'scaleY(.1)' }, { transform: 'scaleY(1)' }],
+        { duration: 420, delay: 1620, easing: 'ease-in-out' });
+      // quarter turn: ":D" becomes an upright smiley
+      face.animate([{ transform: 'rotate(0)' }, { transform: 'rotate(90deg)' }],
+        { duration: 560, delay: 2120, easing: ease, fill: 'forwards' });
+      lift(2800);
     }
 
-    /* ---- EXIT: Vortex explosion + giant D + flash → navigate ---- */
     function playExit(href) {
-      var startTime = null;
-      var dur = 900;
-      var angle = 0;
-      var done = false;
-      var raf;
-
-      pxD.style.transition = 'none';
-      pxD.style.opacity = '0';
-      pxD.style.transform = 'translate(-50%,-50%) scale(0) rotate(-180deg)';
-      pxFlash.style.opacity = '0';
-
-      function tick(ts) {
-        if (!startTime) startTime = ts;
-        var p = Math.min((ts - startTime) / dur, 1);
-        angle += 0.07;
-
-        ctx.clearRect(0, 0, W, H);
-
-        /* Darkening BG */
-        ctx.fillStyle = 'rgba(2,4,8,' + Math.min(p * 2, 1) + ')';
-        ctx.fillRect(0, 0, W, H);
-
-        /* Vortex spiral arms */
-        var maxR = Math.sqrt(W * W + H * H);
-        var armColors = [
-          'rgba(96,165,250,', 'rgba(255,95,162,',
-          'rgba(62,230,176,', 'rgba(47,124,246,',
-          'rgba(139,92,246,', 'rgba(62,230,176,'
-        ];
-        for (var arm = 0; arm < 6; arm++) {
-          var baseAngle = (arm / 6) * Math.PI * 2 + angle;
-          for (var j = 0; j < 70; j++) {
-            var t = j / 70;
-            var sr = t * maxR * Math.min(p * 1.2, 1) * 0.85;
-            var sa = baseAngle + t * Math.PI * 5;
-            var px = W / 2 + Math.cos(sa) * sr;
-            var py = H / 2 + Math.sin(sa) * sr;
-            var pa = (1 - t) * 0.5 * Math.min(p * 2, 1);
-            ctx.beginPath();
-            ctx.arc(px, py, (1 - t) * 4.5 * p, 0, Math.PI * 2);
-            ctx.fillStyle = armColors[arm % armColors.length] + pa + ')';
-            ctx.fill();
-          }
-        }
-
-        /* Contracting energy rings */
-        for (var ri = 0; ri < 6; ri++) {
-          var rr = maxR * (1 - p * 0.9) * ((6 - ri) / 6) * 0.8;
-          if (rr < 0) rr = 0;
-          var ra = Math.min(p * 3, 1) * (ri / 6) * 0.9;
-          ctx.beginPath();
-          ctx.arc(W / 2, H / 2, rr, 0, Math.PI * 2);
-          ctx.strokeStyle = 'rgba(255,95,162,' + ra + ')';
-          ctx.lineWidth = 2.5;
-          ctx.stroke();
-        }
-
-        /* Shockwave rings bursting out */
-        for (var si = 0; si < 3; si++) {
-          var sp = Math.max(0, p - si * 0.15);
-          var sw = maxR * sp * 0.9;
-          var sa2 = Math.max(0, 0.7 - sp);
-          ctx.beginPath();
-          ctx.arc(W / 2, H / 2, sw, 0, Math.PI * 2);
-          ctx.strokeStyle = 'rgba(62,230,176,' + sa2 + ')';
-          ctx.lineWidth = 2;
-          ctx.stroke();
-        }
-
-        /* Giant D rises and spins into view */
-        if (p > 0.28) {
-          var dp = Math.min((p - 0.28) / 0.42, 1);
-          var dEase = 1 - Math.pow(1 - dp, 2);
-          var dRot = (1 - dEase) * -200;
-          pxD.style.opacity = dEase.toString();
-          pxD.style.transform = 'translate(-50%,-50%) scale(' + (dEase * 1.15 + 0.05) + ') rotate(' + dRot + 'deg)';
-        }
-
-        if (p < 0.92) {
-          raf = requestAnimationFrame(tick);
-        } else {
-          cancelAnimationFrame(raf);
-          /* Gradient flash → navigate */
-          pxFlash.style.transition = 'opacity 0.18s ease';
-          pxFlash.style.opacity = '1';
-          if (!done) {
-            done = true;
-            setTimeout(function () { window.location.href = href; }, 180);
-          }
-        }
-      }
-      requestAnimationFrame(tick);
+      if (reduce || !ov.animate) { location.href = href; return; }
+      ov.classList.remove('done');
+      ov.getAnimations().forEach(function (a) { a.cancel(); });
+      face.getAnimations().forEach(function (a) { a.cancel(); });
+      ov.animate([{ clipPath: 'inset(100% 0 0 0)' }, { clipPath: 'inset(0 0 0 0)' }], { duration: 380, easing: 'cubic-bezier(.7,0,.2,1)', fill: 'forwards' });
+      face.animate([{ transform: 'scale(.4) rotate(-30deg)' }, { transform: 'scale(1) rotate(0)' }], { duration: 380, easing: ease, fill: 'forwards' });
+      setTimeout(function () { location.href = href; }, 400);
     }
 
-    /* ---- Intercept internal nav links ---- */
+    // Internal same-site links get the curtain; anchors, new tabs and other sites don't
     document.addEventListener('click', function (e) {
       var a = e.target.closest('a');
-      if (!a) return;
+      if (!a || a.target === '_blank' || e.metaKey || e.ctrlKey || e.shiftKey) return;
       var href = a.getAttribute('href');
-      if (!href) return;
-      if (a.target === '_blank') return;
-      if (href.startsWith('http') || href.startsWith('//') || href.startsWith('#') ||
-          href.startsWith('mailto') || href.startsWith('tel')) return;
-      if (!href.match(/\.html$|^\/$|^index/)) return;
+      if (!href || href.charAt(0) === '#' || /^(mailto|tel):/.test(href)) return;
+      var url = new URL(href, location.href);
+      if (url.origin !== location.origin || (url.pathname === location.pathname && url.hash)) return;
       e.preventDefault();
-      playExit(href);
+      playExit(url.href);
     }, true);
 
-    /* ---- Play entry on every page load ---- */
+    // Back/forward cache: never show a stuck curtain
+    window.addEventListener('pageshow', function (e) { if (e.persisted) ov.classList.add('done'); });
+
     playEntry();
   }
 
