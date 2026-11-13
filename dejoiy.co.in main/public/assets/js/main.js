@@ -186,138 +186,179 @@
   }
 
   /* ══════════════════════════
-     THREE.JS PARTICLE D
+     THREE.JS — JELLY HERO (Gen-Z v4)
   ══════════════════════════ */
   function initThreeJS() {
+    initHeroSwap();
+    initTilt();
+    var hero = document.getElementById('hero3d') || document.querySelector('.page-hero-section');
+    if (!hero || typeof THREE === 'undefined') return;
+    var mini = hero.id !== 'hero3d'; // inner pages get a smaller jelly on the right
     var canvas = document.getElementById('hero-canvas');
-    if (!canvas) return;
-
-    if (typeof THREE === 'undefined') {
-      setTimeout(initThreeJS, 800);
-      return;
+    if (!canvas) {
+      canvas = document.createElement('canvas');
+      canvas.className = 'page-3d'; canvas.setAttribute('aria-hidden', 'true');
+      hero.insertBefore(canvas, hero.firstChild);
     }
 
-    var W = canvas.offsetWidth || window.innerWidth;
-    var H = canvas.offsetHeight || window.innerHeight;
+    var renderer;
+    try {
+      renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+    } catch (e) { return; } // CSS blob fallback stays visible
+    hero.classList.add('has-webgl');
 
-    var renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.setSize(W, H);
-    renderer.setClearColor(0x000000, 0);
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.75));
+    renderer.outputEncoding = THREE.sRGBEncoding;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
 
     var scene = new THREE.Scene();
-    var camera = new THREE.PerspectiveCamera(60, W / H, 0.1, 1000);
-    camera.position.z = 16;
+    var camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
+    camera.position.set(0, 0, 9);
 
-    var isMobile = window.innerWidth < 768;
-    var particleCount = isMobile ? 800 : 1600;
+    scene.add(new THREE.HemisphereLight(0xbcd4ff, 0x3a1238, 0.55));
+    var key = new THREE.DirectionalLight(0xffffff, 1.2); key.position.set(3, 4, 5); scene.add(key);
+    var rimPink = new THREE.PointLight(0xff5fa2, 2.2, 20); rimPink.position.set(-4, -2, 3); scene.add(rimPink);
+    var rimSun = new THREE.PointLight(0xffb35c, 1.4, 20); rimSun.position.set(4, -3, 2); scene.add(rimSun);
 
-    /* Draw D on 2D canvas to get pixel map */
-    var c2 = document.createElement('canvas');
-    c2.width = 200; c2.height = 200;
-    var ctx2 = c2.getContext('2d');
-    ctx2.fillStyle = '#000';
-    ctx2.fillRect(0, 0, 200, 200);
-    ctx2.fillStyle = '#fff';
-    ctx2.font = 'bold 200px Arial Black, sans-serif';
-    ctx2.textAlign = 'center';
-    ctx2.textBaseline = 'middle';
-    ctx2.fillText('D', 100, 105);
+    // Soft candy studio for reflections (avoids black rims on the glossy edges)
+    (function () {
+      var c = document.createElement('canvas'); c.width = 256; c.height = 128;
+      var g = c.getContext('2d'), gr = g.createLinearGradient(0, 0, 0, 128);
+      gr.addColorStop(0, '#cfe0ff'); gr.addColorStop(0.45, '#5b9bff'); gr.addColorStop(0.7, '#ff8fc0'); gr.addColorStop(1, '#2a1640');
+      g.fillStyle = gr; g.fillRect(0, 0, 256, 128);
+      var tex = new THREE.CanvasTexture(c); tex.mapping = THREE.EquirectangularReflectionMapping; tex.encoding = THREE.sRGBEncoding;
+      var pm = new THREE.PMREMGenerator(renderer);
+      scene.environment = pm.fromEquirectangular(tex).texture;
+      tex.dispose(); pm.dispose();
+    })();
+    var group = new THREE.Group(); scene.add(group);
 
-    var imgData = ctx2.getImageData(0, 0, 200, 200).data;
-    var valid = [];
-    for (var y = 0; y < 200; y++) {
-      for (var x = 0; x < 200; x++) {
-        if (imgData[(y * 200 + x) * 4] > 100) valid.push([x, y]);
-      }
-    }
+    // Wobbly jelly blob: vertex displacement injected into a physical material
+    var uniforms = { uTime: { value: 0 }, uAmp: { value: reduce ? 0.06 : 0.22 } };
+    function lin(hex) { return new THREE.Color(hex).convertSRGBToLinear(); }
+    var jellyMat = new THREE.MeshPhysicalMaterial({ color: lin(0x2f7cf6), roughness: 0.22, metalness: 0, clearcoat: 1, clearcoatRoughness: 0.06, envMapIntensity: 0.6 });
+    jellyMat.onBeforeCompile = function (shader) {
+      shader.uniforms.uTime = uniforms.uTime;
+      shader.uniforms.uAmp = uniforms.uAmp;
+      shader.vertexShader = 'uniform float uTime; uniform float uAmp;\n' + shader.vertexShader.replace(
+        '#include <begin_vertex>',
+        'vec3 transformed = vec3(position);\n' +
+        'float w = sin(position.x*2.1+uTime*1.3)*sin(position.y*2.4+uTime*1.1)*cos(position.z*1.9+uTime*0.9);\n' +
+        'transformed += normal * w * uAmp;'
+      );
+    };
+    var jelly = new THREE.Mesh(new THREE.IcosahedronGeometry(1.55, 48), jellyMat);
+    group.add(jelly);
 
-    var dPos = [];
-    var scatterPos = [];
-    for (var i = 0; i < particleCount; i++) {
-      var p = valid[Math.floor(Math.random() * valid.length)];
-      dPos.push((p[0] / 200 - 0.5) * 18, -(p[1] / 200 - 0.5) * 18, (Math.random() - 0.5) * 2);
-      scatterPos.push((Math.random() - 0.5) * 36, (Math.random() - 0.5) * 36, (Math.random() - 0.5) * 18);
-    }
-
-    var geo = new THREE.BufferGeometry();
-    /* We'll linearly interpolate in JS each frame */
-    var currentPos = scatterPos.slice(); /* Start scattered */
-    geo.setAttribute('position', new THREE.Float32BufferAttribute(currentPos, 3));
-
-    var mat = new THREE.PointsMaterial({
-      size: isMobile ? 0.12 : 0.09,
-      transparent: true,
-      opacity: 0.72,
-      sizeAttenuation: true,
-      color: new THREE.Color(0x6366f1)
+    // Candy satellites in the brand colours
+    var candy = [
+      { geo: new THREE.TorusGeometry(0.42, 0.17, 24, 64), c: 0xff5fa2, p: [-2.4, 1.3, 0.6] },
+      { geo: new THREE.SphereGeometry(0.34, 40, 40),      c: 0xffce3a, p: [2.3, 1.5, -0.4] },
+      { geo: THREE.CapsuleGeometry ? new THREE.CapsuleGeometry(0.22, 0.5, 8, 24) : new THREE.CylinderGeometry(0.22, 0.22, 0.8, 24), c: 0x3ee6b0, p: [2.1, -1.6, 0.8] },
+      { geo: new THREE.TorusKnotGeometry(0.28, 0.1, 96, 16), c: 0xffb35c, p: [-2.0, -1.5, -0.3] },
+      { geo: new THREE.SphereGeometry(0.18, 32, 32),      c: 0xffffff, p: [0.4, 2.3, 1.0] }
+    ];
+    var sats = candy.map(function (d, i) {
+      var m = new THREE.Mesh(d.geo, new THREE.MeshPhysicalMaterial({ color: lin(d.c), roughness: 0.25, clearcoat: 1, clearcoatRoughness: 0.1 }));
+      m.position.fromArray(d.p);
+      m.userData = { base: m.position.clone(), phase: i * 1.37 };
+      group.add(m);
+      return m;
     });
 
-    var pts = new THREE.Points(geo, mat);
-    scene.add(pts);
-
-    var clock = new THREE.Clock();
-    var mouseX = 0, mouseY = 0;
-    var morphT = 0;
-    var direction = 1;
-    var holdFrames = 0;
-    var holding = false;
-
-    document.addEventListener('mousemove', function (e) {
-      mouseX = (e.clientX / window.innerWidth - 0.5);
-      mouseY = -(e.clientY / window.innerHeight - 0.5);
-    }, { passive: true });
-
-    function easeInOut(t) { return t * t * (3 - 2 * t); }
-
-    (function animate() {
-      requestAnimationFrame(animate);
-      var time = clock.getElapsedTime();
-      var posAttr = geo.getAttribute('position');
-      var arr = posAttr.array;
-      var ease = easeInOut(Math.max(0, Math.min(1, morphT)));
-
-      for (var k = 0; k < particleCount; k++) {
-        var b = k * 3;
-        arr[b]   = scatterPos[b]   + (dPos[b]   - scatterPos[b])   * ease;
-        arr[b+1] = scatterPos[b+1] + (dPos[b+1] - scatterPos[b+1]) * ease;
-        arr[b+2] = scatterPos[b+2] + (dPos[b+2] - scatterPos[b+2]) * ease;
-      }
-      posAttr.needsUpdate = true;
-
-      /* Morph logic */
-      if (!holding) {
-        morphT += 0.006 * direction;
-        if (morphT >= 1) {
-          morphT = 1; holding = true; holdFrames = 0;
-        } else if (morphT <= 0) {
-          morphT = 0; holding = true; holdFrames = 0; direction *= -1;
-        }
+    // Layout: blob sits right on desktop, top-right on mobile
+    function layout() {
+      var w = hero.clientWidth, h = hero.clientHeight;
+      renderer.setSize(w, h, false);
+      camera.aspect = w / h; camera.updateProjectionMatrix();
+      var mobile = w < 960;
+      if (mini) {
+        group.position.set(mobile ? 1.6 : 3.1, mobile ? 1.9 : 0.2, 0);
+        group.scale.setScalar(mobile ? 0.38 : 0.72);
       } else {
-        holdFrames++;
-        if (holdFrames > 180) {
-          holding = false;
-          direction *= -1;
-        }
+        group.position.set(mobile ? 1.1 : 2.7, mobile ? 2.55 : 0.05, 0);
+        group.scale.setScalar(mobile ? 0.5 : 1);
       }
+    }
+    layout();
+    window.addEventListener('resize', layout);
 
-      /* Rotation + parallax */
-      pts.rotation.y = time * 0.03 + mouseX * 0.12;
-      pts.rotation.x = mouseY * 0.07;
+    // Pointer: parallax + drag to spin + "squish" on press
+    var target = { x: 0, y: 0 }, spin = { x: 0, y: 0 }, vel = { x: 0, y: 0 };
+    var dragging = false, last = null, squish = 0;
+    hero.addEventListener('pointermove', function (e) {
+      var r = hero.getBoundingClientRect();
+      target.x = ((e.clientX - r.left) / r.width - 0.5) * 2;
+      target.y = ((e.clientY - r.top) / r.height - 0.5) * 2;
+      if (dragging && last) { vel.y += (e.clientX - last.x) * 0.0009; vel.x += (e.clientY - last.y) * 0.0009; last = { x: e.clientX, y: e.clientY }; }
+    });
+    hero.addEventListener('pointerdown', function (e) {
+      if (e.target.closest('a,button')) return;
+      dragging = true; last = { x: e.clientX, y: e.clientY }; squish = 1;
+    });
+    window.addEventListener('pointerup', function () { dragging = false; last = null; });
 
-      /* Slow color pulse */
-      var h = 0.67 + Math.sin(time * 0.2) * 0.06;
-      mat.color.setHSL(h, 0.85, 0.62);
+    // Only render while the hero is on screen and the tab is visible
+    var visible = true;
+    new IntersectionObserver(function (en) { visible = en[0].isIntersecting; if (visible) loop(); }).observe(hero);
+    document.addEventListener('visibilitychange', function () { if (!document.hidden && visible) loop(); });
 
+    var clock = new THREE.Clock(), running = false;
+    function loop() {
+      if (running) return;
+      running = true;
+      requestAnimationFrame(frame);
+    }
+    function frame() {
+      if (!visible || document.hidden) { running = false; return; }
+      var t = clock.getElapsedTime();
+      uniforms.uTime.value = reduce ? t * 0.3 : t;
+      squish *= 0.92;
+      uniforms.uAmp.value = (reduce ? 0.06 : 0.22) + squish * 0.35;
+
+      vel.x *= 0.94; vel.y *= 0.94;
+      spin.x += vel.x; spin.y += vel.y + (reduce ? 0 : 0.0025);
+      var scrollT = Math.min(window.scrollY / hero.clientHeight, 1);
+      group.rotation.x += ((spin.x + target.y * 0.25 + scrollT * 0.8) - group.rotation.x) * 0.08;
+      group.rotation.y += ((spin.y + target.x * 0.35) - group.rotation.y) * 0.08;
+      jelly.scale.set(1 + squish * 0.08, 1 - squish * 0.1, 1 + squish * 0.08);
+
+      sats.forEach(function (m, i) {
+        var u = m.userData;
+        m.position.y = u.base.y + Math.sin(t * 1.2 + u.phase) * 0.18;
+        m.rotation.x = t * 0.6 + i; m.rotation.y = t * 0.4 + i;
+      });
       renderer.render(scene, camera);
-    })();
+      requestAnimationFrame(frame);
+    }
+    loop();
+  }
 
-    window.addEventListener('resize', function () {
-      var w = window.innerWidth;
-      var h = canvas.offsetHeight || window.innerHeight;
-      camera.aspect = w / h;
-      camera.updateProjectionMatrix();
-      renderer.setSize(w, h);
+  // Headline word that cycles through what DEJOIY does
+  function initHeroSwap() {
+    var el = document.getElementById('heroSwap');
+    if (!el || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var words = ['scale', 'checkout', 'support', 'inbox', 'work'], i = 0;
+    setInterval(function () {
+      i = (i + 1) % words.length;
+      el.animate([{ transform: 'translateY(0)', opacity: 1 }, { transform: 'translateY(-40%)', opacity: 0 }], { duration: 220, easing: 'ease-in' }).onfinish = function () {
+        el.textContent = words[i];
+        el.animate([{ transform: 'translateY(40%)', opacity: 0 }, { transform: 'translateY(0)', opacity: 1 }], { duration: 320, easing: 'cubic-bezier(.16,1,.3,1)' });
+      };
+    }, 2400);
+  }
+
+  // Gentle 3D tilt on the world cards (mouse only)
+  function initTilt() {
+    if (!window.matchMedia('(hover: hover) and (prefers-reduced-motion: no-preference)').matches) return;
+    document.querySelectorAll('.tilt').forEach(function (card) {
+      card.addEventListener('pointermove', function (e) {
+        var r = card.getBoundingClientRect();
+        var x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+        card.style.transform = 'perspective(900px) rotateX(' + (-y * 7) + 'deg) rotateY(' + (x * 9) + 'deg) translateY(-4px)';
+      });
+      card.addEventListener('pointerleave', function () { card.style.transform = ''; });
     });
   }
 
@@ -335,11 +376,11 @@
       '#px-overlay{position:fixed;inset:0;z-index:99999;pointer-events:none;overflow:hidden}',
       '#px-canvas{position:absolute;inset:0;width:100%;height:100%}',
       '#px-d{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(0) rotate(-180deg);',
-      'font-family:"Syne",sans-serif;font-weight:800;font-size:55vw;line-height:0.9;',
-      'background:linear-gradient(135deg,#60a5fa,#a78bfa,#22d3ee);',
+      'font-family:"Bricolage Grotesque", sans-serif;font-weight:800;font-size:55vw;line-height:0.9;',
+      'background:linear-gradient(135deg,#5b9bff,#ff5fa2,#3ee6b0);',
       '-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;',
       'opacity:0;will-change:transform,opacity;user-select:none}',
-      '#px-flash{position:absolute;inset:0;background:linear-gradient(135deg,#020408 0%,#2563eb 40%,#7c3aed 70%,#06b6d4 100%);opacity:0}'
+      '#px-flash{position:absolute;inset:0;background:linear-gradient(135deg,#0b0a1a 0%,#2f7cf6 40%,#ff5fa2 70%,#3ee6b0 100%);opacity:0}'
     ].join('');
     document.head.appendChild(styleEl);
 
@@ -377,7 +418,7 @@
         pxFlash.style.opacity = Math.max(0, 1 - ease * 1.4).toString();
 
         var maxR = Math.sqrt(W * W + H * H) * 0.7;
-        var colors = ['#2563eb', '#7c3aed', '#06b6d4', '#6366f1', '#a78bfa', '#22d3ee'];
+        var colors = ['#2f7cf6', '#ff5fa2', '#3ee6b0', '#2f7cf6', '#ff5fa2', '#3ee6b0'];
         for (var i = 0; i < 7; i++) {
           var frac = (i / 7);
           var r = maxR * (1 - ease) * (1 - frac * 0.3);
@@ -428,9 +469,9 @@
         /* Vortex spiral arms */
         var maxR = Math.sqrt(W * W + H * H);
         var armColors = [
-          'rgba(96,165,250,', 'rgba(167,139,250,',
-          'rgba(34,211,238,', 'rgba(99,102,241,',
-          'rgba(139,92,246,', 'rgba(6,182,212,'
+          'rgba(96,165,250,', 'rgba(255,95,162,',
+          'rgba(62,230,176,', 'rgba(47,124,246,',
+          'rgba(139,92,246,', 'rgba(62,230,176,'
         ];
         for (var arm = 0; arm < 6; arm++) {
           var baseAngle = (arm / 6) * Math.PI * 2 + angle;
@@ -455,7 +496,7 @@
           var ra = Math.min(p * 3, 1) * (ri / 6) * 0.9;
           ctx.beginPath();
           ctx.arc(W / 2, H / 2, rr, 0, Math.PI * 2);
-          ctx.strokeStyle = 'rgba(124,58,237,' + ra + ')';
+          ctx.strokeStyle = 'rgba(255,95,162,' + ra + ')';
           ctx.lineWidth = 2.5;
           ctx.stroke();
         }
@@ -467,7 +508,7 @@
           var sa2 = Math.max(0, 0.7 - sp);
           ctx.beginPath();
           ctx.arc(W / 2, H / 2, sw, 0, Math.PI * 2);
-          ctx.strokeStyle = 'rgba(34,211,238,' + sa2 + ')';
+          ctx.strokeStyle = 'rgba(62,230,176,' + sa2 + ')';
           ctx.lineWidth = 2;
           ctx.stroke();
         }
