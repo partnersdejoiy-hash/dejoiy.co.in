@@ -20,7 +20,19 @@
       "dest": "/contact.html"
     },
     {
-      "src": "/(about|services|team|contact)\\.html",
+      "src": "/terms/?",
+      "dest": "/terms.html"
+    },
+    {
+      "src": "/privacy/?",
+      "dest": "/privacy.html"
+    },
+    {
+      "src": "/legal/?",
+      "dest": "/legal.html"
+    },
+    {
+      "src": "/(about|services|team|contact|terms|privacy|legal)\\.html",
       "status": 301,
       "headers": {
         "Location": "/$1"

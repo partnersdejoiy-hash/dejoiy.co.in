@@ -45,6 +45,18 @@
       hero: ["A real human replies within one working day. I checked."],
       form: ["Not sure what to choose? Pick Something else, that's fine.", [['Email instead', 'mailto:connect@dejoiy.com']]]
     },
+    terms: {
+      hero: ["Terms, but in plain words. I read them so you don't have to stress."],
+      doc: ["Jump around with the list on the left. Section 14 is how to complain.", [['Privacy policy', '/privacy'], ['All apps', '/legal']]]
+    },
+    privacy: {
+      hero: ["Your data, your rules. Here's exactly what we do with it."],
+      doc: ["Want your data changed or deleted? Section 6 tells you how.", [['Email us', 'mailto:connect@dejoiy.com']]]
+    },
+    legal: {
+      hero: ["Every DEJOIY app, one place for the fine print."],
+      apps: ["Tap an app to see the extra rules for it. Marketplace has its own.", [['Terms', '/terms'], ['Privacy', '/privacy']]]
+    },
     '404': {
       '404': ["Oops, this page went missing. Let me take you somewhere better.", [['Go home', '/'], ['Contact us', '/contact']]]
     }

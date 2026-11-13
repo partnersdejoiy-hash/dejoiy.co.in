@@ -12,6 +12,7 @@
     initReveal();
     initSwap();
     initContactForm();
+    initAppTabs();
     initThreeJS();
   });
 
@@ -62,6 +63,35 @@
         btn.textContent = toB ? 'Original photo' : 'Spirit animal';
       });
     });
+  }
+
+  /* ── Legal hub: one tab per app, deep-linkable as /legal#dmail ── */
+  function initAppTabs() {
+    var tabs = [].slice.call(document.querySelectorAll('.apptab'));
+    if (!tabs.length) return;
+    function show(key, focus) {
+      var found = tabs.some(function (t) { return t.getAttribute('data-tab') === key; });
+      if (!found) key = 'all';
+      tabs.forEach(function (t) {
+        var on = t.getAttribute('data-tab') === key;
+        t.setAttribute('aria-selected', String(on));
+        t.tabIndex = on ? 0 : -1;
+        document.getElementById('panel-' + t.getAttribute('data-tab')).hidden = !on;
+        if (on && focus) t.focus();
+      });
+    }
+    tabs.forEach(function (t, i) {
+      t.addEventListener('click', function () { var k = t.getAttribute('data-tab'); show(k); history.replaceState(null, '', '#' + k); });
+      t.addEventListener('keydown', function (e) {
+        var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+        if (!d) return;
+        e.preventDefault();
+        var n = tabs[(i + d + tabs.length) % tabs.length];
+        show(n.getAttribute('data-tab'), true);
+      });
+    });
+    show(location.hash.slice(1));
+    window.addEventListener('hashchange', function () { show(location.hash.slice(1)); });
   }
 
   /* ── Contact form → /api/contact ── */
