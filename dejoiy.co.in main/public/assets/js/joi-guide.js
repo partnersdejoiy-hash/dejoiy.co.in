@@ -6,7 +6,7 @@
 ;(function () {
   'use strict';
 
-  var JOI_URL = 'https://joi.dejoiy.com';
+  var JOI_URL = 'https://joi-ai.dejoiy.com';
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var page = document.body.getAttribute('data-page') || 'home';
 
