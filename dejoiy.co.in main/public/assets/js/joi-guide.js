@@ -9,6 +9,7 @@
   var JOI_URL = 'https://joi-ai.dejoiy.com';
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var page = document.body.getAttribute('data-page') || 'home';
+  var ASSETS = window.JOI_ASSETS || '/assets/joi/';   // where joi.glb and joi-192.webp live
 
   // What Joi says, per page and per section (data-joi="…" on each section)
   var SCRIPT = {
@@ -61,7 +62,8 @@
       '404': ["Oops, this page went missing. Let me take you somewhere better.", [['Go home', '/'], ['Contact us', '/contact']]]
     }
   };
-  var lines = SCRIPT[page] || SCRIPT.home;
+  if (window.JOI_LINES) SCRIPT = window.JOI_LINES;   // another site can bring its own script
+  var lines = SCRIPT[page] || SCRIPT.home || {};
 
   /* ── DOM ── */
   var root = document.createElement('div');
@@ -74,7 +76,7 @@
       '<button class="joi-ask" type="button">Ask Joi anything</button>' +
     '</div>' +
     '<button class="joi-me" type="button" aria-label="Joi, your DEJOIY guide. Show tips">' +
-      '<img src="/assets/joi/joi-192.webp" alt="" width="96" height="96" />' +
+      '<img src="' + ASSETS + 'joi-192.webp" alt="" width="96" height="96" />' +
       '<canvas aria-hidden="true"></canvas>' +
     '</button>' +
     '<div class="joi-chat" id="joiChat" role="dialog" aria-label="Chat with Joi" hidden>' +
@@ -93,15 +95,15 @@
   try { muted = sessionStorage.getItem('joi-muted') === '1'; } catch (e) {}
 
   /* ── Speaking ── */
-  var typing = null, current = null, spoken = 0, autoHide = null;
+  var typing = null, current = null, spoken = 0, autoHide = null, tapped = false;
   var small = window.matchMedia('(max-width: 640px)');
   function say(key) {
     var line = lines[key];
     if (!line || key === current) return;
     current = key;
     hop();
-    // On phones the bubble would cover the page: greet once, then just show a dot
-    if (muted || (small.matches && spoken > 0 && bubble.hidden)) { me.classList.add('has-news'); spoken++; return; }
+    // On phones the page comes first: Joi waits with a dot until she's tapped
+    if (muted || (small.matches && bubble.hidden && !tapped)) { me.classList.add('has-news'); spoken++; return; }
     spoken++;
     clearTimeout(autoHide);
     if (small.matches) autoHide = setTimeout(function () { bubble.hidden = true; }, 6000);
@@ -134,6 +136,7 @@
     if (bubble.hidden) {
       muted = false;
       try { sessionStorage.removeItem('joi-muted'); } catch (e) {}
+      tapped = true;
       var k = current; current = null; spoken = 0; say(k || Object.keys(lines)[0]);
     } else {
       bubble.hidden = true;
@@ -163,17 +166,25 @@
   /* ── Follow the reader: speak when a section reaches the middle ── */
   var firstVisit = true;
   try { firstVisit = sessionStorage.getItem('dj-intro-done') !== '1'; sessionStorage.setItem('dj-intro-done', '1'); } catch (e) {}
-  setTimeout(function () {
-    root.classList.add('in');
+  var io = null;
+  function watch() {
+    if (io) io.disconnect();
     var first = document.querySelector('[data-joi]');
-    if (first) say(first.getAttribute('data-joi'));
-    if ('IntersectionObserver' in window) {
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (en) { if (en.isIntersecting) say(en.target.getAttribute('data-joi')); });
-      }, { rootMargin: '-45% 0px -45% 0px' });
-      document.querySelectorAll('[data-joi]').forEach(function (s) { io.observe(s); });
+    say(first ? first.getAttribute('data-joi') : 'hero');
+    if (!('IntersectionObserver' in window)) return;
+    io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) say(en.target.getAttribute('data-joi')); });
+    }, { rootMargin: '-45% 0px -45% 0px' });
+    document.querySelectorAll('[data-joi]').forEach(function (s) { io.observe(s); });
+  }
+  // For single-page apps: window.joiGuide.setPage('services') after a route change
+  window.joiGuide = {
+    setPage: function (name) {
+      page = name; lines = SCRIPT[name] || SCRIPT.home || {}; current = null; spoken = 0;
+      setTimeout(watch, 400);
     }
-  }, firstVisit && !reduce ? 3400 : 700);
+  };
+  setTimeout(function () { root.classList.add('in'); watch(); }, firstVisit && !reduce ? 3400 : 700);
 
   /* ── 3D Joi ── */
   var hopT = -10, spinT = -10;
@@ -203,7 +214,7 @@
 
   var gl = new THREE.GLTFLoader();
   if (window.MeshoptDecoder) gl.setMeshoptDecoder(window.MeshoptDecoder);
-  gl.load('/assets/joi/joi.glb', function (gltf) {
+  gl.load(ASSETS + 'joi.glb', function (gltf) {
     var model = gltf.scene;
     var box = new THREE.Box3().setFromObject(model);
     var dim = box.getSize(new THREE.Vector3());
