@@ -14,7 +14,7 @@
   // What Joi says, per page and per section (data-joi="…" on each section)
   var SCRIPT = {
     home: {
-      hero: ["Hi, I'm Joi! I'll show you around DEJOIY. Go on, drag the big jelly.", [['Take the tour', '#worlds']]],
+      hero: ["Hi, I'm Joi! I'll show you around DEJOIY. Tap the arrows to flip through what we build.", [['Take the tour', '#worlds']]],
       formula: ["YOU + JOY = DEJOIY. That's literally where our name comes from."],
       worlds: ["Five worlds to explore. Tap any card to jump straight in.", [['Shop dejoiy.com', 'https://www.dejoiy.com'], ['Try Dmail', 'https://mail.dejoiy.com']]],
       bpo: ["Need a support team? We run them around the clock.", [['See all services', '/services']]],

@@ -13,7 +13,9 @@
     initSwap();
     initContactForm();
     initAppTabs();
-    initThreeJS();
+    initRibbons();
+    initHeroSlider();
+    initTilt();
   });
 
   /* ── Nav: shadow on scroll, mobile menu ── */
@@ -127,167 +129,164 @@
   }
 
   /* ══════════════════════════
-     THREE.JS — JELLY HERO (Gen-Z v4)
+     LIGHT RIBBONS HERO
+     Silky neon ribbons in DEJOIY colours drift across a deep blue sky
+     (raw WebGL, one fragment shader). Used on the home hero and page heroes.
   ══════════════════════════ */
-  function initThreeJS() {
-    initHeroSwap();
-    initTilt();
+  var RIBBON_FRAG = [
+    'precision highp float;',
+    'uniform vec2 uRes; uniform float uTime; uniform vec2 uMouse;',
+    // returns how strongly this ribbon covers the pixel; colours are mixed (not added) so pink stays pink
+    'float ribbon(vec2 uv, float seed, float amp, float freq, float speed, float off, out float glow) {',
+    '  float t = uTime * speed + seed * 6.2831;',
+    '  float y = off + sin(uv.x * freq + t) * amp + sin(uv.x * freq * 0.47 - t * 0.7 + seed * 3.0) * amp * 0.6;',
+    '  y += (uMouse.y - 0.5) * 0.08 * sin(uv.x * 2.0 + seed);',
+    '  float w = 0.045 + 0.04 * sin(uv.x * freq * 0.8 + t * 1.3 + seed * 5.0);',
+    '  float d = abs(uv.y - y);',
+    '  glow = 0.01 / (d + 0.01);',
+    '  float core = smoothstep(w, 0.0, d);',
+    '  float edge = smoothstep(w * 0.25, 0.0, abs(d - w * 0.75)) * 0.6;',
+    '  return clamp(core * 0.8 + edge, 0.0, 1.0);',
+    '}',
+    'vec3 lay(vec3 c, vec3 col, float a, float g) { return mix(c, col, a) + col * g * 0.12; }',
+    'void main() {',
+    '  vec2 uv = gl_FragCoord.xy / uRes;',
+    '  uv.x *= uRes.x / uRes.y;',
+    // deep blue night, brighter towards the top right
+    '  vec2 q = gl_FragCoord.xy / uRes;',
+    '  vec3 c = mix(vec3(0.02, 0.06, 0.28), vec3(0.11, 0.28, 0.9), smoothstep(0.0, 1.3, q.x * 0.6 + q.y * 0.8));',
+    '  float g;',
+    '  float a1 = ribbon(uv, 0.85, 0.12, 1.9, 0.31, 0.22, g); c = lay(c, vec3(1.0, 0.48, 0.18), a1 * 0.9, g);',   // orange
+    '  float a2 = ribbon(uv, 0.37, 0.20, 1.6, 0.28, 0.55, g); c = lay(c, vec3(1.0, 0.31, 0.64), a2, g);',        // hot pink
+    '  float a3 = ribbon(uv, 0.10, 0.16, 2.1, 0.35, 0.34, g); c = lay(c, vec3(0.83, 1.0, 0.23), a3, g);',        // lime
+    '  float a4 = ribbon(uv, 0.62, 0.14, 2.6, 0.42, 0.72, g); c = lay(c, vec3(0.24, 0.80, 1.0), a4, g);',        // sky
+    '  float a5 = ribbon(uv, 0.21, 0.10, 3.1, 0.50, 0.86, g); c = lay(c, vec3(1.0), a5 * 0.5, g * 0.5);',        // white silk
+    '  c = min(c, vec3(1.0));',
+    '  c *= 1.0 - 0.35 * smoothstep(0.4, 1.0, 1.0 - q.y);', // darker base for text contrast
+    '  gl_FragColor = vec4(c, 1.0);',
+    '}'
+  ].join('\n');
+
+  function initRibbons() {
     var hero = document.getElementById('hero3d') || document.querySelector('.phero');
-    if (!hero || typeof THREE === 'undefined') return;
-    var mini = hero.id !== 'hero3d'; // inner pages get a smaller jelly on the right
-    var canvas = document.getElementById('hero-canvas');
+    if (!hero) return;
+    var canvas = hero.querySelector('canvas');
     if (!canvas) {
       canvas = document.createElement('canvas');
-       canvas.setAttribute('aria-hidden', 'true');
+      canvas.setAttribute('aria-hidden', 'true');
       hero.insertBefore(canvas, hero.firstChild);
     }
-
-    var renderer;
-    try {
-      renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
-    } catch (e) { return; } // CSS blob fallback stays visible
+    var gl = canvas.getContext('webgl', { antialias: false, alpha: false, powerPreference: 'low-power' });
+    if (!gl) return; // CSS gradient fallback stays
+    function sh(type, src) { var s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); return s; }
+    var prog = gl.createProgram();
+    gl.attachShader(prog, sh(gl.VERTEX_SHADER, 'attribute vec2 p; void main(){ gl_Position = vec4(p, 0.0, 1.0); }'));
+    gl.attachShader(prog, sh(gl.FRAGMENT_SHADER, RIBBON_FRAG));
+    gl.linkProgram(prog);
+    if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) return;
+    gl.useProgram(prog);
+    var buf = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
+    var loc = gl.getAttribLocation(prog, 'p');
+    gl.enableVertexAttribArray(loc);
+    gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+    var uRes = gl.getUniformLocation(prog, 'uRes'), uTime = gl.getUniformLocation(prog, 'uTime'), uMouse = gl.getUniformLocation(prog, 'uMouse');
     hero.classList.add('has-webgl');
 
-    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.75));
-    renderer.outputEncoding = THREE.sRGBEncoding;
-    renderer.toneMapping = THREE.ACESFilmicToneMapping;
-
-    var scene = new THREE.Scene();
-    var camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
-    camera.position.set(0, 0, 9);
-
-    scene.add(new THREE.HemisphereLight(0xffffff, 0xffe9d6, 0.7));
-    var key = new THREE.DirectionalLight(0xffffff, 1.2); key.position.set(3, 4, 5); scene.add(key);
-    var rimPink = new THREE.PointLight(0xff4fa3, 0.9, 20); rimPink.position.set(-4, -2, 3); scene.add(rimPink);
-    var rimSun = new THREE.PointLight(0xd4ff3a, 0.9, 20); rimSun.position.set(4, -3, 2); scene.add(rimSun);
-
-    // Soft candy studio for reflections (avoids black rims on the glossy edges)
-    (function () {
-      var c = document.createElement('canvas'); c.width = 256; c.height = 128;
-      var g = c.getContext('2d'), gr = g.createLinearGradient(0, 0, 0, 128);
-      gr.addColorStop(0, '#ffffff'); gr.addColorStop(0.45, '#9cc0ff'); gr.addColorStop(0.7, '#2f6bff'); gr.addColorStop(1, '#fff3e0');
-      g.fillStyle = gr; g.fillRect(0, 0, 256, 128);
-      var tex = new THREE.CanvasTexture(c); tex.mapping = THREE.EquirectangularReflectionMapping; tex.encoding = THREE.sRGBEncoding;
-      var pm = new THREE.PMREMGenerator(renderer);
-      scene.environment = pm.fromEquirectangular(tex).texture;
-      tex.dispose(); pm.dispose();
-    })();
-    var group = new THREE.Group(); scene.add(group);
-
-    // Wobbly jelly blob: vertex displacement injected into a physical material
-    var uniforms = { uTime: { value: 0 }, uAmp: { value: reduce ? 0.06 : 0.22 } };
-    function lin(hex) { return new THREE.Color(hex).convertSRGBToLinear(); }
-    var jellyMat = new THREE.MeshPhysicalMaterial({ color: lin(0x2f6bff), roughness: 0.22, metalness: 0, clearcoat: 1, clearcoatRoughness: 0.06, envMapIntensity: 0.6 });
-    jellyMat.onBeforeCompile = function (shader) {
-      shader.uniforms.uTime = uniforms.uTime;
-      shader.uniforms.uAmp = uniforms.uAmp;
-      shader.vertexShader = 'uniform float uTime; uniform float uAmp;\n' + shader.vertexShader.replace(
-        '#include <begin_vertex>',
-        'vec3 transformed = vec3(position);\n' +
-        'float w = sin(position.x*2.1+uTime*1.3)*sin(position.y*2.4+uTime*1.1)*cos(position.z*1.9+uTime*0.9);\n' +
-        'transformed += normal * w * uAmp;'
-      );
-    };
-    var jelly = new THREE.Mesh(new THREE.IcosahedronGeometry(1.55, 48), jellyMat);
-    group.add(jelly);
-
-    // Candy satellites in the brand colours
-    var candy = [
-      { geo: new THREE.TorusGeometry(0.42, 0.17, 24, 64), c: 0xff4fa3, p: [-2.4, 1.3, 0.6] },
-      { geo: new THREE.SphereGeometry(0.34, 40, 40),      c: 0xd4ff3a, p: [2.3, 1.5, -0.4] },
-      { geo: THREE.CapsuleGeometry ? new THREE.CapsuleGeometry(0.22, 0.5, 8, 24) : new THREE.CylinderGeometry(0.22, 0.22, 0.8, 24), c: 0x4dd8ff, p: [2.1, -1.6, 0.8] },
-      { geo: new THREE.TorusKnotGeometry(0.28, 0.1, 96, 16), c: 0xff8a3d, p: [-2.0, -1.5, -0.3] },
-      { geo: new THREE.SphereGeometry(0.18, 32, 32),      c: 0xffffff, p: [0.4, 2.3, 1.0] }
-    ];
-    var sats = candy.map(function (d, i) {
-      var m = new THREE.Mesh(d.geo, new THREE.MeshPhysicalMaterial({ color: lin(d.c), roughness: 0.25, clearcoat: 1, clearcoatRoughness: 0.1 }));
-      m.position.fromArray(d.p);
-      m.userData = { base: m.position.clone(), phase: i * 1.37 };
-      group.add(m);
-      return m;
-    });
-
-    // Layout: blob sits right on desktop, top-right on mobile
-    function layout() {
-      var w = hero.clientWidth, h = hero.clientHeight;
-      renderer.setSize(w, h, false);
-      camera.aspect = w / h; camera.updateProjectionMatrix();
-      var mobile = w < 960;
-      if (mini) {
-        group.position.set(mobile ? 1.6 : 3.1, mobile ? 1.9 : 0.2, 0);
-        group.scale.setScalar(mobile ? 0.38 : 0.72);
-      } else {
-        group.position.set(mobile ? 1.1 : 2.7, mobile ? 2.55 : 0.05, 0);
-        group.scale.setScalar(mobile ? 0.5 : 1);
-      }
+    var scale = Math.min(window.devicePixelRatio || 1, 1.5) * 0.75; // soft ribbons don't need full resolution
+    function resize() {
+      canvas.width = Math.round(hero.clientWidth * scale);
+      canvas.height = Math.round(hero.clientHeight * scale);
+      gl.viewport(0, 0, canvas.width, canvas.height);
+      gl.uniform2f(uRes, canvas.width, canvas.height);
     }
-    layout();
-    window.addEventListener('resize', layout);
-
-    // Pointer: parallax + drag to spin + "squish" on press
-    var target = { x: 0, y: 0 }, spin = { x: 0, y: 0 }, vel = { x: 0, y: 0 };
-    var dragging = false, last = null, squish = 0;
+    resize();
+    window.addEventListener('resize', resize);
+    var mouse = [0.5, 0.5], target = [0.5, 0.5];
     hero.addEventListener('pointermove', function (e) {
       var r = hero.getBoundingClientRect();
-      target.x = ((e.clientX - r.left) / r.width - 0.5) * 2;
-      target.y = ((e.clientY - r.top) / r.height - 0.5) * 2;
-      if (dragging && last) { vel.y += (e.clientX - last.x) * 0.0009; vel.x += (e.clientY - last.y) * 0.0009; last = { x: e.clientX, y: e.clientY }; }
+      target = [(e.clientX - r.left) / r.width, 1 - (e.clientY - r.top) / r.height];
     });
-    hero.addEventListener('pointerdown', function (e) {
-      if (e.target.closest('a,button')) return;
-      dragging = true; last = { x: e.clientX, y: e.clientY }; squish = 1;
-    });
-    window.addEventListener('pointerup', function () { dragging = false; last = null; });
 
-    // Only render while the hero is on screen and the tab is visible
-    var visible = true;
-    new IntersectionObserver(function (en) { visible = en[0].isIntersecting; if (visible) loop(); }).observe(hero);
-    document.addEventListener('visibilitychange', function () { if (!document.hidden && visible) loop(); });
-
-    var clock = new THREE.Clock(), running = false;
-    function loop() {
-      if (running) return;
-      running = true;
-      requestAnimationFrame(frame);
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var visible = true, running = false, t0 = performance.now();
+    new IntersectionObserver(function (en) { visible = en[0].isIntersecting; if (visible) start(); }).observe(hero);
+    document.addEventListener('visibilitychange', function () { if (!document.hidden) start(); });
+    function draw(now) {
+      mouse[0] += (target[0] - mouse[0]) * 0.05; mouse[1] += (target[1] - mouse[1]) * 0.05;
+      gl.uniform1f(uTime, reduce ? 4.0 : (now - t0) / 1000);
+      gl.uniform2f(uMouse, mouse[0], mouse[1]);
+      gl.drawArrays(gl.TRIANGLES, 0, 3);
     }
-    function frame() {
+    function frame(now) {
       if (!visible || document.hidden) { running = false; return; }
-      var t = clock.getElapsedTime();
-      uniforms.uTime.value = reduce ? t * 0.3 : t;
-      squish *= 0.92;
-      uniforms.uAmp.value = (reduce ? 0.06 : 0.22) + squish * 0.35;
-
-      vel.x *= 0.94; vel.y *= 0.94;
-      spin.x += vel.x; spin.y += vel.y + (reduce ? 0 : 0.0025);
-      var scrollT = Math.min(window.scrollY / hero.clientHeight, 1);
-      group.rotation.x += ((spin.x + target.y * 0.25 + scrollT * 0.8) - group.rotation.x) * 0.08;
-      group.rotation.y += ((spin.y + target.x * 0.35) - group.rotation.y) * 0.08;
-      jelly.scale.set(1 + squish * 0.08, 1 - squish * 0.1, 1 + squish * 0.08);
-
-      sats.forEach(function (m, i) {
-        var u = m.userData;
-        m.position.y = u.base.y + Math.sin(t * 1.2 + u.phase) * 0.18;
-        m.rotation.x = t * 0.6 + i; m.rotation.y = t * 0.4 + i;
-      });
-      renderer.render(scene, camera);
+      draw(now);
       requestAnimationFrame(frame);
     }
-    loop();
+    function start() {
+      if (reduce) { draw(performance.now()); return; }   // one still frame
+      if (!running) { running = true; requestAnimationFrame(frame); }
+    }
+    start();
   }
 
-  // Headline word that cycles through what DEJOIY does
-  function initHeroSwap() {
-    var el = document.getElementById('heroSwap');
-    if (!el || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    var words = ['scale', 'checkout', 'support', 'inbox', 'work'], i = 0;
-    setInterval(function () {
-      i = (i + 1) % words.length;
-      el.animate([{ transform: 'translateY(0)', opacity: 1 }, { transform: 'translateY(-40%)', opacity: 0 }], { duration: 220, easing: 'ease-in' }).onfinish = function () {
-        el.textContent = words[i];
-        el.animate([{ transform: 'translateY(40%)', opacity: 0 }, { transform: 'translateY(0)', opacity: 1 }], { duration: 320, easing: 'cubic-bezier(.16,1,.3,1)' });
-      };
-    }, 2400);
+  /* ── Hero slider: the first word scrambles into the next one ── */
+  function initHeroSlider() {
+    var root = document.getElementById('heroSlider');
+    if (!root) return;
+    var slides = JSON.parse(root.getAttribute('data-slides'));
+    var word = document.getElementById('heroWord');
+    var lede = document.getElementById('heroLede');
+    var cta = document.getElementById('heroCta');
+    var dots = [].slice.call(root.querySelectorAll('.hs-dot'));
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var GLYPHS = '!<>-_\\/[]{}=+*^?#:D';
+    var i = 0, timer = null, scramble = null;
+
+    function scrambleTo(text) {
+      clearInterval(scramble);
+      if (reduce) { word.textContent = text; return; }
+      var from = word.textContent, len = Math.max(from.length, text.length), frame = 0;
+      word.classList.add('glitch');
+      scramble = setInterval(function () {
+        var out = '';
+        for (var k = 0; k < len; k++) {
+          var settle = k * 1.6 + 6;                     // letters lock in left to right
+          if (frame >= settle) out += text[k] || '';
+          else if (frame < 4) out += from[k] || '';
+          else out += text[k] === ' ' ? ' ' : GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
+        }
+        word.textContent = out;
+        if (++frame > len * 1.6 + 7) { clearInterval(scramble); word.textContent = text; word.classList.remove('glitch'); }
+      }, 34);
+    }
+    function go(n, user) {
+      i = (n + slides.length) % slides.length;
+      var s = slides[i];
+      scrambleTo(s.word);
+      lede.classList.remove('swap-in'); void lede.offsetWidth; lede.classList.add('swap-in');
+      lede.textContent = s.lede;
+      cta.querySelector('span').textContent = s.cta;
+      cta.href = s.href;
+      if (/^https?:/.test(s.href)) { cta.target = '_blank'; cta.rel = 'noopener'; } else { cta.removeAttribute('target'); cta.removeAttribute('rel'); }
+      dots.forEach(function (d, k) { d.setAttribute('aria-current', k === i ? 'true' : 'false'); });
+      root.style.setProperty('--hs-progress', '0');
+      if (user) restart();
+    }
+    function restart() {
+      clearInterval(timer);
+      if (reduce) return;
+      timer = setInterval(function () { go(i + 1); }, 4200);
+    }
+    root.querySelector('.hs-prev').addEventListener('click', function () { go(i - 1, true); });
+    root.querySelector('.hs-next').addEventListener('click', function () { go(i + 1, true); });
+    dots.forEach(function (d, k) { d.addEventListener('click', function () { go(k, true); }); });
+    var hero = document.getElementById('hero3d');
+    hero.addEventListener('mouseenter', function () { clearInterval(timer); });
+    hero.addEventListener('mouseleave', restart);
+    hero.addEventListener('focusin', function () { clearInterval(timer); });
+    restart();
   }
 
   // Gentle 3D tilt on the world cards (mouse only)

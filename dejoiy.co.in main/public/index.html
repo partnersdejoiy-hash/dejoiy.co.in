@@ -45,17 +45,20 @@
 <main id="main">
 
 <section class="hero" id="hero3d" aria-label="Introduction" data-joi="hero">
-  <div class="blob-fallback" aria-hidden="true"></div>
   <canvas id="hero-canvas" aria-hidden="true"></canvas>
-  <div class="wrap hero-in">
+  <div class="wrap hero-in" id="heroSlider" data-slides="[{&quot;word&quot;: &quot;Commerce.&quot;, &quot;lede&quot;: &quot;Fashion, tech, books, custom tees and pros to hire. Everything you need, on one dejoiy.&quot;, &quot;cta&quot;: &quot;Shop dejoiy.com&quot;, &quot;href&quot;: &quot;https://www.dejoiy.com&quot;}, {&quot;word&quot;: &quot;Support teams.&quot;, &quot;lede&quot;: &quot;Voice, email and chat teams that look after your customers around the clock.&quot;, &quot;cta&quot;: &quot;See BPO services&quot;, &quot;href&quot;: &quot;/services&quot;}, {&quot;word&quot;: &quot;Software.&quot;, &quot;lede&quot;: &quot;Websites, CRMs, ticketing and workforce tools, built by people who use them daily.&quot;, &quot;cta&quot;: &quot;Business portal&quot;, &quot;href&quot;: &quot;https://business.dejoiy.com&quot;}, {&quot;word&quot;: &quot;Email.&quot;, &quot;lede&quot;: &quot;Dmail gives your whole team an @company address, with an admin you control.&quot;, &quot;cta&quot;: &quot;Open Dmail&quot;, &quot;href&quot;: &quot;https://mail.dejoiy.com&quot;}, {&quot;word&quot;: &quot;AI.&quot;, &quot;lede&quot;: &quot;Joi, our squishy blue AI, answers questions across every DEJOIY app.&quot;, &quot;cta&quot;: &quot;Meet Joi&quot;, &quot;href&quot;: &quot;https://joi-ai.dejoiy.com&quot;}]">
     <span class="sticker rv"><i></i> New Delhi → the world</span>
-    <h1 class="h-xl rv d1">You + Joy,<br />at <span class="mark"><span id="heroSwap">scale</span></span>.</h1>
-    <p class="lede rv d2">DEJOIY connects people, technology, commerce and operations. One company behind a marketplace, BPO teams, email, an AI mascot and the software that holds it together.</p>
+    <h1 class="h-xl rv d1"><span class="hs-word" id="heroWord">Commerce.</span><span class="hs-tail">Built with joy.</span></h1>
+    <p class="lede rv d2" id="heroLede" aria-live="polite">Fashion, tech, books, custom tees and pros to hire. Everything you need, on one dejoiy.</p>
     <div class="btns rv d3">
-      <a class="btn btn-ink" href="#worlds">See what we build <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      <a class="btn btn-line" href="/contact">Talk to us</a>
+      <a class="btn btn-lime" id="heroCta" href="https://www.dejoiy.com" target="_blank" rel="noopener"><span>Shop dejoiy.com</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn btn-line" href="#worlds">See all five worlds</a>
     </div>
-    <div class="chips rv d4"><span class="chip">Since 2024</span><span class="chip">5 countries</span><span class="chip">24×7 support</span><span class="chip">Marketplace · BPO · Software</span></div>
+    <div class="hs-controls rv d4">
+      <button class="hs-arrow hs-prev" type="button" aria-label="Previous">‹</button>
+      <div class="hs-dots"><button class="hs-dot" type="button" aria-label="Show Commerce" aria-current="true"></button><button class="hs-dot" type="button" aria-label="Show Support teams" aria-current="false"></button><button class="hs-dot" type="button" aria-label="Show Software" aria-current="false"></button><button class="hs-dot" type="button" aria-label="Show Email" aria-current="false"></button><button class="hs-dot" type="button" aria-label="Show AI" aria-current="false"></button></div>
+      <button class="hs-arrow hs-next" type="button" aria-label="Next">›</button>
+    </div>
   </div>
 </section>
 
