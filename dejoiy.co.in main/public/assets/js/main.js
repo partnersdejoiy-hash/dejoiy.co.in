@@ -14,6 +14,7 @@
     initContactForm();
     initAppTabs();
     initRibbons();
+    initShapeRibbons();
     initHeroSlider();
     initTilt();
   });
@@ -168,7 +169,7 @@
   ].join('\n');
 
   function initRibbons() {
-    var hero = document.getElementById('hero3d') || document.querySelector('.phero');
+    var hero = document.querySelector('.phero');
     if (!hero) return;
     var canvas = hero.querySelector('canvas');
     if (!canvas) {
@@ -231,6 +232,167 @@
     start();
   }
 
+  /* ══════════════════════════
+     SHAPE RIBBONS (home hero)
+     Five silk ribbons float as waves, then gather into a shape for each slide:
+     a frame around the dejoiy.com preview, a headset, the business portal's
+     rings, an envelope, and Joi herself. 2D canvas, many thin strands per ribbon.
+  ══════════════════════════ */
+  var SHAPES = {
+    frame: null, // built from the dejoiy.com preview card's position
+    bag: 'M22 34 H78 L84 90 H16 Z M36 34 C36 10 64 10 64 34',
+    headset: 'M18 62 C18 20 82 20 82 62 M12 58 H26 V86 H12 Z M74 58 H88 V86 H74 Z M81 86 C81 96 66 98 54 97',
+    rings: 'M88.1 72 A44 18 30 1 0 11.9 28 A44 18 30 1 0 88.1 72 M88.1 28 A44 18 -30 1 0 11.9 72 A44 18 -30 1 0 88.1 28 M50 6 A44 18 90 1 0 50 94 A44 18 90 1 0 50 6',
+    mail: 'M12 26 H88 V78 H12 Z M12 26 L50 56 L88 26 M12 78 L40 52 M88 78 L60 52',
+    joi: 'M22 62 C22 40 30 30 38 28 L34 10 L48 24 C50 23.6 52 23.6 54 24 L66 10 L64 28 C74 32 80 44 80 62 C80 82 66 92 51 92 C36 92 22 82 22 62 Z M51 24 C48 15 55 11 59 15 M38 56 a5 5 0 1 0 10 0 a5 5 0 1 0 -10 0 M56 56 a5 5 0 1 0 10 0 a5 5 0 1 0 -10 0 M44 70 C48 75 54 75 58 70'
+  };
+  var RIBBONS = [
+    { col: '212,255,58', amp: .16, freq: 2.1, speed: .35, off: .34, seed: .10 },  // lime
+    { col: '255,79,163', amp: .20, freq: 1.6, speed: .28, off: .55, seed: .37 },  // pink
+    { col: '60,203,255', amp: .14, freq: 2.6, speed: .42, off: .72, seed: .62 },  // sky
+    { col: '255,122,47', amp: .12, freq: 1.9, speed: .31, off: .22, seed: .85 },  // orange
+    { col: '255,255,255', amp: .10, freq: 3.1, speed: .50, off: .86, seed: .21 } // white
+  ];
+
+  function initShapeRibbons() {
+    var hero = document.getElementById('hero3d');
+    var canvas = document.getElementById('hero-canvas');
+    if (!hero || !canvas || !canvas.getContext) return;
+    var ctx = canvas.getContext('2d');
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var mock = document.getElementById('dejoiyMock');
+    var N = 150, STRANDS = 7, W = 0, H = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var svgNS = 'http://www.w3.org/2000/svg';
+    var svg = document.createElementNS(svgNS, 'svg');
+    svg.setAttribute('aria-hidden', 'true');
+    svg.style.cssText = 'position:absolute;width:0;height:0;overflow:hidden';
+    var pathEl = document.createElementNS(svgNS, 'path');
+    svg.appendChild(pathEl); hero.appendChild(svg);
+
+    // Points along a path for every ribbon: each ribbon covers part of the outline, starting at its own place
+    function sample(d, map) {
+      pathEl.setAttribute('d', d);
+      var L = pathEl.getTotalLength();
+      return RIBBONS.map(function (r, i) {
+        var pts = [];
+        for (var k = 0; k < N; k++) {
+          var p = pathEl.getPointAtLength(((i / RIBBONS.length + (k / (N - 1)) * 0.55) % 1) * L);
+          pts.push(map(p.x, p.y));
+        }
+        return pts;
+      });
+    }
+    function box() {
+      var mobile = W < 980;
+      var s = mobile ? Math.min(W * .5, H * .22) : Math.min(W * .36, H * .6);
+      return { cx: mobile ? W * .68 : W * .74, cy: mobile ? H * .17 : H * .52, s: s };
+    }
+    var targets = {};
+    function buildShapes() {
+      var b = box();
+      Object.keys(SHAPES).forEach(function (k) {
+        if (k === 'frame') return;
+        targets[k] = sample(SHAPES[k], function (x, y) { return [b.cx + (x - 50) / 100 * b.s, b.cy + (y - 50) / 100 * b.s]; });
+      });
+      // a rounded frame hugging the dejoiy.com preview (falls back to a bag on phones)
+      if (mock && mock.offsetWidth && W >= 980) {
+        var hr = hero.getBoundingClientRect(), r = mock.getBoundingClientRect(), pad = 18, rad = 34;
+        var x = r.left - hr.left - pad, y = r.top - hr.top - pad, w = r.width + pad * 2, h = r.height + pad * 2;
+        var d = 'M' + (x + rad) + ' ' + y + ' H' + (x + w - rad) + ' Q' + (x + w) + ' ' + y + ' ' + (x + w) + ' ' + (y + rad) +
+          ' V' + (y + h - rad) + ' Q' + (x + w) + ' ' + (y + h) + ' ' + (x + w - rad) + ' ' + (y + h) +
+          ' H' + (x + rad) + ' Q' + x + ' ' + (y + h) + ' ' + x + ' ' + (y + h - rad) + ' V' + (y + rad) + ' Q' + x + ' ' + y + ' ' + (x + rad) + ' ' + y + ' Z';
+        targets.frame = sample(d, function (px, py) { return [px, py]; });
+      } else {
+        targets.frame = targets.bag;
+      }
+    }
+    function resize() {
+      W = hero.clientWidth; H = hero.clientHeight;
+      canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      buildShapes();
+    }
+    resize();
+    window.addEventListener('resize', resize);
+    hero.classList.add('has-webgl');
+
+    // morph state: 0 = free waves, 1 = in the shape
+    var shape = 'frame', morph = 0, morphTarget = 1, pending = null, lastT = 0;
+    window.dejoiyRibbonShape = function (name) {
+      if (name === shape && morphTarget === 1) return;
+      pending = name; morphTarget = 0;               // let go, then gather into the new shape
+    };
+    var mouseY = .5;
+    hero.addEventListener('pointermove', function (e) { var r = hero.getBoundingClientRect(); mouseY = (e.clientY - r.top) / r.height; });
+
+    var pos = RIBBONS.map(function () { var a = []; for (var k = 0; k < N; k++) a.push([0, 0]); return a; });
+    function ease(x) { return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; }
+
+    function draw(t) {
+      ctx.clearRect(0, 0, W, H);
+      // time-based: ~1.4 s to gather into a shape, ~0.5 s to let go
+      var dt = Math.min(0.1, Math.max(0, t - (lastT || t))); lastT = t;
+      if (morph < morphTarget) morph = Math.min(morphTarget, morph + dt / 1.4);
+      if (morph > morphTarget) morph = Math.max(morphTarget, morph - dt / 0.5);
+      if (morph === 0 && pending) { shape = pending; pending = null; morphTarget = 1; }
+      var tgt = targets[shape] || targets.bag;
+      RIBBONS.forEach(function (r, i) {
+        var p = pos[i], tp = tgt[i];
+        for (var k = 0; k < N; k++) {
+          var u = k / (N - 1);
+          var x = (-0.1 + 1.2 * u) * W;
+          var xn = x / H;
+          var wy = (r.off + Math.sin(xn * r.freq + t * r.speed + r.seed * 6.28) * r.amp +
+            Math.sin(xn * r.freq * .47 - t * r.speed * .7 + r.seed * 3) * r.amp * .6 + (mouseY - .5) * .06 * Math.sin(xn * 2 + r.seed)) * H;
+          // stagger so a ribbon gathers from one end to the other
+          var m = ease(Math.max(0, Math.min(1, morph * 1.6 - u * .6)));
+          var wob = Math.sin(t * 2 + u * 14 + i) * 3;
+          p[k][0] = x + (tp[k][0] - x) * m;
+          p[k][1] = wy + (tp[k][1] + wob - wy) * m;
+        }
+        // soft glow under the ribbon
+        ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+        ctx.strokeStyle = 'rgba(' + r.col + ',' + (0.10 + morph * .06) + ')';
+        ctx.lineWidth = 22 - morph * 8;
+        // where a shape jumps to its next part (an eye, the smile), lift the pen instead of drawing a line across
+        var jump = [];
+        for (k = 1; k < N; k++) jump[k] = morph > .6 && Math.hypot(p[k][0] - p[k - 1][0], p[k][1] - p[k - 1][1]) > 34;
+        ctx.beginPath();
+        for (k = 0; k < N; k++) (k && !jump[k]) ? ctx.lineTo(p[k][0], p[k][1]) : ctx.moveTo(p[k][0], p[k][1]);
+        ctx.stroke();
+        // silk: thin strands spread across a width that twists along the ribbon
+        for (var s = 0; s < STRANDS; s++) {
+          var f = s / (STRANDS - 1) - .5;
+          ctx.strokeStyle = 'rgba(' + r.col + ',' + (0.85 - Math.abs(f) * 0.9) + ')';
+          ctx.lineWidth = s === (STRANDS >> 1) ? 2.2 : 1.1;
+          ctx.beginPath();
+          for (k = 0; k < N; k++) {
+            var a = p[Math.max(0, k - 1)], b = p[Math.min(N - 1, k + 1)];
+            var dx = b[0] - a[0], dy = b[1] - a[1], len = Math.hypot(dx, dy) || 1;
+            var width = (16 - morph * 8) * Math.sin((k / N) * 9 + t * 1.3 + r.seed * 5);
+            var ox = -dy / len * width * f, oy = dx / len * width * f;
+            (k && !jump[k]) ? ctx.lineTo(p[k][0] + ox, p[k][1] + oy) : ctx.moveTo(p[k][0] + ox, p[k][1] + oy);
+          }
+          ctx.stroke();
+        }
+      });
+    }
+    var visible = true, running = false;
+    new IntersectionObserver(function (en) { visible = en[0].isIntersecting; if (visible) go(); }).observe(hero);
+    document.addEventListener('visibilitychange', function () { if (!document.hidden) go(); });
+    function frame(now) {
+      if (!visible || document.hidden) { running = false; return; }
+      draw(now / 1000);
+      requestAnimationFrame(frame);
+    }
+    function go() {
+      if (reduce) { morph = 1; draw(4); return; }
+      if (!running) { running = true; requestAnimationFrame(frame); }
+    }
+    if (reduce) window.dejoiyRibbonShape = function (name) { shape = name; morph = 1; draw(4); };
+    setTimeout(go, 0);
+  }
+
   /* ── Hero slider: the first word scrambles into the next one ── */
   function initHeroSlider() {
     var root = document.getElementById('heroSlider');
@@ -271,6 +433,8 @@
       cta.href = s.href;
       if (/^https?:/.test(s.href)) { cta.target = '_blank'; cta.rel = 'noopener'; } else { cta.removeAttribute('target'); cta.removeAttribute('rel'); }
       dots.forEach(function (d, k) { d.setAttribute('aria-current', k === i ? 'true' : 'false'); });
+      if (window.dejoiyRibbonShape) window.dejoiyRibbonShape(s.shape);
+      document.getElementById('hero3d').setAttribute('data-slide', s.shape);
       root.style.setProperty('--hs-progress', '0');
       if (user) restart();
     }

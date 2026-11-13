@@ -431,3 +431,20 @@ textarea.field { resize: vertical; min-height: 140px; }
 @media (max-width: 980px) { .hero { align-items: center; padding-top: 7rem; } .phero { padding-top: 9rem; } .hero::after, .phero::after { background: rgba(4, 16, 63, .35); } }
 /* Nav sits on a solid cream bar so it reads over the blue hero */
 .nav { background: rgba(255, 246, 232, .94); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 2.5px 0 var(--ink); }
+/* dejoiy.com preview card behind the Commerce slide */
+.dj-mock { position: absolute; z-index: 0; right: 7%; top: 50%; width: min(36vw, 520px); transform: translateY(-46%) rotate(-2deg) scale(.96); opacity: 0;
+  background: #fff; color: #141414; border: 3px solid #141414; border-radius: 22px; overflow: hidden; box-shadow: 10px 10px 0 rgba(0, 0, 0, .35);
+  transition: opacity .7s var(--smooth), transform .9s var(--spring); pointer-events: none; }
+.hero[data-slide="frame"] .dj-mock { opacity: 1; transform: translateY(-50%) rotate(-2deg) scale(1); }
+.dj-mock-bar { display: flex; align-items: center; gap: 6px; padding: 10px 14px; background: #f1f1f1; border-bottom: 2px solid #141414; font-size: .75rem; font-weight: 700; }
+.dj-mock-bar i { width: 10px; height: 10px; border-radius: 50%; background: #ff5f57; } .dj-mock-bar i:nth-child(2) { background: #febc2e; } .dj-mock-bar i:nth-child(3) { background: #28c840; }
+.dj-mock-bar span { margin-left: 10px; padding: 3px 12px; border-radius: 999px; background: #fff; border: 1.5px solid #d0d0d0; }
+.dj-mock-promo { background: #2f6fd0; color: #fff; font-size: .72rem; font-weight: 700; text-align: center; padding: 6px; }
+.dj-mock-nav { display: flex; gap: 14px; align-items: center; padding: 10px 16px; font-size: .74rem; font-weight: 700; border-bottom: 1.5px solid #eee; }
+.dj-mock-nav b { font-family: var(--display); font-size: 1rem; margin-right: auto; }
+.dj-mock-hero { padding: 22px 18px 14px; background: linear-gradient(135deg, #e8f0ff, #fff4e0); }
+.dj-mock-hero h4 { font-family: var(--display); font-size: clamp(1.3rem, 2.2vw, 2rem); line-height: 1; letter-spacing: -.04em; margin-bottom: 14px; }
+.dj-mock-btn { display: inline-block; background: #2f6fd0; color: #fff; font-weight: 800; font-size: .78rem; padding: 8px 14px; border-radius: 999px; }
+.dj-mock-pills { display: flex; flex-wrap: wrap; gap: 6px; padding: 12px 16px 16px; }
+.dj-mock-pills span { font-size: .7rem; font-weight: 700; padding: 4px 10px; border-radius: 999px; border: 1.5px solid #141414; }
+@media (max-width: 980px) { .dj-mock { display: none; } }
