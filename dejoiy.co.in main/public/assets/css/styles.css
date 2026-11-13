@@ -1257,3 +1257,98 @@ html { overflow-x: clip; }
 .page-hero-section { position: relative; overflow: hidden; }
 .page-3d { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; }
 .page-hero-section > .container { position: relative; z-index: 2; }
+
+/* ================================================
+   Gen-Z v5 — louder palette: lime (logo), hot pink, electric blue, lavender
+================================================ */
+:root {
+  --dj-blue: #3a6bff; --dj-blue-2: #6b8cff;
+  --dj-pink: #ff3d9a; --dj-orange: #ff8a3d;
+  --dj-lemon: #c6ff3d; /* lime, matches the logo D */
+  --dj-mint: #4dd8ff;  /* sky */
+  --dj-lav: #b9a6ff;
+  --dj-ink: #120b3a;
+  --bg-void: #120b3a; --bg-deep: #160e45; --bg-dark: #1c1352;
+  --text-secondary: #c4bdf0; --text-dim: #8d84c4;
+}
+body { background: var(--dj-ink); }
+.gradient-text { background: linear-gradient(100deg, var(--dj-lemon), var(--dj-mint) 40%, var(--dj-pink) 75%, var(--dj-lemon)); background-size: 250% 100%;
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: gradientShift 6s ease infinite; }
+.gradient-gold { background: linear-gradient(100deg, var(--dj-pink), var(--dj-orange)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+
+/* Primary = lime pill with ink text (pops on every background) */
+.btn-primary { background: var(--dj-lemon) !important; color: var(--dj-ink) !important; font-weight: 800;
+  box-shadow: 0 4px 0 #7fb800, 0 14px 34px rgba(198,255,61,.35); }
+.btn-primary:hover { background: #d4ff6a !important; box-shadow: 0 6px 0 #7fb800, 0 18px 44px rgba(198,255,61,.45); }
+.btn-primary:active { box-shadow: 0 1px 0 #7fb800; }
+.btn-joy { background: var(--dj-pink) !important; color: #fff !important; box-shadow: 0 4px 0 #b3166a, 0 14px 30px rgba(255,61,154,.4); }
+.btn-joy:hover { background: #ff5cab !important; box-shadow: 0 6px 0 #b3166a, 0 18px 40px rgba(255,61,154,.5); }
+.btn-joy:active { box-shadow: 0 1px 0 #b3166a; }
+.btn-ghost { border: 2px solid rgba(255,255,255,.35); }
+.badge { background: rgba(198,255,61,.12); border-color: rgba(198,255,61,.4); color: var(--dj-lemon); }
+.badge-dot { background: var(--dj-lemon); }
+.nav-links a.active::after { background: var(--dj-lemon); }
+.nav-wrap.scrolled { background: rgba(18,11,58,.8); }
+
+/* Hero: electric mesh instead of near-black */
+.hero3d { background:
+  radial-gradient(55% 55% at 78% 40%, rgba(58,107,255,.75), transparent 65%),
+  radial-gradient(40% 45% at 95% 95%, rgba(255,61,154,.55), transparent 70%),
+  radial-gradient(45% 40% at 5% 100%, rgba(185,166,255,.35), transparent 70%),
+  radial-gradient(30% 30% at 10% 10%, rgba(77,216,255,.18), transparent 70%),
+  #1a0f55; }
+.hero3d h1 .swap { color: var(--dj-lemon); }
+.hero3d .lede { color: #dcd6ff; }
+.sticker { box-shadow: 3px 3px 0 var(--dj-pink); }
+.sticker b { background: var(--dj-lemon); box-shadow: 0 0 0 4px rgba(198,255,61,.3); }
+.hero-facts span { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.18); color: #fff; }
+
+/* Formula band: full lavender block */
+.eq-band { background: var(--dj-lav); color: var(--dj-ink); }
+.eq-band .eq .op { color: rgba(18,11,58,.45); }
+.eq-band .eq .res { color: var(--dj-ink); }
+.eq-band .eq .you { background: var(--dj-blue); box-shadow: 5px 5px 0 var(--dj-ink); }
+.eq-band .eq .joy { background: var(--dj-pink); box-shadow: 5px 5px 0 var(--dj-ink); }
+.eq-band .eq-sub { color: rgba(18,11,58,.75); font-weight: 600; }
+
+.marquee-wrap { background: var(--dj-lemon); margin-top: -1.2rem; position: relative; z-index: 2; box-shadow: 0 10px 30px rgba(0,0,0,.25); }
+.marquee-dot { background: var(--dj-pink) !important; }
+
+/* World cards: saturated blocks */
+.w-market { background: linear-gradient(135deg, #3a6bff, #6a3dff); }
+.w-market .blob { background: radial-gradient(circle at 30% 30%, #fff, var(--dj-pink) 60%); opacity: .7; }
+.w-bpo { background: linear-gradient(135deg, #ff3d9a, #ff6b5a); }
+.w-bpo .blob { background: radial-gradient(circle at 30% 30%, #fff, var(--dj-lemon) 60%); }
+.w-tech { background: var(--dj-lemon); }
+.w-tech .blob { background: radial-gradient(circle at 30% 30%, #fff, var(--dj-mint) 60%); }
+.w-mail { background: var(--dj-mint); }
+.w-mail .blob { background: radial-gradient(circle at 30% 30%, #fff, var(--dj-pink) 60%); }
+.w-joi { background: var(--dj-lav); }
+.w-joi .blob { background: radial-gradient(circle at 30% 30%, #fff, var(--dj-blue) 60%); }
+.world { box-shadow: 6px 6px 0 rgba(0,0,0,.35); }
+
+/* BPO section on a deep pink-violet tint */
+#bpo { background: linear-gradient(180deg, #1c0f4f, #2a0f4a); }
+.svc i { color: var(--dj-lemon); }
+.svc-list, .svc { border-color: rgba(255,255,255,.12); }
+
+.quote-big em { color: var(--dj-lemon); }
+.country.hq { background: var(--dj-pink); color: #fff; }
+.country.hq small { color: #fff; }
+.country small { color: var(--dj-lemon); }
+
+/* CTA: hot pink → orange with lime button */
+.cta-joy { background: linear-gradient(120deg, #ff3d9a, #ff8a3d); box-shadow: 8px 8px 0 var(--dj-lemon); }
+.cta-joy::before { background: radial-gradient(circle at 35% 35%, #fff, var(--dj-lav) 50%, transparent 72%); opacity: .55; }
+.cta-joy p { color: #fff3f8; }
+.cta-joy .btn-primary { background: var(--dj-lemon) !important; color: var(--dj-ink) !important; box-shadow: 0 4px 0 #7fb800; }
+
+/* Cards on inner pages pick up a little colour */
+.empire-card, .tech-card, .innovation-stat-card, .bpo-card, .team-card, .cta-card {
+  background: linear-gradient(160deg, rgba(185,166,255,.12), rgba(58,107,255,.05)); border-color: rgba(185,166,255,.18); }
+.empire-card:hover, .tech-card:hover, .bpo-card:hover, .innovation-stat-card:hover, .team-card:hover { border-color: var(--dj-lemon); box-shadow: 6px 6px 0 var(--dj-pink); }
+.team-card-role, .tech-card-label { color: var(--dj-lemon) !important; }
+.page-hero-section { background:
+  radial-gradient(45% 60% at 85% 30%, rgba(58,107,255,.55), transparent 65%),
+  radial-gradient(35% 45% at 100% 90%, rgba(255,61,154,.35), transparent 70%), transparent; }
+.site-footer { background: #0e0830; }

@@ -218,14 +218,14 @@
 
     scene.add(new THREE.HemisphereLight(0xbcd4ff, 0x3a1238, 0.55));
     var key = new THREE.DirectionalLight(0xffffff, 1.2); key.position.set(3, 4, 5); scene.add(key);
-    var rimPink = new THREE.PointLight(0xff5fa2, 2.2, 20); rimPink.position.set(-4, -2, 3); scene.add(rimPink);
-    var rimSun = new THREE.PointLight(0xffb35c, 1.4, 20); rimSun.position.set(4, -3, 2); scene.add(rimSun);
+    var rimPink = new THREE.PointLight(0xff3d9a, 2.6, 20); rimPink.position.set(-4, -2, 3); scene.add(rimPink);
+    var rimSun = new THREE.PointLight(0xc6ff3d, 1.2, 20); rimSun.position.set(4, -3, 2); scene.add(rimSun);
 
     // Soft candy studio for reflections (avoids black rims on the glossy edges)
     (function () {
       var c = document.createElement('canvas'); c.width = 256; c.height = 128;
       var g = c.getContext('2d'), gr = g.createLinearGradient(0, 0, 0, 128);
-      gr.addColorStop(0, '#cfe0ff'); gr.addColorStop(0.45, '#5b9bff'); gr.addColorStop(0.7, '#ff8fc0'); gr.addColorStop(1, '#2a1640');
+      gr.addColorStop(0, '#cfe0ff'); gr.addColorStop(0.45, '#5b9bff'); gr.addColorStop(0.7, '#ff3d9a'); gr.addColorStop(1, '#2a1640');
       g.fillStyle = gr; g.fillRect(0, 0, 256, 128);
       var tex = new THREE.CanvasTexture(c); tex.mapping = THREE.EquirectangularReflectionMapping; tex.encoding = THREE.sRGBEncoding;
       var pm = new THREE.PMREMGenerator(renderer);
@@ -237,7 +237,7 @@
     // Wobbly jelly blob: vertex displacement injected into a physical material
     var uniforms = { uTime: { value: 0 }, uAmp: { value: reduce ? 0.06 : 0.22 } };
     function lin(hex) { return new THREE.Color(hex).convertSRGBToLinear(); }
-    var jellyMat = new THREE.MeshPhysicalMaterial({ color: lin(0x2f7cf6), roughness: 0.22, metalness: 0, clearcoat: 1, clearcoatRoughness: 0.06, envMapIntensity: 0.6 });
+    var jellyMat = new THREE.MeshPhysicalMaterial({ color: lin(0x3a6bff), roughness: 0.22, metalness: 0, clearcoat: 1, clearcoatRoughness: 0.06, envMapIntensity: 0.6 });
     jellyMat.onBeforeCompile = function (shader) {
       shader.uniforms.uTime = uniforms.uTime;
       shader.uniforms.uAmp = uniforms.uAmp;
@@ -253,11 +253,11 @@
 
     // Candy satellites in the brand colours
     var candy = [
-      { geo: new THREE.TorusGeometry(0.42, 0.17, 24, 64), c: 0xff5fa2, p: [-2.4, 1.3, 0.6] },
-      { geo: new THREE.SphereGeometry(0.34, 40, 40),      c: 0xffce3a, p: [2.3, 1.5, -0.4] },
-      { geo: THREE.CapsuleGeometry ? new THREE.CapsuleGeometry(0.22, 0.5, 8, 24) : new THREE.CylinderGeometry(0.22, 0.22, 0.8, 24), c: 0x3ee6b0, p: [2.1, -1.6, 0.8] },
-      { geo: new THREE.TorusKnotGeometry(0.28, 0.1, 96, 16), c: 0xffb35c, p: [-2.0, -1.5, -0.3] },
-      { geo: new THREE.SphereGeometry(0.18, 32, 32),      c: 0xffffff, p: [0.4, 2.3, 1.0] }
+      { geo: new THREE.TorusGeometry(0.42, 0.17, 24, 64), c: 0xff3d9a, p: [-2.4, 1.3, 0.6] },
+      { geo: new THREE.SphereGeometry(0.34, 40, 40),      c: 0xc6ff3d, p: [2.3, 1.5, -0.4] },
+      { geo: THREE.CapsuleGeometry ? new THREE.CapsuleGeometry(0.22, 0.5, 8, 24) : new THREE.CylinderGeometry(0.22, 0.22, 0.8, 24), c: 0x4dd8ff, p: [2.1, -1.6, 0.8] },
+      { geo: new THREE.TorusKnotGeometry(0.28, 0.1, 96, 16), c: 0xff8a3d, p: [-2.0, -1.5, -0.3] },
+      { geo: new THREE.SphereGeometry(0.18, 32, 32),      c: 0xb9a6ff, p: [0.4, 2.3, 1.0] }
     ];
     var sats = candy.map(function (d, i) {
       var m = new THREE.Mesh(d.geo, new THREE.MeshPhysicalMaterial({ color: lin(d.c), roughness: 0.25, clearcoat: 1, clearcoatRoughness: 0.1 }));
