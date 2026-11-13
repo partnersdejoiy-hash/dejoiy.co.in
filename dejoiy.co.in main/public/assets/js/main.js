@@ -1,6 +1,6 @@
 /* ================================================
-   DEJOIY — Main JS v3.0
-   BPO + Marketplace | YOU + JOY = DEJOIY
+   DEJOIY — main.js v8
+   Nav, reveals, jelly hero, :D intro, contact form.
 ================================================ */
 ;(function () {
   'use strict';
@@ -9,179 +9,90 @@
 
   document.addEventListener('DOMContentLoaded', function () {
     initNav();
-    initScrollReveal();
-    initCounters();
-    initInnovationBars();
-    initImageSwap();
+    initReveal();
+    initSwap();
+    initContactForm();
     initThreeJS();
   });
 
-  /* ══════════════════════════
-     NAVIGATION
-  ══════════════════════════ */
+  /* ── Nav: shadow on scroll, mobile menu ── */
   function initNav() {
-    var nav = document.getElementById('mainNav');
-    var hamburger = document.getElementById('navHamburger');
-    var mobileMenu = document.getElementById('mobileMenu');
-    var menuOpen = false;
-
-    window.addEventListener('scroll', function () {
-      if (!nav) return;
-      if ((window.pageYOffset || document.documentElement.scrollTop) > 60) {
-        nav.classList.add('scrolled');
-      } else {
-        nav.classList.remove('scrolled');
-      }
-    }, { passive: true });
-
-    if (hamburger && mobileMenu) {
-      hamburger.addEventListener('click', function () {
-        menuOpen = !menuOpen;
-        if (menuOpen) {
-          hamburger.classList.add('open');
-          hamburger.setAttribute('aria-expanded', 'true');
-          mobileMenu.classList.add('open');
-          document.body.style.overflow = 'hidden';
-        } else {
-          close();
-        }
-      });
-
-      document.addEventListener('click', function (e) {
-        if (menuOpen && !mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
-          close();
-        }
-      });
-
-      mobileMenu.querySelectorAll('a').forEach(function (link) {
-        link.addEventListener('click', close);
-      });
+    var nav = document.getElementById('nav');
+    var burger = document.getElementById('burger');
+    var menu = document.getElementById('menu');
+    function onScroll() { nav.classList.toggle('scrolled', window.scrollY > 24); }
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    if (!burger || !menu) return;
+    function setOpen(open) {
+      burger.setAttribute('aria-expanded', String(open));
+      burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      menu.classList.toggle('open', open);
+      document.body.style.overflow = open ? 'hidden' : '';
     }
+    burger.addEventListener('click', function () { setOpen(burger.getAttribute('aria-expanded') !== 'true'); });
+    menu.addEventListener('click', function (e) { if (e.target.closest('a')) setOpen(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
+  }
 
-    function close() {
-      menuOpen = false;
-      if (hamburger) { hamburger.classList.remove('open'); hamburger.setAttribute('aria-expanded', 'false'); }
-      if (mobileMenu) { mobileMenu.classList.remove('open'); }
-      document.body.style.overflow = '';
-    }
+  /* ── Scroll reveals ── */
+  function initReveal() {
+    var els = document.querySelectorAll('.rv');
+    if (!('IntersectionObserver' in window)) { els.forEach(function (el) { el.classList.add('in'); }); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    els.forEach(function (el) { io.observe(el); });
+  }
 
-    /* Active link */
-    var currentPage = window.location.pathname.split('/').pop() || 'index.html';
-    document.querySelectorAll('.nav-links a').forEach(function (link) {
-      if (link.getAttribute('href') === currentPage) {
-        link.classList.add('active');
-      }
+  /* ── Photo swap (founder's spirit animal) ── */
+  function initSwap() {
+    document.querySelectorAll('[data-swap]').forEach(function (btn) {
+      var img = document.getElementById(btn.getAttribute('data-for'));
+      if (!img) return;
+      btn.addEventListener('click', function () {
+        var toB = btn.getAttribute('aria-pressed') !== 'true';
+        img.style.opacity = '0';
+        setTimeout(function () {
+          img.src = btn.getAttribute(toB ? 'data-b' : 'data-a');
+          img.alt = btn.getAttribute(toB ? 'data-b-alt' : 'data-a-alt');
+          img.style.opacity = '1';
+        }, 250);
+        btn.setAttribute('aria-pressed', String(toB));
+        btn.textContent = toB ? 'Original photo' : 'Spirit animal';
+      });
     });
   }
 
-  /* ══════════════════════════
-     SCROLL REVEAL
-  ══════════════════════════ */
-  function initScrollReveal() {
-    var els = document.querySelectorAll('.reveal');
-    if (!els.length) return;
-
-    var obs = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          obs.unobserve(entry.target);
-        }
+  /* ── Contact form → /api/contact ── */
+  function initContactForm() {
+    var form = document.getElementById('contactForm');
+    if (!form) return;
+    var status = document.getElementById('cf-status');
+    var btn = document.getElementById('cf-submit');
+    var label = btn.innerHTML;
+    function show(msg, ok) { status.className = 'status ' + (ok ? 'ok' : 'err'); status.textContent = msg; }
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var bad = null;
+      ['cf-first', 'cf-email', 'cf-message'].forEach(function (id) {
+        var f = document.getElementById(id);
+        var invalid = !f.value.trim() || (f.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.value.trim()));
+        f.setAttribute('aria-invalid', String(invalid));
+        if (invalid && !bad) bad = f;
       });
-    }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
-
-    els.forEach(function (el) { obs.observe(el); });
-  }
-
-  /* ══════════════════════════
-     ANIMATED COUNTERS
-  ══════════════════════════ */
-  function initCounters() {
-    var counters = document.querySelectorAll('[data-counter]');
-    if (!counters.length) return;
-
-    var obs = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          animateCounter(entry.target);
-          obs.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.5 });
-
-    counters.forEach(function (el) { obs.observe(el); });
-  }
-
-  function animateCounter(el) {
-    var raw = el.getAttribute('data-target');
-    if (!raw) return;
-    var target = parseFloat(raw);
-    var suffix = el.getAttribute('data-suffix') || '';
-    var isDecimal = raw.indexOf('.') !== -1;
-    var decimals = isDecimal ? (raw.split('.')[1] || '').length : 0;
-    var duration = 2200;
-    var startTime = null;
-
-    function step(ts) {
-      if (!startTime) startTime = ts;
-      var t = Math.min((ts - startTime) / duration, 1);
-      var eased = 1 - Math.pow(1 - t, 3);
-      var cur = target * eased;
-      el.textContent = (isDecimal ? cur.toFixed(decimals) : Math.round(cur)) + suffix;
-      if (t < 1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
-  }
-
-  /* ══════════════════════════
-     INNOVATION BARS
-  ══════════════════════════ */
-  function initInnovationBars() {
-    var bars = document.querySelectorAll('.innovation-bar-fill');
-    if (!bars.length) return;
-
-    var obs = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animated');
-          obs.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.3 });
-
-    bars.forEach(function (b) { obs.observe(b); });
-  }
-
-  /* ══════════════════════════
-     IMAGE SWAP
-  ══════════════════════════ */
-  function initImageSwap() {
-    document.querySelectorAll('[data-swap-image]').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var state = btn.getAttribute('data-state');
-        var card = btn.closest('.founder-feature-card');
-        if (!card) return;
-        var img = card.querySelector('.founder-img-wrap img');
-        if (!img) return;
-
-        img.style.opacity = '0';
-        img.style.transition = 'opacity 0.3s ease';
-
-        setTimeout(function () {
-          if (state === 'primary') {
-            img.src = btn.getAttribute('data-alternate');
-            img.alt = btn.getAttribute('data-alternate-alt') || '';
-            btn.setAttribute('data-state', 'alternate');
-            btn.textContent = 'Original Photo';
-          } else {
-            img.src = btn.getAttribute('data-primary');
-            img.alt = btn.getAttribute('data-primary-alt') || '';
-            btn.setAttribute('data-state', 'primary');
-            btn.textContent = 'Spirit Animal';
-          }
-          img.style.opacity = '1';
-        }, 300);
-      });
+      if (bad) { show('Please fill in your name, a valid email and a message.', false); bad.focus(); return; }
+      btn.disabled = true; btn.textContent = 'Sending…';
+      var data = {};
+      new FormData(form).forEach(function (v, k) { data[k] = v; });
+      fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
+        .then(function (r) { return r.json(); })
+        .then(function (d) {
+          if (d.success) { show('Message sent. We will reply within one working day.', true); form.reset(); }
+          else show(d.error || 'We could not send that. Please try again.', false);
+        })
+        .catch(function () { show('Connection failed. Please try again, or email connect@dejoiy.com.', false); })
+        .finally(function () { btn.disabled = false; btn.innerHTML = label; });
     });
   }
 
@@ -191,13 +102,13 @@
   function initThreeJS() {
     initHeroSwap();
     initTilt();
-    var hero = document.getElementById('hero3d') || document.querySelector('.page-hero-section');
+    var hero = document.getElementById('hero3d') || document.querySelector('.phero');
     if (!hero || typeof THREE === 'undefined') return;
     var mini = hero.id !== 'hero3d'; // inner pages get a smaller jelly on the right
     var canvas = document.getElementById('hero-canvas');
     if (!canvas) {
       canvas = document.createElement('canvas');
-      canvas.className = 'page-3d'; canvas.setAttribute('aria-hidden', 'true');
+       canvas.setAttribute('aria-hidden', 'true');
       hero.insertBefore(canvas, hero.firstChild);
     }
 

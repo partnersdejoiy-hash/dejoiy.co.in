@@ -1,3 +1,4 @@
+import html
 import json
 import os
 from http.server import BaseHTTPRequestHandler
@@ -22,6 +23,10 @@ class handler(BaseHTTPRequestHandler):
         enquiry    = data.get('enquiry', '').strip()
         message    = data.get('message', '').strip()
 
+        # Escape everything the visitor typed before it goes into the email HTML
+        first_name, last_name, email, company, enquiry, message = (
+            html.escape(v) for v in (first_name, last_name, email, company, enquiry, message))
+
         if not first_name or not email or not message:
             self._respond(400, {'error': 'Please fill in all required fields.'})
             return
@@ -30,7 +35,7 @@ class handler(BaseHTTPRequestHandler):
 
         html_body = f"""
         <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;background:#0d0d0d;color:#f0f0f0;border-radius:12px;overflow:hidden">
-          <div style="background:linear-gradient(135deg,#2563eb,#7c3aed);padding:24px 32px">
+          <div style="background:#2f6bff;padding:24px 32px">
             <h1 style="margin:0;font-size:22px;color:white;letter-spacing:0.04em">New Enquiry — DEJOIY</h1>
             <p style="margin:6px 0 0;color:rgba(255,255,255,0.75);font-size:13px">YOU + JOY = DEJOIY</p>
           </div>
@@ -43,9 +48,9 @@ class handler(BaseHTTPRequestHandler):
               <tr><td style="padding:8px 0;color:#9ca3af;font-size:12px;text-transform:uppercase;letter-spacing:0.08em">Company</td>
                   <td style="padding:8px 0;color:#f0f0f0;font-size:15px">{company or '—'}</td></tr>
               <tr><td style="padding:8px 0;color:#9ca3af;font-size:12px;text-transform:uppercase;letter-spacing:0.08em">Enquiry</td>
-                  <td style="padding:8px 0;color:#a78bfa;font-size:15px">{enquiry or '—'}</td></tr>
+                  <td style="padding:8px 0;color:#d4ff3a;font-size:15px">{enquiry or '—'}</td></tr>
             </table>
-            <div style="margin-top:20px;padding:16px;background:rgba(255,255,255,0.05);border-radius:8px;border-left:3px solid #7c3aed">
+            <div style="margin-top:20px;padding:16px;background:rgba(255,255,255,0.05);border-radius:8px;border-left:3px solid #d4ff3a">
               <div style="color:#9ca3af;font-size:12px;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px">Message</div>
               <div style="color:#f0f0f0;font-size:15px;line-height:1.7;white-space:pre-wrap">{message}</div>
             </div>

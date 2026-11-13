@@ -1,292 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>DEJOIY — You + Joy | People, Technology &amp; Connected Commerce</title>
-  <meta name="description" content="DEJOIY connects people, technology, commerce and operations — a marketplace, BPO services, software and digital products from New Delhi to the world." />
-  <meta property="og:title" content="DEJOIY — You + Joy | BPO &amp; Marketplace" />
-  <meta property="og:description" content="Building the world's most joyful enterprise ecosystem — BPO services + digital marketplace, powered by AI." />
-  <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#0b0a1a" />
-  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png" />
-  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" />
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" /></noscript>
-
-    <script src="assets/vendor/gsap.min.js" defer></script>
-  <script src="assets/vendor/ScrollTrigger.min.js" defer></script>
-
-  <link rel="stylesheet" href="assets/css/styles.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>DEJOIY — You + Joy | People, technology & connected commerce</title>
+<meta name="description" content="DEJOIY connects people, technology, commerce and operations: a marketplace, BPO services, software and digital products from New Delhi." />
+<meta property="og:title" content="DEJOIY — You + Joy | People, technology & connected commerce" />
+<meta property="og:description" content="DEJOIY connects people, technology, commerce and operations: a marketplace, BPO services, software and digital products from New Delhi." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.dejoiy.co.in/" />
+<meta name="theme-color" content="#fff6e8" />
+<link rel="canonical" href="https://www.dejoiy.co.in/" />
+<link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32.png" />
+<link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" />
+<link rel="stylesheet" href="/assets/css/styles.css" />
+<link rel="stylesheet" href="/assets/css/joi-guide.css" />
 </head>
-<body>
-<a href="#main" class="skip-link">Skip to content</a>
+<body data-page="home">
+<a class="skip" href="#main">Skip to content</a>
 
-<!-- ═══ NAVIGATION ═══ -->
-<header class="nav-wrap" id="mainNav">
-  <div class="container">
-    <div class="nav-inner">
-      <a href="/" class="nav-logo">
-        <div>
-          <img class="nav-logo-img" src="assets/images/logo/dejoiy-wordmark-on-light.svg" alt="DEJOIY" />
-          <div class="nav-logo-sub">You + Joy</div>
-        </div>
-      </a>
-      <ul class="nav-links">
-        <li><a href="/" class="active">Home</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/services">BPO Services</a></li>
-        <li><a href="/team">Team</a></li>
-        <li><a href="/contact">Contact</a></li>
-      </ul>
-      <div class="nav-actions">
-        <a href="https://www.dejoiy.com" target="_blank" rel="noopener" class="btn-ghost" style="padding:0.6rem 1.15rem;font-size:0.83rem">Marketplace</a>
-        <a href="https://business.dejoiy.com" target="_blank" rel="noopener" class="btn-primary" style="padding:0.6rem 1.15rem;font-size:0.83rem">Business Portal</a>
-      </div>
-      <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="logo" href="/" aria-label="DEJOIY home"><img src="/assets/images/logo/dejoiy-wordmark-on-light.svg" alt="DEJOIY" width="94" height="30" /><small>You + Joy</small></a>
+    <nav aria-label="Main"><ul class="nav-links"><li><a href="/" aria-current="page">Home</a></li><li><a href="/about">About</a></li><li><a href="/services">Services</a></li><li><a href="/team">Team</a></li><li><a href="/contact">Contact</a></li></ul></nav>
+    <div class="nav-cta">
+      <a class="btn btn-line" href="https://www.dejoiy.com" target="_blank" rel="noopener">Marketplace</a>
+      <a class="btn btn-ink" href="https://business.dejoiy.com" target="_blank" rel="noopener">Business portal</a>
     </div>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
   </div>
 </header>
-
-<div class="mobile-menu" id="mobileMenu">
-  <nav>
-    <a href="/">Home</a>
-    <a href="/about">ℹ️ About</a>
-    <a href="/services">BPO Services</a>
-    <a href="/team">Team</a>
-    <a href="/contact">Contact</a>
-  </nav>
-  <div class="mobile-ctas">
-    <a href="https://www.dejoiy.com" target="_blank" rel="noopener" class="btn-ghost" style="text-align:center;display:block">Visit Marketplace</a>
-    <a href="https://business.dejoiy.com" target="_blank" rel="noopener" class="btn-primary" style="text-align:center;display:block">Business Portal</a>
+<div class="menu" id="menu" aria-label="Menu">
+  <a class="m" href="/">Home <span aria-hidden="true">→</span></a><a class="m" href="/about">About <span aria-hidden="true">→</span></a><a class="m" href="/services">Services <span aria-hidden="true">→</span></a><a class="m" href="/team">Team <span aria-hidden="true">→</span></a><a class="m" href="/contact">Contact <span aria-hidden="true">→</span></a>
+  <div class="btns">
+    <a class="btn btn-line" href="https://www.dejoiy.com" target="_blank" rel="noopener">Marketplace</a>
+    <a class="btn btn-ink" href="https://business.dejoiy.com" target="_blank" rel="noopener">Business portal</a>
   </div>
 </div>
 
-<!-- ═══ HERO ═══ -->
 <main id="main">
-<section class="hero3d" id="hero3d" aria-label="Introduction">
-  <div class="hero3d-fallback" aria-hidden="true"></div>
+
+<section class="hero" id="hero3d" aria-label="Introduction" data-joi="hero">
+  <div class="blob-fallback" aria-hidden="true"></div>
   <canvas id="hero-canvas" aria-hidden="true"></canvas>
-  <div class="container hero3d-inner">
-    <span class="sticker reveal"><b></b> New Delhi → the world</span>
-    <h1 class="display-title reveal reveal-delay-1" style="margin-top:1.5rem">
-      You + Joy,<br />at <span class="swap"><span id="heroSwap">scale</span></span>.
-    </h1>
-    <p class="lede reveal reveal-delay-2">DEJOIY connects people, technology, commerce and operations. One company behind a marketplace, BPO teams, email, an AI mascot and the software that holds it together.</p>
-    <div class="hero-ctas reveal reveal-delay-3">
-      <a href="#worlds" class="btn-primary">See what we build
-        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 5v14m0 0l-6-6m6 6l6-6"/></svg></a>
-      <a href="/contact" class="btn-ghost">Talk to us</a>
+  <div class="wrap hero-in">
+    <span class="sticker rv"><i></i> New Delhi → the world</span>
+    <h1 class="h-xl rv d1">You + Joy,<br />at <span class="mark"><span id="heroSwap">scale</span></span>.</h1>
+    <p class="lede rv d2">DEJOIY connects people, technology, commerce and operations. One company behind a marketplace, BPO teams, email, an AI mascot and the software that holds it together.</p>
+    <div class="btns rv d3">
+      <a class="btn btn-ink" href="#worlds">See what we build <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn btn-line" href="/contact">Talk to us</a>
     </div>
-    <div class="hero-facts reveal reveal-delay-4">
-      <span>Since 2024</span><span>5 countries</span><span>24×7 support</span><span>Marketplace · BPO · Software</span>
-    </div>
-  </div>
-  <div class="hero-hint" aria-hidden="true">drag the jelly · scroll for more</div>
-</section>
-
-<!-- ═══ FORMULA ═══ -->
-<section class="section-sm eq-band">
-  <div class="container">
-    <div class="eq reveal" aria-label="You plus Joy equals Dejoiy">
-      <span class="chip you">YOU</span><span class="op">+</span><span class="chip joy">JOY</span><span class="op">=</span><span class="res">DEJOIY</span>
-    </div>
-    <p class="eq-sub reveal reveal-delay-1">The name is the promise. Every product, every ticket, every order should leave you a bit happier.</p>
+    <div class="chips rv d4"><span class="chip">Since 2024</span><span class="chip">5 countries</span><span class="chip">24×7 support</span><span class="chip">Marketplace · BPO · Software</span></div>
   </div>
 </section>
 
-<div class="marquee-wrap" aria-hidden="true">
-  <div class="marquee-track">
-    <span class="marquee-item">Marketplace <span class="marquee-dot"></span></span>
-    <span class="marquee-item">BPO teams <span class="marquee-dot"></span></span>
-    <span class="marquee-item">Dmail <span class="marquee-dot"></span></span>
-    <span class="marquee-item">Joi AI <span class="marquee-dot"></span></span>
-    <span class="marquee-item">Web &amp; software <span class="marquee-dot"></span></span>
-    <span class="marquee-item">YOU + JOY = DEJOIY <span class="marquee-dot"></span></span>
-    <span class="marquee-item">Marketplace <span class="marquee-dot"></span></span>
-    <span class="marquee-item">BPO teams <span class="marquee-dot"></span></span>
-    <span class="marquee-item">Dmail <span class="marquee-dot"></span></span>
-    <span class="marquee-item">Joi AI <span class="marquee-dot"></span></span>
-    <span class="marquee-item">Web &amp; software <span class="marquee-dot"></span></span>
-    <span class="marquee-item">YOU + JOY = DEJOIY <span class="marquee-dot"></span></span>
+<section class="sec-sm band-pink band-edge" data-joi="formula">
+  <div class="wrap">
+    <div class="eq rv" role="img" aria-label="You plus Joy equals Dejoiy"><span class="tag you">YOU</span><span class="op">+</span><span class="tag joy">JOY</span><span class="op">=</span><span class="res">DEJOIY</span></div>
+    <p class="eq-sub rv d1">The name is the promise. Every product, every ticket, every order should leave you a bit happier.</p>
   </div>
-</div>
+</section>
+<div class="marquee" aria-hidden="true"><div class="marquee-track">
+  <span>Marketplace</span><span>BPO teams</span><span>Dmail</span><span>Joi AI</span><span>Web & software</span><span>YOU + JOY = DEJOIY</span><span>Marketplace</span><span>BPO teams</span><span>Dmail</span><span>Joi AI</span><span>Web & software</span><span>YOU + JOY = DEJOIY</span><span>Marketplace</span><span>BPO teams</span><span>Dmail</span><span>Joi AI</span><span>Web & software</span><span>YOU + JOY = DEJOIY</span><span>Marketplace</span><span>BPO teams</span><span>Dmail</span><span>Joi AI</span><span>Web & software</span><span>YOU + JOY = DEJOIY</span>
+</div></div>
 
-<!-- ═══ WORLDS ═══ -->
-<section class="section" id="worlds">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="badge" style="margin-bottom:1.25rem"><span class="badge-dot"></span>The DEJOIY universe</div>
-      <h2 class="section-headline" style="max-width:16ch">Five worlds. <span class="gradient-text">One login-worthy vibe.</span></h2>
-    </div>
+<section class="sec band-blue" id="worlds" data-joi="worlds">
+  <div class="wrap">
+    <div class="sec-head rv"><div><span class="kicker">The DEJOIY universe</span><h2 class="h-lg">Five worlds. One vibe.</h2></div>
+      <p class="lede">Shop it, run it, mail it, ask it. Pick a world and jump in.</p></div>
     <div class="worlds">
-      <a class="world w-market tilt reveal" href="https://www.dejoiy.com" target="_blank" rel="noopener">
-        <span class="blob" aria-hidden="true"></span><span class="num">01</span>
-        <h3>Marketplace</h3>
-        <p>Fashion, tech, books, custom tees, refurbished gear and pros to hire. Everything you need, one dejoiy.</p>
-        <span class="go">Shop dejoiy.com →</span>
-      </a>
-      <a class="world w-bpo tilt reveal reveal-delay-1" href="/services">
-        <span class="blob" aria-hidden="true"></span><span class="num">02</span>
-        <h3>BPO &amp; operations</h3>
-        <p>Customer support, back office, HR and IT helpdesk run by real teams who care about your customers.</p>
-        <span class="go">See services →</span>
-      </a>
-      <a class="world w-tech tilt reveal" href="https://business.dejoiy.com" target="_blank" rel="noopener">
-        <span class="blob" aria-hidden="true"></span><span class="num">03</span>
-        <h3>Web &amp; software</h3>
-        <p>Websites, CRMs, ticketing and workforce tools built by the same people who use them daily.</p>
-        <span class="go">Business portal →</span>
-      </a>
-      <a class="world w-mail tilt reveal reveal-delay-1" href="https://mail.dejoiy.com" target="_blank" rel="noopener">
-        <span class="blob" aria-hidden="true"></span><span class="num">04</span>
-        <h3>Dmail</h3>
-        <p>Custom-domain email for teams, with an admin that companies actually control.</p>
-        <span class="go">Open Dmail →</span>
-      </a>
-      <a class="world w-joi tilt reveal reveal-delay-2" href="https://joi.dejoiy.com" target="_blank" rel="noopener">
-        <span class="blob" aria-hidden="true"></span><span class="num">05</span>
-        <h3>Joi</h3>
-        <p>Our squishy blue AI mascot. Ask her anything, across every DEJOIY app.</p>
-        <span class="go">Meet Joi →</span>
-      </a>
+      <a class="card world big t-lime tilt rv" href="https://www.dejoiy.com" target="_blank" rel="noopener"><span class="blob" style="background:var(--blue)" aria-hidden="true"></span><span class="num">01</span>
+        <h3>Marketplace</h3><p>Fashion, tech, books, custom tees, refurbished gear and pros to hire. Everything you need, one dejoiy.</p><span class="go">Shop dejoiy.com <span class="arr">→</span></span></a>
+      <a class="card world mid t-pink tilt rv d1" href="/services"><span class="blob" style="background:var(--lime)" aria-hidden="true"></span><span class="num">02</span>
+        <h3>BPO &amp; operations</h3><p>Support, back office, HR and IT helpdesk run by real teams who care about your customers.</p><span class="go">See services <span class="arr">→</span></span></a>
+      <a class="card world t-butter tilt rv" href="https://business.dejoiy.com" target="_blank" rel="noopener"><span class="blob" style="background:var(--pink)" aria-hidden="true"></span><span class="num">03</span>
+        <h3>Web &amp; software</h3><p>Websites, CRMs, ticketing and workforce tools built by people who use them daily.</p><span class="go">Business portal <span class="arr">→</span></span></a>
+      <a class="card world t-sky tilt rv d1" href="https://mail.dejoiy.com" target="_blank" rel="noopener"><span class="blob" style="background:var(--orange)" aria-hidden="true"></span><span class="num">04</span>
+        <h3>Dmail</h3><p>Custom-domain email for teams, with an admin your company actually controls.</p><span class="go">Open Dmail <span class="arr">→</span></span></a>
+      <a class="card world t-orange tilt rv d2" href="https://joi.dejoiy.com" target="_blank" rel="noopener"><span class="blob" style="background:var(--sky)" aria-hidden="true"></span><span class="num">05</span>
+        <h3>Joi</h3><p>Our squishy blue AI mascot. She's the one waving in the corner right now.</p><span class="go">Meet Joi <span class="arr">→</span></span></a>
     </div>
   </div>
 </section>
 
-<!-- ═══ BPO ═══ -->
-<section class="section" id="bpo">
-  <div class="container split">
-    <div class="reveal">
-      <div class="badge" style="margin-bottom:1.25rem"><span class="badge-dot"></span>BPO services</div>
-      <h2 class="section-headline">Your operations,<br /><span class="gradient-gold">handled with joy.</span></h2>
-      <p class="section-body" style="margin-top:1rem">We plug a trained team into your workflow across voice, email, chat and back office, around the clock.</p>
-      <a href="/services" class="btn-primary btn-joy" style="margin-top:2rem">All BPO services</a>
+<section class="sec band-ink" id="bpo" data-joi="bpo">
+  <div class="wrap split">
+    <div class="rv">
+      <span class="kicker">BPO services</span>
+      <h2 class="h-lg" style="margin:1rem 0 1.2rem">Your operations, <span class="c-pink">handled with joy.</span></h2>
+      <p class="lede">We plug a trained team into your workflow across voice, email, chat and back office, around the clock.</p>
+      <div class="btns" style="margin-top:2rem"><a class="btn btn-pink" href="/services">All services <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
     </div>
-    <div class="svc-list">
-      <div class="svc reveal"><i>01</i><div><h3>Customer support</h3><p>Voice, email, chat and social, 24×7, in the languages your customers speak.</p></div></div>
-      <div class="svc reveal reveal-delay-1"><i>02</i><div><h3>Back office</h3><p>Data entry, document checks, invoices and accounting ops.</p></div></div>
-      <div class="svc reveal"><i>03</i><div><h3>HR &amp; payroll</h3><p>Hiring, onboarding, payroll runs and compliance paperwork.</p></div></div>
-      <div class="svc reveal reveal-delay-1"><i>04</i><div><h3>IT helpdesk</h3><p>L1–L3 support, monitoring and cloud housekeeping.</p></div></div>
-      <div class="svc reveal"><i>05</i><div><h3>Analytics</h3><p>Reports and dashboards that turn your raw data into decisions.</p></div></div>
-      <div class="svc reveal reveal-delay-1"><i>06</i><div><h3>Seller ops</h3><p>Listings, catalogues and order support for marketplace sellers.</p></div></div>
+    <div class="tiles">
+      <div class="tile t-blue rv"><b>01</b><div><h3>Customer support</h3><p>Voice, email, chat and social, 24×7.</p></div></div>
+      <div class="tile t-pink rv d1"><b>02</b><div><h3>Back office</h3><p>Data entry, document checks, invoices.</p></div></div>
+      <div class="tile t-lime rv"><b>03</b><div><h3>HR &amp; payroll</h3><p>Hiring, onboarding and payroll runs.</p></div></div>
+      <div class="tile t-sky rv d1"><b>04</b><div><h3>IT helpdesk</h3><p>L1–L3 support and monitoring.</p></div></div>
+      <div class="tile t-orange rv"><b>05</b><div><h3>Analytics</h3><p>Reports that turn data into decisions.</p></div></div>
+      <div class="tile t-butter rv d1"><b>06</b><div><h3>Seller ops</h3><p>Listings and order support for sellers.</p></div></div>
     </div>
   </div>
 </section>
 
-<!-- ═══ QUOTE + REACH ═══ -->
-<section class="section">
-  <div class="container split">
-    <div class="reveal">
-      <p class="quote-big">“Every enterprise deserves <em>joyful operations</em>, from the moment a customer clicks ‘buy’ to the moment an agent solves their problem.”</p>
+<section class="sec band-lime band-edge" data-joi="reach">
+  <div class="wrap split">
+    <div class="rv">
+      <p class="quote">“Every enterprise deserves <em>joyful operations</em>, from the moment a customer clicks ‘buy’ to the moment an agent solves their problem.”</p>
       <p class="quote-by">— Founder, DEJOIY</p>
     </div>
-    <div class="reveal reveal-delay-1">
-      <div class="badge" style="margin-bottom:1rem"><span class="badge-dot"></span>Where we work</div>
-      <h2 class="section-headline" style="font-size:clamp(1.6rem,2.6vw,2.4rem)">Serving clients in five countries.</h2>
-      <div class="countries">
-        <span class="country hq">India <small>HQ</small></span>
-        <span class="country">UAE <small>Active</small></span>
-        <span class="country">UK <small>Active</small></span>
-        <span class="country">USA <small>Active</small></span>
-        <span class="country">Singapore <small>Active</small></span>
-      </div>
-      <p style="margin-top:1.25rem;font-size:.88rem;color:var(--text-secondary)">Want us in your country? <a href="/contact" style="color:var(--dj-blue);font-weight:800">Tell us →</a></p>
+    <div class="rv d1">
+      <span class="kicker">Where we work</span>
+      <h2 class="h-md" style="margin-top:1rem">Serving clients in five countries.</h2>
+      <div class="pills"><span class="pill hq">India <small>HQ</small></span><span class="pill">UAE <small>Active</small></span><span class="pill">UK <small>Active</small></span><span class="pill">USA <small>Active</small></span><span class="pill">Singapore <small>Active</small></span></div>
+      <p style="margin-top:1.4rem;font-weight:700">Want us in your country? <a class="tlink" href="/contact">Tell us <span class="arr">→</span></a></p>
     </div>
   </div>
 </section>
-
-<!-- ═══ CTA ═══ -->
-<section class="section-sm">
-  <div class="container">
-    <div class="cta-joy reveal">
-      <h2>Let's make your next thing joyful.</h2>
-      <p>Need a support team, a website, a mailbox or a place to sell? Tell us what you're building and we'll reply within one working day.</p>
-      <div style="display:flex;gap:1rem;flex-wrap:wrap">
-        <a href="/contact" class="btn-primary">Start a conversation</a>
-        <a href="https://dejoiy.com/vendor-register/" target="_blank" rel="noopener" class="btn-ghost">Sell on DEJOIY</a>
-      </div>
-    </div>
+<section class="sec-sm"><div class="wrap">
+  <div class="cta rv" data-joi="cta">
+    <h2 class="h-lg">Let's make your next thing joyful.</h2>
+    <p>Need a support team, a website, a mailbox or a place to sell? Tell us what you're building and we'll reply within one working day.</p>
+    <div class="btns"><a class="btn btn-lime" href="/contact">Start a conversation <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn btn-line" href="https://dejoiy.com/sell-on-dejoiy/" target="_blank" rel="noopener">Sell on DEJOIY</a></div>
   </div>
-</section>
+</div></section>
 </main>
 
-<!-- ═══ FOOTER ═══ -->
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-top">
       <div>
-        <a href="/" class="nav-logo" style="display:inline-flex;margin-bottom:1rem">
-          <div><img class="nav-logo-img" src="assets/images/logo/dejoiy-wordmark-on-dark.svg" alt="DEJOIY" /><div class="nav-logo-sub">You + Joy</div></div>
-        </a>
-        <p class="footer-brand-desc">DEJOIY India Private Limited — Where YOU + JOY = DEJOIY. People, technology and connected commerce, from New Delhi.</p>
+        <a class="logo" href="/" aria-label="DEJOIY home"><img src="/assets/images/logo/dejoiy-wordmark-on-dark.svg" alt="DEJOIY" width="100" height="32" /><small>You + Joy</small></a>
+        <p class="about">DEJOIY India Private Limited. People, technology and connected commerce, from New Delhi.</p>
       </div>
-      <div>
-        <div class="footer-col-title">Company</div>
-        <div class="footer-links">
-          <a href="/">Home</a>
-          <a href="/about">About Us</a>
-          <a href="/services">BPO Services</a>
-          <a href="/team">Our Team</a>
-          <a href="/contact">Contact</a>
-        </div>
-      </div>
-      <div>
-        <div class="footer-col-title">Platforms</div>
-        <div class="footer-links">
-          <a href="https://www.dejoiy.com" target="_blank" rel="noopener">Marketplace</a>
-          <a href="https://business.dejoiy.com" target="_blank" rel="noopener">Business Portal</a>
-          <a href="/services">BPO Services</a>
-        </div>
-      </div>
-      <div>
-        <div class="footer-col-title">Legal</div>
-        <div class="footer-links">
-          <a href="https://dejoiy.com/help/policies/privacy/" target="_blank" rel="noopener">Privacy Policy</a>
-          <a href="https://dejoiy.com/help/policies/terms/" target="_blank" rel="noopener">Terms of Service</a>
-          <a href="https://dejoiy.com/help/policies/legal/" target="_blank" rel="noopener">Company details</a>
-        </div>
-      </div>
+      <div><h4>Company</h4><ul>
+        <li><a class="tlink" href="/about">About</a></li>
+        <li><a class="tlink" href="/services">Services</a></li>
+        <li><a class="tlink" href="/team">Team</a></li>
+        <li><a class="tlink" href="/contact">Contact</a></li>
+        <li><a class="tlink" href="https://careers.dejoiy.com" target="_blank" rel="noopener">Careers</a></li>
+      </ul></div>
+      <div><h4>Our apps</h4><ul>
+        <li><a class="tlink" href="https://www.dejoiy.com" target="_blank" rel="noopener">Marketplace</a></li>
+        <li><a class="tlink" href="https://business.dejoiy.com" target="_blank" rel="noopener">Business portal</a></li>
+        <li><a class="tlink" href="https://mail.dejoiy.com" target="_blank" rel="noopener">Dmail</a></li>
+        <li><a class="tlink" href="https://joi.dejoiy.com" target="_blank" rel="noopener">Joi AI</a></li>
+        <li><a class="tlink" href="https://dejoiy.com/sell-on-dejoiy/" target="_blank" rel="noopener">Sell on DEJOIY</a></li>
+      </ul></div>
+      <div><h4>Legal</h4><ul>
+        <li><a class="tlink" href="https://dejoiy.com/help/policies/privacy/" target="_blank" rel="noopener">Privacy policy</a></li>
+        <li><a class="tlink" href="https://dejoiy.com/help/policies/terms/" target="_blank" rel="noopener">Terms</a></li>
+        <li><a class="tlink" href="https://dejoiy.com/help/policies/returns/" target="_blank" rel="noopener">Refunds</a></li>
+        <li><a class="tlink" href="https://dejoiy.com/help/policies/legal/" target="_blank" rel="noopener">Company details</a></li>
+      </ul></div>
     </div>
-    <div class="footer-divider"></div>
-    <div class="footer-bottom">
-      <div class="footer-bottom-text">
-        © 2026 DEJOIY India Private Limited. All rights reserved.<br />
-        YOU + JOY = DEJOIY® — Registered trademark of DEJOIY India Private Limited.
-      </div>
-      <div class="footer-domains">
-        <a href="https://www.dejoiy.co.in">dejoiy.co.in</a>
-        <a href="https://www.dejoiy.com" target="_blank">dejoiy.com</a>
-        <a href="https://business.dejoiy.com" target="_blank">business.dejoiy.com</a>
-      </div>
+    <div class="foot-big" aria-hidden="true">:D<span>ejoiy</span></div>
+    <div class="foot-bot">
+      <span>© 2026 DEJOIY India Private Limited. YOU + JOY = DEJOIY.</span>
+      <span><a class="tlink" href="https://www.dejoiy.com" target="_blank" rel="noopener">dejoiy.com</a> · <a class="tlink" href="https://business.dejoiy.com" target="_blank" rel="noopener">business.dejoiy.com</a></span>
     </div>
   </div>
 </footer>
 
-<style>
-.skip-link{position:absolute;left:-999px;top:0}.skip-link:focus{left:1rem;top:1rem;z-index:200;background:#fff;color:#0b0a1a;padding:.6rem 1rem;border-radius:10px}
-@media(max-width:768px){
-  .market-top-grid{grid-template-columns:1fr!important}
-  .product-grid{grid-template-columns:1fr!important}
-  .bpo-stat-grid{grid-template-columns:1fr!important}
-  .serviceable-grid{grid-template-columns:repeat(3,1fr)!important;gap:0.75rem!important}
-}
-@media(max-width:480px){
-  .serviceable-grid{grid-template-columns:repeat(2,1fr)!important}
-}
-@media(max-width:1100px){
-  .market-top-grid{grid-template-columns:1fr!important}
-  .bpo-stat-grid{grid-template-columns:1fr 1fr!important}
-}
-</style>
-<script src="assets/vendor/three.min.js"></script>
-<script src="assets/js/main.js"></script>
+<script src="/assets/vendor/three.min.js"></script>
+<script src="/assets/vendor/GLTFLoader.js"></script>
+<script src="/assets/vendor/meshopt_decoder.js"></script>
+<script src="/assets/js/main.js"></script>
+<script src="/assets/js/joi-guide.js"></script>
 </body>
 </html>
